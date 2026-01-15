@@ -1,0 +1,92 @@
+﻿@page "/"
+
+<nav class="navbar navbar-expand-md bg-dark-subtle bg-opacity-50 sticky-top py-1">
+    <div class="container-fluid">
+
+        <img src="/imgs/logo.png"
+             alt="Logo"
+             width="40"
+             height="40"
+             class="d-inline-block align-middle me-2" />
+
+        <a class="navbar-brand mb-0 h1" href="#">
+            METEOR CRAFTWORKS
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+
+<div id="carouselExampleAutoplaying" class="carousel carousel-dark slide m-xxl-1 " data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="ratio ratio-21x9">
+                <img src="/imgs/imgCarrusel2.png" class="d-block w-100 object-fit-cover border rounded " " alt="...">
+            </div>
+
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="fs-1"> Artistas capaces </h5>
+                <p class="text-break text-lg-center fw-normal lh-sm fs-3 ">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="ratio ratio-21x9">
+                <img src="/imgs/imgCarrusel1.png" class="d-block w-100 object-fit-cover border rounded" alt="...">
+            </div>
+
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class= "fs-1">Del concepto a la implementacion</h5>
+                <p class="fs-3">Hacemos de lo imposible algo real y tangible, no hay limites!</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="ratio ratio-21x9">
+                <img src="/imgs/imgCarrusel3.png" class="d-block w-100 object-fit-cover border rounded" alt="...">
+
+            </div>
+
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="fs-1"> Diseños y atmosferas</h5>
+                <p class="fs-3">Con una amplia capacidad de evocacion, nuestros proyectos son ricos en Storytelling y ambientacion.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
