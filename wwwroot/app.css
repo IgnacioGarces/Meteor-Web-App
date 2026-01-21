@@ -51,12 +51,9 @@ h1:focus {
 }
 
 
-.carousel-img-wrapper {
-    height: 400px; /* ajustá a gusto */
-    overflow: hidden;
-}
 
-    .carousel-img-wrapper img {
+    .carousel-img-wrapper {
         height: 100%;
         object-fit: cover;
     }
+
