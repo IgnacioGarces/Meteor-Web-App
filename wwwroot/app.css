@@ -52,8 +52,32 @@ h1:focus {
 
 
 
-    .carousel-img-wrapper {
-        height: 100%;
-        object-fit: cover;
+    
+
+/* Desktop */
+.carousel-img-wrapper {
+    max-height: 70vh;
+}
+
+/* Mobile: full screen */
+@media (max-width: 768px) {
+    #lanzamientos {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
 
+    .carousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-img-wrapper {
+        height: 100vh;
+    }
+
+    .carousel-img-wrapper {
+        max-height: none;
+    }
+
+    .carousel-item img {
+        object-fit: cover;
+    }
+}
