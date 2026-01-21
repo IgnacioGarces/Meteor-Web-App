@@ -45,7 +45,9 @@
     <!-- LANZAMIENTOS -->
     <section id="lanzamientos" class="pt-5 mt-5">
 
-        <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide m-xxl-1" data-bs-ride="carousel">
+        <div id="carouselExampleAutoplaying"
+             class="carousel carousel-dark slide"
+             data-bs-ride="carousel">
 
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"></button>
@@ -55,132 +57,277 @@
 
             <div class="carousel-inner">
 
+                <!-- SLIDE -->
                 <div class="carousel-item active">
                     <div class="ratio ratio-21x9">
-                        <img src="/imgs/imgCarrusel2.png" class="d-block w-100 object-fit-cover rounded" alt="">
+                        <img src="/imgs/imgCarrusel2.png"
+                             class="d-block w-100 object-fit-cover"
+                             alt="">
                     </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-1">Artistas capaces</h5>
-                        <p class="fs-3">
-                            This is a long paragraph written to show how the line-height of an element is affected.
+
+                    <div class="carousel-caption text-start
+                            px-3 px-md-5
+                            pb-3 pb-md-5">
+
+                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            Artistas capaces
+                        </h5>
+
+                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
+                            This is a long paragraph written to show how the line-height
+                            of an element is affected.
                         </p>
                     </div>
                 </div>
 
+                <!-- SLIDE -->
                 <div class="carousel-item">
                     <div class="ratio ratio-21x9">
-                        <img src="/imgs/imgCarrusel1.png" class="d-block w-100 object-fit-cover rounded" alt="">
+                        <img src="/imgs/imgCarrusel1.png"
+                             class="d-block w-100 object-fit-cover"
+                             alt="">
                     </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-1">Del concepto a la implementación</h5>
-                        <p class="fs-3">Hacemos de lo imposible algo real y tangible.</p>
+
+                    <div class="carousel-caption text-start
+                            px-3 px-md-5
+                            pb-3 pb-md-5">
+
+                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            Del concepto a la implementación
+                        </h5>
+
+                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
+                            Hacemos de lo imposible algo real y tangible.
+                        </p>
                     </div>
                 </div>
 
+                <!-- SLIDE -->
                 <div class="carousel-item">
                     <div class="ratio ratio-21x9">
-                        <img src="/imgs/imgCarrusel3.png" class="d-block w-100 object-fit-cover rounded" alt="">
+                        <img src="/imgs/imgCarrusel3.png"
+                             class="d-block w-100 object-fit-cover"
+                             alt="">
                     </div>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fs-1">Diseños y atmósferas</h5>
-                        <p class="fs-3">Storytelling y ambientación de alto nivel.</p>
+
+                    <div class="carousel-caption text-start
+                            px-3 px-md-5
+                            pb-3 pb-md-5">
+
+                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            Diseños y atmósferas
+                        </h5>
+
+                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
+                            Storytelling y ambientación de alto nivel.
+                        </p>
                     </div>
                 </div>
 
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
 
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <button class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
 
         </div>
+
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="pt-5">
 
-        <div class="card mb-3 ratio ratio-21x9" style="max-width: 1920px;">
-            <div class="row g-0">
-                <div class="col-md d-flex justify-content-center align-items-center">
-                    <img src="/imgs/logo.png" width="560" height="560" class="img-fluid rounded-start" alt="">
+        <!-- ABOUT -->
+        <div class="card mb-5">
+            <div class="row g-0 align-items-center">
+
+                <!-- LOGO -->
+                <div class="col-12 col-md-4 d-flex justify-content-center py-4 py-md-0">
+                    <img src="/imgs/logo.png"
+                         class="img-fluid w-50 w-md-75"
+                         alt="Meteor Craftworks logo">
                 </div>
 
-                <div class="col-md-8 align-content-center">
+                <!-- TEXTO -->
+                <div class="col-12 col-md-8">
                     <div class="card-body">
-                        <h5 class="card-title text-center fs-1 fw-bold">About us</h5>
-                        <p class="card-text fs-3 lh-base">
+
+                        <h2 class="text-center fw-bold fs-3 fs-md-1 mb-4">
+                            About us
+                        </h2>
+
+                        <p class="fs-6 fs-md-3 lh-base">
                             This is a wider card with supporting text below as a natural lead-in to additional content.
                         </p>
-                        <p class="card-text text-end fs-6">
-                            <small class="text-body-secondary">Last updated 3 mins ago</small>
+
+                        <p class="text-end fs-6">
+                            <small class="text-body-secondary">
+                                Last updated 3 mins ago
+                            </small>
                         </p>
+
                     </div>
                 </div>
+
             </div>
         </div>
 
         <!-- DEVS -->
-        <div class="card mb-3 ratio ratio-21x9" style="max-width: 1920px;">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="card">
+            <div class="card-body">
 
-                <div class="col">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="/imgs/pic-angry.png" class="img-fluid rounded-end" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <!-- DEV -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="row g-0 h-100 align-items-center">
+
+                                <div class="col-4 col-md-4 d-flex justify-content-center">
+                                    <img src="/imgs/pic-angry.png"
+                                         class="img-fluid w-75 rounded">
                                 </div>
+
+                                <div class="col-8 col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fs-md-5">
+                                            Card title
+                                        </h5>
+                                        <p class="card-text fs-6">
+                                            This is a wider card with supporting text below.
+                                        </p>
+                                        <small class="text-body-secondary">
+                                            Last updated 3 mins ago
+                                        </small>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
 
-                    <div class="card ">
-                        <img src="/imgs/pic-angry.png" class="card-img-top " style= "max-width: 260px; max-height:460px " alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <!-- DEV -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="row g-0 h-100 align-items-center">
+
+                                <div class="col-4 col-md-4 d-flex justify-content-center">
+                                    <img src="/imgs/pic-lulo.png"
+                                         class="img-fluid w-75 rounded">
+                                </div>
+
+                                <div class="col-8 col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fs-md-5">
+                                            Card title
+                                        </h5>
+                                        <p class="card-text fs-6">
+                                            This is a wider card with supporting text below.
+                                        </p>
+                                        <small class="text-body-secondary">
+                                            Last updated 3 mins ago
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+
+                    <!-- DEV -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="row g-0 h-100 align-items-center">
+
+                                <div class="col-4 col-md-4 d-flex justify-content-center">
+                                    <img src="/imgs/pic-yo.png"
+                                         class="img-fluid w-75 rounded">
+                                </div>
+
+                                <div class="col-8 col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fs-md-5">
+                                            Card title
+                                        </h5>
+                                        <p class="card-text fs-6">
+                                            This is a wider card with supporting text below.
+                                        </p>
+                                        <small class="text-body-secondary">
+                                            Last updated 3 mins ago
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DEV -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="row g-0 h-100 align-items-center">
+
+                                <div class="col-4 col-md-4 d-flex justify-content-center">
+                                    <img src="/imgs/pic-mati.png"
+                                         class="img-fluid w-75 rounded">
+                                </div>
+
+                                <div class="col-8 col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fs-md-5">
+                                            Card title
+                                        </h5>
+                                        <p class="card-text fs-6">
+                                            This is a wider card with supporting text below.
+                                        </p>
+                                        <small class="text-body-secondary">
+                                            Last updated 3 mins ago
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DEV -->
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="row g-0 h-100 align-items-center">
+
+                                <div class="col-4 col-md-4 d-flex justify-content-center">
+                                    <img src="/imgs/pic-valen.png"
+                                         class="img-fluid w-75 rounded">
+                                </div>
+
+                                <div class="col-8 col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fs-md-5">
+                                            Card title
+                                        </h5>
+                                        <p class="card-text fs-6">
+                                            This is a wider card with supporting text below.
+                                        </p>
+                                        <small class="text-body-secondary">
+                                            Last updated 3 mins ago
+                                        </small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -189,32 +336,32 @@
     <!-- CONTACTO -->
     <section id="contacto" class="pt-5 pb-5">
 
-        <div class="card mb-3 ratio ratio-21x9" style="max-width: 1920px;">
-            <div class="row g-0 h-100">
+        <div class="card mb-3" style="max-width: 1920px;">
+            <div class="row g-0">
 
                 <!-- TEXTO -->
-                <div class="col-md-5 d-flex align-items-center">
+                <div class="col-12 col-md-5 d-flex align-items-center">
                     <div class="card-body">
-                        <h2 class="fs-1 fw-bold mb-4">Contactanos</h2>
+                        <h2 class="fw-bold fs-3 fs-md-1 mb-4">
+                            Contactanos
+                        </h2>
 
-                        <p class="fs-4 lh-base">
-                            ¿Tenés un proyecto en mente?
+                        <p class="lh-base fs-6 fs-md-4 mb-0">
+                            ¿Tenés un proyecto en mente?<br>
                             Nos especializamos en transformar ideas en experiencias visuales únicas.
                         </p>
-
                     </div>
                 </div>
 
                 <!-- FORM -->
-                <div class="col-md-7 d-flex align-items-center">
+                <div class="col-12 col-md-7 d-flex align-items-center">
                     <div class="card-body w-100">
 
                         <form action="mailto:meteorcraftwork@gmail.com"
-                              method="post"
-                              enctype="text/plain">
+                              method="get">
 
                             <div class="mb-3">
-                                <label class="form-label fs-5">Nombre</label>
+                                <label class="form-label fs-6 fs-md-5">Nombre</label>
                                 <input type="text"
                                        name="Nombre"
                                        class="form-control form-control-lg"
@@ -223,7 +370,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label fs-5">Email</label>
+                                <label class="form-label fs-6 fs-md-5">Email</label>
                                 <input type="email"
                                        name="Email"
                                        class="form-control form-control-lg"
@@ -232,7 +379,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <label class="form-label fs-5">Mensaje</label>
+                                <label class="form-label fs-6 fs-md-5">Mensaje</label>
                                 <textarea name="Mensaje"
                                           class="form-control form-control-lg"
                                           rows="4"
@@ -246,6 +393,10 @@
                                     Enviar
                                 </button>
                             </div>
+
+                            <small class="text-body-secondary d-block mt-2">
+                                Se abrirá tu cliente de correo para enviar el mensaje.
+                            </small>
 
                         </form>
 
