@@ -1,4 +1,8 @@
-﻿@page "/"
+﻿@using MeteorWebApp.Models
+@using MeteorWebApp.Services
+@using System.ComponentModel.DataAnnotations
+
+@page "/"
 
 <!-- NAVBAR -->
 <nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-1">
@@ -63,7 +67,7 @@
                         <div class="ratio ratio-21x9 carousel-img-wrapper">
                             <img src="/imgs/imgInfinite.png"
                                  class="d-block w-100 object-fit-cover"
-                                 alt="" >
+                                 alt="">
                         </div>
                     </a>
 
@@ -362,54 +366,52 @@
                 </div>
 
                 <!-- FORM -->
-                <div class="col-12 col-md-7 d-flex align-items-center">
-                    <div class="card-body w-100">
+                <EditForm Model="form"
+                          OnValidSubmit="EnviarFormulario"
+                          FormName="contactForm"
+                          Enhance="true">
 
-                        <form action="mailto:meteorcraftwork@gmail.com"
-                              method="get">
+                    <DataAnnotationsValidator />
 
-                            <div class="mb-3">
-                                <label class="form-label fs-6 fs-md-5">Nombre</label>
-                                <input type="text"
-                                       name="Nombre"
-                                       class="form-control form-control-lg"
-                                       placeholder="Tu nombre"
-                                       required>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fs-6 fs-md-5">Email</label>
-                                <input type="email"
-                                       name="Email"
-                                       class="form-control form-control-lg"
-                                       placeholder="tu@email.com"
-                                       required>
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label fs-6 fs-md-5">Mensaje</label>
-                                <textarea name="Mensaje"
-                                          class="form-control form-control-lg"
-                                          rows="4"
-                                          placeholder="Contanos sobre tu proyecto..."
-                                          required></textarea>
-                            </div>
-
-                            <div class="d-flex justify-content-end">
-                                <button type="submit"
-                                        class="btn btn-outline-light btn-lg px-5">
-                                    Enviar
-                                </button>
-                            </div>
-
-                            <small class="text-body-secondary d-block mt-2">
-                                Se abrirá tu cliente de correo para enviar el mensaje.
-                            </small>
-
-                        </form>
-
+                    <div class="mb-3">
+                        <label class="form-label fs-6 fs-md-5">Nombre</label>
+                        <InputText @bind-Value="form.Nombre"
+                                   class="form-control form-control-lg"
+                                   placeholder="Tu nombre" />
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fs-6 fs-md-5">Email</label>
+                        <InputText @bind-Value="form.Email"
+                                   type="email"
+                                   class="form-control form-control-lg"
+                                   placeholder="tu@email.com" />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label fs-6 fs-md-5">Mensaje</label>
+                        <InputTextArea @bind-Value="form.Mensaje"
+                                       class="form-control form-control-lg"
+                                       rows="4"
+                                       placeholder="Contanos sobre tu proyecto..." />
+                    </div>
+
+                    <div class="d-flex justify-content-end">
+                        <button type="submit"
+                                class="btn btn-outline-light btn-lg px-5"
+                                disabled="@enviando">
+                            @(enviando ? "Enviando..." : "Enviar")
+                        </button>
+                    </div>
+
+                </EditForm>
+
+                @if (enviado)
+                {
+                    <div class="alert alert-success mb-4">
+                        ¡Gracias! Tu mensaje fue enviado correctamente.
+                    </div>
+                }
 
             </div>
         </div>
@@ -427,3 +429,25 @@
         })
     })
 </script>
+
+@code {
+    private ContactFormModel form = new();
+    private bool enviando = false;
+    private bool enviado = false;
+
+    [Inject]
+    private IEmailService EmailService { get; set; } = default!;
+
+    private async Task EnviarFormulario()
+    {
+        enviando = true;
+        enviado = false;
+
+        await EmailService.SendAsync(form);
+
+        enviado = true;
+        enviando = false;
+
+        form = new ContactFormModel(); 
+    }
+}
