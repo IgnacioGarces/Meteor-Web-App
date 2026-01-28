@@ -34,7 +34,7 @@ html, body {
     }
 
     #mainNavbar.nav-background {
-        min-height: 81px; /* ajustá este valor */
+        height:fit-content;
         background-size: cover;
     }
 }
@@ -42,12 +42,13 @@ html, body {
 @media (max-width: 768px) {
 
     html, body {
-        overflow: auto;
+        overflow-x: hidden;
+        width: 100%;
     }
 
     .snap-container {
         min-height: 100vh;
-        width:fit-content;
+        width: 100%;
         overflow-y: auto;
         scroll-snap-type: y proximity;
         -webkit-overflow-scrolling: touch;
@@ -55,8 +56,7 @@ html, body {
 
     .snap-section {
         min-height: 100vh;
-        width:fit-content;
-
+        width: 100%;
         scroll-snap-align: start;
         scroll-margin-top: 56px;
         padding-top: 56px;
@@ -75,13 +75,15 @@ html, body {
     .carousel-inner,
     .carousel-item,
     .carousel-img-wrapper {
+        width: 100%;
+        min-width: 100vw;
         min-height: 100vh;
     }
 }
 
 .nav-background {
-    background-image: url("/imgs/banner.png");
-    background-position: center;
+    background-image: url("/imgs/bannerBackground2.png");
+    background-position:center;
     background-repeat: no-repeat;
 }
 
@@ -156,4 +158,14 @@ html, body {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
+}
+
+.bannerLogo {
+    height: contain;
+    width: 250px;
+}
+
+.carousel {
+    margin-left: calc(-1 * var(--bs-gutter-x, 0.75rem));
+    margin-right: calc(-1 * var(--bs-gutter-x, 0.75rem));
 }
