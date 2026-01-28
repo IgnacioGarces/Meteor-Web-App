@@ -47,6 +47,7 @@ html, body {
 
     .snap-container {
         min-height: 100vh;
+        width:fit-content;
         overflow-y: auto;
         scroll-snap-type: y proximity;
         -webkit-overflow-scrolling: touch;
@@ -54,6 +55,8 @@ html, body {
 
     .snap-section {
         min-height: 100vh;
+        width:fit-content;
+
         scroll-snap-align: start;
         scroll-margin-top: 56px;
         padding-top: 56px;
@@ -66,6 +69,13 @@ html, body {
     .nav-background {
         background-size: cover;
         height: fit-content;
+    }
+
+    .carousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-img-wrapper {
+        min-height: 100vh;
     }
 }
 
@@ -96,7 +106,7 @@ html, body {
 .carousel-item,
 .carousel-img-wrapper {
     height: 100%;
-    min-height: 100vh;
+    
 }
 
 /*
