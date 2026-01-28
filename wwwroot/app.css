@@ -1,9 +1,16 @@
+/* =========================
+   GLOBAL
+========================= */
+
 html, body {
     height: 100%;
     margin: 0;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* =========================
+   DESKTOP (SCROLL SNAP)
+========================= */
 
 @media (min-width: 769px) {
 
@@ -19,7 +26,7 @@ html, body {
     }
 
     .snap-section {
-        height: calc(100vh - 80px); /* navbar desktop */
+        height: calc(100vh - 80px);
         scroll-snap-align: start;
         scroll-margin-top: 80px;
         display: flex;
@@ -28,10 +35,12 @@ html, body {
     }
 }
 
-/*MOBILE*/
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 768px) {
 
-    /* NO bloquear scroll en mobile */
     html, body {
         overflow: auto;
     }
@@ -50,36 +59,35 @@ html, body {
         padding-top: 56px;
     }
 
-    
-
-    
-    .caption-box {
-        padding: 1rem 1.25rem;
+    .custom-caption {
+        padding: 1.75rem 1rem;
     }
 }
+
+/* =========================
+   CAROUSEL IMAGES
+========================= */
 
 .carousel-img-wrapper {
     position: relative;
     overflow: hidden;
 }
 
-    .carousel-img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.carousel-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* Evita conflicto swipe vertical */
 .carousel {
     touch-action: pan-y;
 }
 
-.custom-caption {
-    bottom: 10%;
-    padding: 0 1rem;
-}
+/* =========================
+   CAROUSEL FULL HEIGHT
+========================= */
 
-/* ===== CAROUSEL FULL HEIGHT ===== */
 .carousel,
 .carousel-inner,
 .carousel-item,
@@ -88,22 +96,47 @@ html, body {
     min-height: 100vh;
 }
 
-/* CONTENEDOR GENERAL */
+/* =========================
+   RESET BOOTSTRAP CAPTION
+========================= */
+
+.carousel-caption {
+    position: absolute;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    transform: none !important;
+    padding: 0 !important;
+    margin: 0;
+}
+
+/* =========================
+   CUSTOM CAPTION FULL WIDTH
+========================= */
+
 .custom-caption {
-    left: 0;
-    right: 0;
-    bottom: 15%;
+    width: 100%;
+    bottom: 0; 
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.45),
+        rgba(0, 0, 0, 0)
+    );
+
     display: flex;
     justify-content: center;
     text-align: center;
+    color: #fff;
 }
 
-/* CAJA DE TEXTO */
-.caption-box {
-    background: linear-gradient( to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4) );
-    color: #fff;
-    padding: 1.5rem 2rem;
-    border-radius: 0.75rem;
-    max-width: 720px;
-    backdrop-filter: blur(4px);
+/* =========================
+   CAPTION CONTENT
+========================= */
+
+.caption-content {
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    padding: 6rem ;
 }
