@@ -49,7 +49,7 @@ Mensaje:
 
         await client.AuthenticateAsync(
             fromEmail,
-            "TU_APP_PASSWORD_DE_GMAIL"
+            "xvad oovt adbc tokp"
         );
 
         await client.SendAsync(message);

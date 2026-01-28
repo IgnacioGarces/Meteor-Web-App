@@ -5,7 +5,7 @@
 @page "/"
 
 <!-- NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-1">
+<nav id="mainNavbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-5">
     <div class="container-fluid">
 
         <a class="navbar-brand mb-0 h1" href="/">
@@ -37,17 +37,17 @@
 </nav>
 
 <!-- SCROLLSPY CONTAINER -->
-<div data-bs-spy="scroll"
+<div class="snap-container"
+     data-bs-spy="scroll"
      data-bs-target="#mainNavbar"
      data-bs-offset="80"
      data-bs-smooth-scroll="true"
      tabindex="0">
 
-    <!-- TOP ANCHOR -->
-    <div id="top"></div>
+    
 
     <!-- LANZAMIENTOS -->
-    <section id="lanzamientos" class="pt-5 mt-5">
+    <section id="lanzamientos" class="snap-section ">
 
         <div id="carouselExampleAutoplaying"
              class="carousel carousel-dark slide"
@@ -62,77 +62,76 @@
             <div class="carousel-inner">
 
                 <!-- SLIDE -->
-                <div class="carousel-item active">
+                <div class="carousel carousel-item active">
                     <a href="/Infinite">
-                        <div class="ratio ratio-21x9 carousel-img-wrapper">
+                        <div class=" carousel-img-wrapper">
                             <img src="/imgs/imgInfinite.png"
-                                 class="d-block w-100 object-fit-cover"
+                                 class="carousel-img-wrapper img "
                                  alt="">
                         </div>
                     </a>
 
-                    <div class="carousel-caption text-start
-                            px-3 px-md-5
-                            pb-3 pb-md-5">
+                    <div class="carousel-caption custom-caption text-start">
+                        <div class="caption-box">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                                Artistas capaces
+                            </h5>
 
-                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
-                            Artistas capaces
-                        </h5>
-
-                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
-                            This is a long paragraph written to show how the line-height
-                            of an element is affected.
-                        </p>
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                                This is a long paragraph written to show how the line-height
+                                of an element is affected.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- SLIDE -->
-                <div class="carousel-item">
-                    <div class="ratio ratio-21x9 carousel-img-wrapper ">
+                <div class=" carousel carousel-item">
+                    <div class=" carousel-img-wrapper ">
                         <a href="#">
                             <img src="/imgs/imgLiteratubers.png"
-                                 class="d-block w-100 object-fit-cover"
+                                 class="carousel-img-wrapper img"
                                  alt="">
 
                         </a>
                     </div>
 
-                    <div class="carousel-caption text-start
-                            px-3 px-md-5
-                            pb-3 pb-md-5">
+                    <div class="carousel-caption custom-caption text-start">
+                        <div class="caption-box">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                                Artistas capaces
+                            </h5>
 
-                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
-                            Del concepto a la implementación
-                        </h5>
-
-                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
-                            Hacemos de lo imposible algo real y tangible.
-                        </p>
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                                This is a long paragraph written to show how the line-height
+                                of an element is affected.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- SLIDE -->
-                <div class="carousel-item">
+                <div class="carousel carousel-item">
                     <a href="#">
-                        <div class="ratio ratio-21x9 carousel-img-wrapper">
+                        <div class="carousel-img-wrapper">
                             <img src="/imgs/imgCarrusel3.png"
-                                 class="d-block w-100 object-fit-cover"
+                                 class="carousel-img-wrapper img"
                                  alt="">
                         </div>
 
                     </a>
 
-                    <div class="carousel-caption text-start
-                            px-3 px-md-5
-                            pb-3 pb-md-5">
+                    <div class="carousel-caption custom-caption text-start">
+                        <div class="caption-box">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                                Artistas capaces
+                            </h5>
 
-                        <h5 class="fw-bold fs-5 fs-md-1 mb-2">
-                            Diseños y atmósferas
-                        </h5>
-
-                        <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base">
-                            Storytelling y ambientación de alto nivel.
-                        </p>
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                                This is a long paragraph written to show how the line-height
+                                of an element is affected.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -155,10 +154,10 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="pt-5">
+    <section id="about" class="snap-section ">
 
-        <!-- ABOUT -->
-        <div class="card mb-5">
+        <!-- INFO -->
+        <div class="card ">
             <div class="row g-0 align-items-center">
 
                 <!-- LOGO -->
@@ -346,7 +345,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="pt-5 pb-5">
+    <section id="contacto" class="snap-section ">
 
         <div class="card mb-3" style="max-width: 1920px;">
             <div class="row g-0">
@@ -423,11 +422,13 @@
 <!-- SCROLLSPY -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        new bootstrap.ScrollSpy(document.body, {
+        const scrollContainer = document.querySelector('.snap-container');
+
+        new bootstrap.ScrollSpy(scrollContainer, {
             target: '#mainNavbar',
             offset: 80
-        })
-    })
+        });
+    });
 </script>
 
 @code {
