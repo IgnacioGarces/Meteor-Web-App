@@ -7,6 +7,8 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddScoped<IEmailService, SmtpEmailService>();
+builder.Services.AddSingleton<ProductService>();
+
 
 var app = builder.Build();
 
