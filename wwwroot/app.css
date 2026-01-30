@@ -241,5 +241,20 @@ html, body {
         }
 
 
+.artstation-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+}
+
+.social-icons a.artstation-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+}
 
 
