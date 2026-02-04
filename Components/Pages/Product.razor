@@ -47,18 +47,24 @@
 }
 else
 {
-    <section class="snap-section justify-content-center">
-        <div class="container-xl product-page">
+    <section class="container">
+        <div class="product-page">
             <div class="row g-4   ">
 
                 <!-- LEFT: MEDIA -->
-                <div class="col-lg-7  ">
+                <div class="col-12 col-lg-8">
 
                     <div id="productCarousel"
                          class="carousel slide mb-3"
                          data-bs-ride="carousel">
 
-                        <div class="carousel-inner rounded ratio ratio-16x9">
+                        <div class="carousel-inner
+                        rounded
+                        ratio ratio-4x3
+                        ratio-md-16x9
+                        ratio-lg-21x9
+                        overflow-hidden">
+
                             @for (int i = 0; i < product.Images.Count; i++)
                             {
                                 <div class="carousel-item @(i == 0 ? "active" : "")">
@@ -66,10 +72,11 @@ else
                                          class="d-block w-100 h-100 object-fit-cover" />
                                 </div>
                             }
+
                         </div>
                     </div>
 
-                    <div class="d-flex gap-2 thumbnail-strip">
+                    <div class="thumbnail-strip gap-2">
                         @for (int i = 0; i < product.Images.Count; i++)
                         {
                             <img src="@product.Images[i]"
@@ -82,11 +89,11 @@ else
                 </div>
 
                 <!-- RIGHT: INFO -->
-                <div class="col-lg-5  ">
-                    <div class="product-info text-center">
+                <div class="col-12 col-lg-4">
+                    <div class="product-info">
 
                         <img src="@product.Poster"
-                             class="product-poster mb-3 " />
+                             class="product-poster mb-3" />
 
                         <h2>@product.Title</h2>
 
@@ -94,14 +101,14 @@ else
                             @product.Description
                         </p>
 
-                        <p class="release-date text-end">
+                        <p class="release-date">
                             <strong>Fecha de lanzamiento</strong><br />
                             @product.ReleaseDate.ToString("dd MMM yyyy")
                         </p>
 
                         <a href="@product.StoreUrl"
                            target="_blank"
-                           class="btn btn-success btn-lg mt-3 align-self-end">
+                           class="btn btn-success btn-lg mt-3">
                             Ver en Play Store
                         </a>
 
