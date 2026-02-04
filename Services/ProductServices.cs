@@ -16,9 +16,9 @@ public class ProductService
             StoreUrl = "https://play.google.com/store",
             Images =
             {
-                "/imgs/productInfinite/1.jpg",
-                "/imgs/productInfinite/2.jpg",
-                "/imgs/productInfinite/3.jpg"
+                "/imgs/productInfinite/preview_1.png",
+                "/imgs/productInfinite/preview_2.png",
+                "/imgs/productInfinite/preview_3.png"
             }
         }
     };
