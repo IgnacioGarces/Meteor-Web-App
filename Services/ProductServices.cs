@@ -12,7 +12,7 @@ public class ProductService
             Title = "Infinite Football",
             Description = "Infinite Football es un infinite runner ambientado...",
             ReleaseDate = new DateTime(2025, 6, 12),
-            Poster = "/imgs/productInfinite/poster.jpg",
+            Poster = "/imgs/productInfinite/poster.png",
             StoreUrl = "https://play.google.com/store",
             Images =
             {
