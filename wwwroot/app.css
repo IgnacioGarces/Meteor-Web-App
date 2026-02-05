@@ -16,6 +16,28 @@ html, body {
     background-repeat: no-repeat;
 }
 
+.snap-container {
+    height: 100vh;
+    width: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.snap-section {
+    scroll-margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    padding-top: 56px;
+}
+   
+
+
 .carousel-img-wrapper {
     position: relative;
     overflow: hidden;
@@ -244,22 +266,7 @@ html, body {
         overflow-y: auto;
         width: 100%;
     }
-
-    .snap-container {
-        min-height: 100vh;
-        width: 100%;
-        overflow-y: auto;
-        scroll-snap-type: y proximity;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .snap-section {
-        min-height: 100vh;
-        width: 100%;
-        scroll-snap-align: start;
-        scroll-margin-top: 56px;
-        padding-top: 56px;
-    }
+    
 
     .custom-caption {
         padding: 1.75rem 1rem;
@@ -292,25 +299,6 @@ html, body {
             align-self: stretch;
             text-align: center;
         }
-
-    .snap-container {
-        width: 100%;
-        overflow-y: scroll;
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
-        padding: 0;
-    }
-
-    .snap-section {
-        min-height: 100vh;
-        width: 100%;
-        scroll-snap-align: start;
-        scroll-margin-top: 80px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0;
-    }
 
     #mainNavbar.nav-background {
         height: 80px;
