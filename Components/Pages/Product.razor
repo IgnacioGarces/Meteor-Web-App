@@ -47,8 +47,8 @@
 }
 else
 {
-    <section class="container">
-        <div class="product-page">
+    <section class="container snap-container">
+        <div class="product-page snap-section">
             <div class="row g-4   ">
 
                 <!-- LEFT: MEDIA -->
@@ -57,6 +57,12 @@ else
                     <div id="productCarousel"
                          class="carousel slide mb-3"
                          data-bs-ride="carousel">
+
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
+                        </div>
 
                         <div class="carousel-inner
                         rounded
@@ -68,8 +74,10 @@ else
                             @for (int i = 0; i < product.Images.Count; i++)
                             {
                                 <div class="carousel-item @(i == 0 ? "active" : "")">
-                                    <img src="@product.Images[i]"
-                                         class="d-block w-100 h-100 object-fit-cover" />
+                                    <div class=" carousel-img-wrapper ">
+                                        <img src="@product.Images[i]"
+                                             class="d-block w-100 h-100 object-fit-cover" />
+                                    </div>
                                 </div>
                             }
 
