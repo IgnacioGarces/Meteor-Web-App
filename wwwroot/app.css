@@ -101,6 +101,8 @@ html, body {
 }
 
 
+
+
 .card,
 .card-body,
 .card > .row,
@@ -201,11 +203,21 @@ html, body {
     --bs-aspect-ratio: calc(3 / 4 * 100%);
 }
 
+.product-gallery{
+    position:relative;
+}
+
 .thumbnail-strip {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient( to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) );
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 8px;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    left: 0;
+    right: 0;
 }
 
 .thumbnail {
