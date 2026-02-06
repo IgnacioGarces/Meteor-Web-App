@@ -126,6 +126,10 @@ html, body {
     .ratio-lg-21x9 {
         --bs-aspect-ratio: calc(9 / 21 * 100%);
     }
+
+    .container ,.snap-container{
+        /* PADDING? */
+    }
 }
 
 .snap-container {
@@ -171,7 +175,7 @@ html, body {
     overflow: hidden;
 }
 
-    .carousel-img-wrapper a {
+.carousel-img-wrapper a {
         display: block;
     }
 
@@ -310,6 +314,8 @@ html, body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+
 
 .product-page {
     margin-top: 120px;
