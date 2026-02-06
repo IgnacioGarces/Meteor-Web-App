@@ -1,0 +1,70 @@
+﻿@page "/article/{Id:int}"
+@using MeteorWebApp.Models
+@using MeteorWebApp.Services
+@inject ArticleService ArticleService
+
+<PageTitle>Artículo</PageTitle>
+
+<!-- NAVBAR -->
+<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background">
+    <div class="container-fluid">
+
+        <a href="#">
+            <img src="/imgs/bannerLogo.png" class="bannerLogo" alt="Alternate Text" />
+        </a>
+
+        <button class="navbar-toggler active"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#lanzamientos">Lanzamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">Devs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contacto">Contacto</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+
+<div class="article-container">
+
+    <div class="article-date">
+        @article.Date.ToString("dd MMM yyyy")
+    </div>
+
+    <img src="@article.ImageUrl"
+         class="article-image"
+         alt="@article.Title" />
+
+    <h1 class="article-title">
+        @article.Title
+    </h1>
+
+    <div class="article-content">
+        @((MarkupString)article.Content)
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private ArticleModel? article;
+
+    protected override void OnInitialized()
+    {
+        article = ArticleService.GetById(Id);
+    }
+}
