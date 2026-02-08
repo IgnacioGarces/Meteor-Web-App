@@ -1,11 +1,9 @@
-﻿@using MeteorWebApp.Models
+﻿@page "/article/{Id:int}"
+@using MeteorWebApp.Models
 @using MeteorWebApp.Services
-@inject IEmailService EmailService
+@inject ArticleService ArticleService
 
-@page "/Infinite"
-@rendermode InteractiveServer
-
-<PageTitle>Infinite</PageTitle>
+<PageTitle>Artículo</PageTitle>
 
 <!-- NAVBAR -->
 <nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background">
@@ -39,7 +37,34 @@
     </div>
 </nav>
 
-<section id="infinite" class="pt-5 mt-5">
 
-    
-</section>
+<div class="article-container">
+
+    <div class="article-date">
+        @article.Date.ToString("dd MMM yyyy")
+    </div>
+
+    <img src="@article.ImageUrl"
+         class="article-image"
+         alt="@article.Title" />
+
+    <h1 class="article-title">
+        @article.Title
+    </h1>
+
+    <div class="article-content">
+        @((MarkupString)article.Content)
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+
+    private ArticleModel? article;
+
+    protected override void OnInitialized()
+    {
+        article = ArticleService.GetById(Id);
+    }
+}
