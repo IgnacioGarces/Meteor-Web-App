@@ -3,13 +3,14 @@
 @using System.ComponentModel.DataAnnotations
 
 @page "/"
+@rendermode InteractiveServer
 
 <!-- NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background">
-    <div class="container-fluid">
+<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background ">
+    <div class="container-fluid align-items-center">
 
          <a href="#">
-             <img src="/imgs/bannerLogo.png" class="bannerLogo" alt="Alternate Text" />
+            <img src="/imgs/bannerLogo.png" class="bannerLogo navbar-brand position-absolute top-50 start-50 translate-middle" alt="Alternate Text" />
          </a>
 
         <button class="navbar-toggler active"
@@ -21,9 +22,24 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#lanzamientos">Lanzamientos</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#lanzamientos"
+                       id="navbarDropdown"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Lanzamientos
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
+                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
+                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#about">Devs</a>
                 </li>
@@ -371,56 +387,60 @@
                 </div>
 
                 <!-- FORM -->
-                <EditForm Model="form"
-                          OnValidSubmit="EnviarFormulario"
-                          FormName="contactForm"
-                          Enhance="true">
+                <div class="col-12 col-md-7 p-4">
 
-                    <DataAnnotationsValidator />
+                    <EditForm Model="form"
+                              OnValidSubmit="EnviarFormulario"
+                              FormName="contactForm"
+                              Enhance="true">
 
-                    <div class="mb-3">
-                        <label class="form-label fs-6 fs-md-5">Nombre</label>
-                        <InputText @bind-Value="form.Nombre"
-                                   class="form-control form-control-lg"
-                                   placeholder="Tu nombre" />
-                    </div>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="text-danger mb-3" />
 
-                    <div class="mb-3">
-                        <label class="form-label fs-6 fs-md-5">Email</label>
-                        <InputText @bind-Value="form.Email"
-                                   type="email"
-                                   class="form-control form-control-lg"
-                                   placeholder="tu@email.com" />
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <InputText @bind-Value="form.Nombre" name="Nombre"
+                                       class="form-control form-control-lg" />
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="form-label fs-6 fs-md-5">Mensaje</label>
-                        <InputTextArea @bind-Value="form.Mensaje"
-                                       class="form-control form-control-lg"
-                                       rows="4"
-                                       placeholder="Contanos sobre tu proyecto..." />
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <InputText @bind-Value="form.Email"
+                                       name="Email"
+                                       type="email"
+                                       class="form-control form-control-lg" />
+                        </div>
 
-                    <div class="d-flex justify-content-end">
-                        <button type="submit"
-                                class="btn btn-outline-light btn-lg px-5"
-                                disabled="@enviando">
-                            @(enviando ? "Enviando..." : "Enviar")
-                        </button>
-                    </div>
+                        <div class="mb-4">
+                            <label class="form-label">Mensaje</label>
+                            <InputTextArea @bind-Value="form.Mensaje"
+                                            name ="Mensaje"
+                                           class="form-control form-control-lg"
+                                           rows="4" />
+                        </div>
 
-                </EditForm>
+                        <div class="d-flex justify-content-end">
+                            <button type="submit"
+                                    class="btn btn-outline-light btn-lg px-5"
+                                    disabled="@enviando">
+                                @(enviando ? "Enviando..." : "Enviar")
+                            </button>
+                        </div>
 
-                @if (enviado)
-                {
-                    <div class="alert alert-success mb-4">
-                        ¡Gracias! Tu mensaje fue enviado correctamente.
-                    </div>
-                }
+                    </EditForm>
+
+                    @if (enviado)
+                    {
+                        <div class="alert alert-success mt-3">
+                            ¡Gracias! Tu mensaje fue enviado correctamente.
+                        </div>
+                    }
+                </div>
 
             </div>
         </div>
 
+        <!--FOOTER-->
         <footer class="contact-footer">
             <span class="footer-title">FOLLOW US</span>
 
@@ -464,6 +484,29 @@
     });
 </script>
 
+<script>
+    window.scrollToHash = () => {
+            if (location.hash) {
+                const el = document.querySelector(location.hash);
+                 if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                 }
+            }
+    };
+</script>
+
+@inject IJSRuntime JS
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToHash");
+        }
+    }
+}
+
 @code {
     private ContactFormModel form = new();
     private bool enviando = false;
@@ -477,11 +520,20 @@
         enviando = true;
         enviado = false;
 
-        await EmailService.SendAsync(form);
-
-        enviado = true;
-        enviando = false;
-
-        form = new ContactFormModel(); 
+        try
+        {
+            await EmailService.SendAsync(form);
+            enviado = true;
+            form = new ContactFormModel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            enviando = false;
+            StateHasChanged();
+        }
     }
 }

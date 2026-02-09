@@ -1,7 +1,9 @@
 ﻿using MailKit.Net.Smtp;
 using MailKit.Security;
-using MimeKit;
 using MeteorWebApp.Models;
+using MimeKit;
+using System.Diagnostics.Contracts;
+using System.Diagnostics.Metrics;
 
 namespace MeteorWebApp.Services;
 
@@ -9,34 +11,27 @@ public class SmtpEmailService : IEmailService
 {
     public async Task SendAsync(ContactFormModel model)
     {
-        var fromEmail = "contacto@meteor-craftwork.com";
+        var fromEmail = model;
 
         var message = new MimeMessage();
 
         message.From.Add(
-            new MailboxAddress("Meteor Web", fromEmail)
+            new MailboxAddress("Meteor Web App", "contacto@meteor-craftwork.com")
         );
 
         message.To.Add(
-            new MailboxAddress("Meteor", fromEmail)
+            new MailboxAddress("Meteor Web App", "contacto@meteor-craftwork.com")
         );
 
         message.ReplyTo.Add(
             new MailboxAddress(model.Nombre, model.Email)
         );
 
-        message.Subject = $"Contacto web - {model.Nombre}";
+        message.Subject = $"Contacto web: {model.Nombre}";
 
         message.Body = new TextPart("plain")
         {
-            Text =
-$"""
-Nombre: {model.Nombre}
-Email: {model.Email}
-
-Mensaje:
-{model.Mensaje}
-"""
+            Text = fromEmail.Mensaje
         };
 
         using var client = new SmtpClient();
@@ -48,7 +43,7 @@ Mensaje:
         );
 
         await client.AuthenticateAsync(
-            fromEmail,
+            "contacto@meteor-craftwork.com",
             "xvad oovt adbc tokp"
         );
 
