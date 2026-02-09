@@ -379,10 +379,6 @@
                               FormName="contactForm"
                               Enhance="true">
 
-                        <p class="text-warning">
-                            DEBUG → Nombre: @form.Nombre | Email: @form.Email | Msg: @form.Mensaje
-                        </p>
-
                         <DataAnnotationsValidator />
                         <ValidationSummary class="text-danger mb-3" />
 
@@ -472,6 +468,29 @@
         });
     });
 </script>
+
+<script>
+    window.scrollToHash = () => {
+            if (location.hash) {
+                const el = document.querySelector(location.hash);
+                 if (el) {
+                    el.scrollIntoView({ behavior: "smooth" });
+                 }
+            }
+    };
+</script>
+
+@inject IJSRuntime JS
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("scrollToHash");
+        }
+    }
+}
 
 @code {
     private ContactFormModel form = new();
