@@ -3,13 +3,14 @@
 @using System.ComponentModel.DataAnnotations
 
 @page "/"
+@rendermode InteractiveServer
 
 <!-- NAVBAR -->
 <nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background">
     <div class="container-fluid">
 
          <a href="#">
-             <img src="/imgs/bannerLogo.png" class="bannerLogo" alt="Alternate Text" />
+             <img src="/imgs/bannerLogo.png" class="bannerLogo " alt="Alternate Text" />
          </a>
 
         <button class="navbar-toggler active"
@@ -371,56 +372,64 @@
                 </div>
 
                 <!-- FORM -->
-                <EditForm Model="form"
-                          OnValidSubmit="EnviarFormulario"
-                          FormName="contactForm"
-                          Enhance="true">
+                <div class="col-12 col-md-7 p-4">
 
-                    <DataAnnotationsValidator />
+                    <EditForm Model="form"
+                              OnValidSubmit="EnviarFormulario"
+                              FormName="contactForm"
+                              Enhance="true">
 
-                    <div class="mb-3">
-                        <label class="form-label fs-6 fs-md-5">Nombre</label>
-                        <InputText @bind-Value="form.Nombre"
-                                   class="form-control form-control-lg"
-                                   placeholder="Tu nombre" />
-                    </div>
+                        <p class="text-warning">
+                            DEBUG → Nombre: @form.Nombre | Email: @form.Email | Msg: @form.Mensaje
+                        </p>
 
-                    <div class="mb-3">
-                        <label class="form-label fs-6 fs-md-5">Email</label>
-                        <InputText @bind-Value="form.Email"
-                                   type="email"
-                                   class="form-control form-control-lg"
-                                   placeholder="tu@email.com" />
-                    </div>
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="text-danger mb-3" />
 
-                    <div class="mb-4">
-                        <label class="form-label fs-6 fs-md-5">Mensaje</label>
-                        <InputTextArea @bind-Value="form.Mensaje"
-                                       class="form-control form-control-lg"
-                                       rows="4"
-                                       placeholder="Contanos sobre tu proyecto..." />
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <InputText @bind-Value="form.Nombre" name="Nombre"
+                                       class="form-control form-control-lg" />
+                        </div>
 
-                    <div class="d-flex justify-content-end">
-                        <button type="submit"
-                                class="btn btn-outline-light btn-lg px-5"
-                                disabled="@enviando">
-                            @(enviando ? "Enviando..." : "Enviar")
-                        </button>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <InputText @bind-Value="form.Email"
+                                       name="Email"
+                                       type="email"
+                                       class="form-control form-control-lg" />
+                        </div>
 
-                </EditForm>
+                        <div class="mb-4">
+                            <label class="form-label">Mensaje</label>
+                            <InputTextArea @bind-Value="form.Mensaje"
+                                            name ="Mensaje"
+                                           class="form-control form-control-lg"
+                                           rows="4" />
+                        </div>
 
-                @if (enviado)
-                {
-                    <div class="alert alert-success mb-4">
-                        ¡Gracias! Tu mensaje fue enviado correctamente.
-                    </div>
-                }
+                        <div class="d-flex justify-content-end">
+                            <button type="submit"
+                                    class="btn btn-outline-light btn-lg px-5"
+                                    disabled="@enviando">
+                                @(enviando ? "Enviando..." : "Enviar")
+                            </button>
+                        </div>
+
+                    </EditForm>
+
+                    @if (enviado)
+                    {
+                        <div class="alert alert-success mt-3">
+                            ¡Gracias! Tu mensaje fue enviado correctamente.
+                        </div>
+                    }
+                </div>
 
             </div>
         </div>
 
+        <!--FOOTER-->
         <footer class="contact-footer">
             <span class="footer-title">FOLLOW US</span>
 
@@ -477,11 +486,20 @@
         enviando = true;
         enviado = false;
 
-        await EmailService.SendAsync(form);
-
-        enviado = true;
-        enviando = false;
-
-        form = new ContactFormModel(); 
+        try
+        {
+            await EmailService.SendAsync(form);
+            enviado = true;
+            form = new ContactFormModel();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            enviando = false;
+            StateHasChanged();
+        }
     }
 }
