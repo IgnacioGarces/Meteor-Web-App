@@ -56,10 +56,19 @@ window.scrollToHash = () => {
         const container = document.querySelector('.snap-container');
 
         if (el && container) {
-            container.scrollTo({
-                top: el.offsetTop,
-                behavior: 'smooth'
+            el.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+
+            
+            setTimeout(() => {
+                container.style.scrollSnapType = 'none';
+
+                container.offsetHeight;
+
+                container.style.scrollSnapType = 'y mandatory';
+            }, 400);
         }
     }
 };
