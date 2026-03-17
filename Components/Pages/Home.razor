@@ -5,65 +5,10 @@
 @page "/"
 @rendermode InteractiveServer
 
-<!-- NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background ">
-    <div class="container-fluid align-items-center">
-
-         <a href="#">
-            <img src="/imgs/bannerLogo.png" class="bannerLogo navbar-brand position-absolute top-50 start-50 translate-middle" alt="Alternate Text" />
-         </a>
-
-        <button class="navbar-toggler active"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="#lanzamientos"
-                       id="navbarDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Lanzamientos
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
-                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Devs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/game">Game</a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
 
 <!-- SCROLLSPY CONTAINER -->
-<div class="snap-container"
-     data-bs-spy="scroll"
-     data-bs-target="#mainNavbar"
-     data-bs-offset="80"
-     data-bs-smooth-scroll="true"
-     tabindex="0">
+<div class="snap-container">
 
-    
 
     <!-- LANZAMIENTOS -->
     <section id="lanzamientos" class="snap-section ">
@@ -92,11 +37,11 @@
 
                     <div class="carousel-caption custom-caption">
                         <div class="caption-content text-start">
-                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2 card-text fs-6 product-description">
                                 Artistas capaces
                             </h5>
 
-                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0 card-text fs-6 product-description">
                                 This is a long paragraph written to show how the line-height
                                 of an element is affected.
                                 This is a long paragraph written to show how the line-height
@@ -119,11 +64,11 @@
 
                     <div class="carousel-caption custom-caption">
                         <div class="caption-content text-start">
-                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2 card-text fs-6 product-description">
                                 Artistas capaces
                             </h5>
 
-                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0 card-text fs-6 product-description">
                                 This is a long paragraph written to show how the line-height
                                 of an element is affected.
                                 This is a long paragraph written to show how the line-height
@@ -146,11 +91,11 @@
 
                     <div class="carousel-caption custom-caption">
                         <div class="caption-content text-start">
-                            <h5 class="fw-bold fs-5 fs-md-1 mb-2">
+                            <h5 class="fw-bold fs-5 fs-md-1 mb-2 card-text fs-6 product-description">
                                 Artistas capaces
                             </h5>
 
-                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0">
+                            <p class="d-none d-sm-block fs-6 fs-md-3 lh-sm lh-md-base mb-0 card-text fs-6 product-description">
                                 This is a long paragraph written to show how the line-height
                                 of an element is affected.
                                 This is a long paragraph written to show how the line-height
@@ -196,11 +141,11 @@
                 <div class="col-12 col-md-8">
                     <div class="card-body">
 
-                        <h2 class="text-center fw-bold fs-3 fs-md-1 mb-4">
+                        <h2 class="text-center fw-bold fs-3 fs-md-1 mb-4 card-text fs-6 product-description">
                             About us
                         </h2>
 
-                        <p class="fs-6 fs-md-3 lh-base">
+                        <p class="card-text fs-6 product-description fs-md-3 lh-base">
                             Meteor Craftwork’s team is composed of talented young man dedicated to the making of stunning and trasdcendental works of art that inspire generations just as we have been inspired by who came before us.
                         </p>
 
@@ -227,7 +172,7 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5 product-description">
+                                        <h5 class="card-text fs-6 fs-md-5 product-description">
                                             Lucas Angriman
                                         </h5>
                                         <p class="card-text fs-6 product-description">
@@ -235,7 +180,7 @@
                                             3d Artist<br />
                                             VFX Expert
                                         </p>
-                                        <small class="text-body-secondary product-description">
+                                        <small class="card-text fs-6 product-description">
                                             Art Director and Producer
                                         </small>
                                     </div>
@@ -257,15 +202,15 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Julian Bridi
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Team Coordinator<br />
                                             Game Designer<br />
                                             Public Relationships
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             CEO & General Producer
                                         </small>
                                     </div>
@@ -287,15 +232,15 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Ignacio Garcés 
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Sound Designer<br />
                                             Game Development<br />
                                             Product Coordinator
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             COO & Programmer
                                         </small>
                                     </div>
@@ -317,15 +262,15 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Matias Somma
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Game Developer<br />
                                             Asset Implementation<br />
                                             Mechanic Engineer
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             Programmer
                                         </small>
                                     </div>
@@ -347,15 +292,15 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Valentin Quetto
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Character Design and Model<br />
                                             Character Animations<br />
                                             Inorganic Modeling
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             3D Artist & Animator
                                         </small>
                                     </div>
@@ -377,14 +322,14 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Julieta Mayorga Alvarez
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Ilustration<br />
                                             Texturing
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             2D Artist
                                         </small>
                                     </div>
@@ -405,14 +350,14 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Arón Nievas
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Musicalization<br />
                                             Content Creation
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             Musician & CM
                                         </small>
                                     </div>
@@ -432,15 +377,15 @@
 
                                 <div class="col-8 col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title fs-6 fs-md-5">
+                                        <h5 class="card-text fs-6 product-description">
                                             Guido Colonna
                                         </h5>
-                                        <p class="card-text fs-6">
+                                        <p class="card-text fs-6 product-description">
                                             Documentation<br />
                                             Feature Design<br />
                                             Game Testing
                                         </p>
-                                        <small class="text-body-secondary">
+                                        <small class="card-text fs-6 product-description">
                                             Game Designer
                                         </small>
                                     </div>
@@ -464,11 +409,11 @@
                 <!-- TEXTO -->
                 <div class="col-12 col-md-5 d-flex align-items-center">
                     <div class="card-body">
-                        <h2 class="fw-bold fs-3 fs-md-1 mb-4">
+                        <h2 class="fw-bold fs-3 fs-md-1 mb-4 card-text fs-6 product-description">
                             Contactanos
                         </h2>
 
-                        <p class="lh-base fs-6 fs-md-4 mb-0">
+                        <p class="lh-base fs-6 fs-md-4 mb-0 card-text fs-6 product-description">
                             ¿Tenés un proyecto en mente?<br>
                             Nos especializamos en transformar ideas en experiencias visuales únicas.
                         </p>
@@ -486,13 +431,13 @@
                         <DataAnnotationsValidator />
                         <ValidationSummary class="text-danger mb-3" />
 
-                        <div class="mb-3">
+                        <div class="mb-3 card-text fs-6 product-description">
                             <label class="form-label">Nombre</label>
                             <InputText @bind-Value="form.Nombre" name="Nombre"
                                        class="form-control form-control-lg" />
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3 card-text fs-6 product-description">
                             <label class="form-label">Email</label>
                             <InputText @bind-Value="form.Email"
                                        name="Email"
@@ -500,7 +445,7 @@
                                        class="form-control form-control-lg" />
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4 card-text fs-6 product-description">
                             <label class="form-label">Mensaje</label>
                             <InputTextArea @bind-Value="form.Mensaje"
                                             name ="Mensaje"
@@ -561,38 +506,34 @@
 
 </div>
 
-<!-- SCROLLSPY -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () { 
-        const scrollContainer = document.querySelector('.snap-container');
-
-        new bootstrap.ScrollSpy(scrollContainer, {
-            target: '#mainNavbar',
-            offset: 80
-        });
-    });
-</script>
-
-<script>
-    window.scrollToHash = () => {
-            if (location.hash) {
-                const el = document.querySelector(location.hash);
-                 if (el) {
-                    el.scrollIntoView({ behavior: "smooth" });
-                 }
-            }
-    };
-</script>
 
 @inject IJSRuntime JS
+@inject NavigationManager Nav
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("scrollToHash");
+        await JS.InvokeVoidAsync("initActiveSections");
+        await JS.InvokeVoidAsync("enableNavScroll");
+        await JS.InvokeVoidAsync("scrollToHash");
         }
+    }
+
+    protected override void OnInitialized()
+    {
+        Nav.LocationChanged += OnLocationChanged;
+    }
+
+    private async void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        await JS.InvokeVoidAsync("scrollToHash");
+    }
+
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
     }
 }
 

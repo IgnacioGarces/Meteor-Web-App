@@ -7,52 +7,6 @@
 
 <PageTitle>@product?.Title</PageTitle>
 
-<!-- NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background ">
-    <div class="container-fluid align-items-center">
-
-        <a href="#">
-            <img src="/imgs/bannerLogo.png" class="bannerLogo navbar-brand position-absolute top-50 start-50 translate-middle" alt="Alternate Text" />
-        </a>
-
-        <button class="navbar-toggler active"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="/#lanzamientos"
-                       id="navbarDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Lanzamientos
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
-                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Devs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
 
 @if (product is null)
 {

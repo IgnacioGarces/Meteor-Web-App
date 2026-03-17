@@ -1,30 +1,53 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">MeteorWebApp</a>
+﻿<nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
+
+    <div class="container-fluid position-relative">
+
+        <!-- LOGO centrado -->
+        <a href="/" class="navbar-brand position-absolute top-50 start-50 translate-middle">
+            <img src="/imgs/bannerLogo.png" class="bannerLogo" />
+        </a>
+
+        <!-- BOTÓN MOBILE -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       data-bs-toggle="dropdown">
+                        Lanzamientos
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
+                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#about">Devs</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#contacto">Contacto</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/game">Game</a>
+                </li>
+
+            </ul>
+        </div>
+
     </div>
-</div>
-
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
+</nav>
