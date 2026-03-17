@@ -1,0 +1,111 @@
+/* home.css */
+
+.home {
+    margin-top: 0;
+}
+
+/* SNAP SYSTEM */
+.home.snap-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+.home .snap-section {
+    display: flex;
+    height: 80vh;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-margin-top: 5rem;
+}
+
+/* CAROUSEL */
+.home .carousel,
+.home .carousel-inner,
+.home .carousel-item {
+    height: 100%;
+    width: 100%;
+}
+
+.home .carousel-img-wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+.home .carousel-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home .carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+}
+
+/* CAPTION */
+.home .custom-caption {
+    width: 100%;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0)
+    );
+    display: flex;
+    justify-content: center;
+    color: #c7c7c7;
+}
+
+.home .caption-content {
+    max-width: 900px;
+    padding: 4rem;
+}
+
+/* CARDS */
+.home .card {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* FOOTER */
+.home .contact-footer {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.home .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.home .social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.home .social-icons a:hover {
+    transform: translateY(-3px);
+    opacity: 1;
+}
+
+.home .card,
+.home .card-body,
+.home .card > .row,
+.home .card > .row > [class*="col-"] {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}

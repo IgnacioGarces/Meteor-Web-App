@@ -1,4 +1,8 @@
-.nav-background {
+.navbar {
+    min-height: 6rem;
+}
+
+.navbar.nav-background {
     background-color: #000;
     background-image: url("/imgs/bannerBackground2.png");
     background-position: center;
@@ -6,19 +10,19 @@
     background-size: cover;
 }
 
-.bannerLogo {
-    height: 40px;
+.navbar .bannerLogo {
+    height: 5rem;
 }
 
 /* Links */
-.nav-link {
+.navbar .nav-link {
     color: #d7d7d7;
 }
 
-.nav-link:hover {
+.navbar .nav-link:hover {
     color: white;
 }
 
-.nav-link.active {
+.navbar .nav-link.active {
     color: white;
 }
