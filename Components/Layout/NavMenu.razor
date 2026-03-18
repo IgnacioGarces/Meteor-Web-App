@@ -1,4 +1,6 @@
-﻿<nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
+﻿@inject NavigationManager Nav
+
+<nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
 
     <div class="container-fluid position-relative">
 
@@ -34,6 +36,8 @@
                     </ul>
                 </li>
 
+                @if(!IsHome){
+
                 <li class="nav-item">
                     <a class="nav-link" href="/#about">Devs</a>
                 </li>
@@ -41,6 +45,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/#contacto">Contacto</a>
                 </li>
+                }
 
                 <li class="nav-item">
                     <a class="nav-link" href="/game">Game</a>
@@ -51,3 +56,7 @@
 
     </div>
 </nav>
+
+@code {
+    private bool IsHome => Nav.Uri.EndsWith("/");
+}
