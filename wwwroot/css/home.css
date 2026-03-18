@@ -6,11 +6,11 @@
 
 /* SNAP SYSTEM */
 .home.snap-container {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100dvh;
+    width: 100%;
     overflow-y: auto;
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: none;
 }
 
 .home .snap-section {
@@ -66,13 +66,10 @@
 
 .home .caption-content {
     max-width: 900px;
-    padding: 4rem;
+    padding: 1.5rem;
 }
 
 /* CARDS */
-.home .card{
-
-}
 
 .home .card-body {
     padding: 0%;
@@ -122,4 +119,24 @@
     background: transparent;
     border: none;
     box-shadow: none;
+}
+
+
+/* TABLET */
+
+@media (min-width: 768px) {
+    
+    .caption-content {
+        padding: 4rem;
+    }
+
+    .home.snap-container {
+    scroll-snap-type: y mandatory;
+    }
+}
+
+
+/* DESKTOP */
+@media (min-width: 1024px){
+
 }

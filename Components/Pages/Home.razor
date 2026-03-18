@@ -425,7 +425,7 @@
                     <EditForm Model="form"
                               OnValidSubmit="EnviarFormulario"
                               FormName="contactForm"
-                              Enhance="true">
+                              >
 
                         <DataAnnotationsValidator />
                         <ValidationSummary class="text-danger mb-3" />
@@ -514,29 +514,41 @@
     {
         if (firstRender)
         {
-        await JS.InvokeVoidAsync("initActiveSections");
-        await JS.InvokeVoidAsync("enableNavScroll");
-        await JS.InvokeVoidAsync("scrollToHash");
+        //await JS.InvokeVoidAsync("initActiveSections");
+        //await JS.InvokeVoidAsync("enableNavScroll");
+        //await JS.InvokeVoidAsync("scrollToHash");
         }
     }
 
     protected override void OnInitialized()
     {
-        Nav.LocationChanged += OnLocationChanged;
+        //Nav.LocationChanged += OnLocationChanged;
     }
 
-    private async void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        await JS.InvokeVoidAsync("scrollToHash");
+        _ = HandleLocationChangedAsync(e);
+    }
+
+    private async Task HandleLocationChangedAsync(LocationChangedEventArgs e)
+    {
+        try
+        {
+            //await JS.InvokeVoidAsync("scrollToHash");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
     }
 
     public void Dispose()
     {
-        Nav.LocationChanged -= OnLocationChanged;
+        //Nav.LocationChanged -= OnLocationChanged;
     }
-}
 
-@code {
+
+
     private ContactFormModel form = new();
     private bool enviando = false;
     private bool enviado = false;

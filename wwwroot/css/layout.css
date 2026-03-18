@@ -7,22 +7,17 @@
     padding: 0;
 }
 
-
-
-
-
-/* RESPONSIVE */
-@media (max-width: 640.98px) {
-    .top-row {
-        justify-content: space-between;
-    }
-
-    .top-row a,
-    .top-row .btn-link {
-        margin-left: 0;
-    }
+.top-row {
+    justify-content: space-between;
 }
 
+.top-row a,
+.top-row .btn-link {
+    margin-left: 0;
+}
+
+
+/*
 @media (min-width: 641px) {
 
     .page {
@@ -43,12 +38,3 @@
     }
 }
 
-/* ERROR UI */
-#blazor-error-ui {
-    background: lightyellow;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 0.6rem 1.25rem;
-}

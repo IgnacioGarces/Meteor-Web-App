@@ -6,25 +6,28 @@
 <PageTitle>Artículo</PageTitle>
 
 
-<div class="article-container">
+@if (article != null)
+{
+    <div class="article-container">
 
-    <div class="article-date">
-        @article.Date.ToString("dd MMM yyyy")
+        <div class="article-date">
+            @article.Date.ToString("dd MMM yyyy")
+        </div>
+
+        <img src="@article.ImageUrl"
+             class="article-image"
+             alt="@article.Title" />
+
+        <h1 class="article-title">
+            @article.Title
+        </h1>
+
+        <div class="article-content">
+            @((MarkupString)article.Content)
+        </div>
+
     </div>
-
-    <img src="@article.ImageUrl"
-         class="article-image"
-         alt="@article.Title" />
-
-    <h1 class="article-title">
-        @article.Title
-    </h1>
-
-    <div class="article-content">
-        @((MarkupString)article.Content)
-    </div>
-
-</div>
+}
 
 @code {
     [Parameter] public int Id { get; set; }
