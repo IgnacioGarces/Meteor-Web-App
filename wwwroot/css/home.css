@@ -99,34 +99,26 @@
 
 /*FORM*/
 
-.hom .form-label{
-    padding: 2rem;
-}
-
-/* FOOTER */
-.home .contact-footer {
-    width: 100%;
-    padding: 2rem;
-    text-align: center;
-    color: #fff;
-}
-
-.home .social-icons {
+.home .form-inputs{
     display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
 }
 
-.home .social-icons a {
-    color: #fff;
-    font-size: 1.5rem;
-    opacity: 0.8;
+.home .form-label{
+    color: #c7c7c7;
+    font-size: larger;
 }
 
-.home .social-icons a:hover {
-    transform: translateY(-3px);
-    opacity: 1;
+.home .form-control{
+    background: transparent;
+    color: #c7c7c7;
 }
+
+
+
 
 .home .card,
 .home .card-body,
