@@ -15,14 +15,21 @@
 }
 
 /* Links */
-.navbar .nav-link {
-    color: #d7d7d7;
-}
-
-.navbar .nav-link:hover {
-    color: white;
-}
-
+.navbar .nav-link,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover,
 .navbar .nav-link.active {
-    color: white;
+    color: white !important;
+}
+
+.navbar .dropdown-menu{
+    background-color: transparent;
+}
+
+.navbar .dropdown-item{
+    color: #c7c7c7;
+    
+}
+.dropdown-item:hover {
+    background-color: #7100c257; /* blanco/gris claro */
 }
