@@ -15,4 +15,9 @@ html, body {
 /* evitar overflow raro */
 body {
     overflow-x: hidden;
+    background-image: url('/imgs/background.png');
+    background-size: cover;        /* llena toda la pantalla */
+    background-position: center;   /* centrada */
+    background-repeat: no-repeat;  /* sin repetir */
+    background-attachment: fixed;  /* efecto “fijo” al hacer scroll */
 }

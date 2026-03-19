@@ -24,7 +24,10 @@
 }
 
 /* CAROUSEL */
-.home .carousel,
+.home .carousel{
+    height: 65vh;
+}
+
 .home .carousel-inner,
 .home .carousel-item {
     height: 100%;
@@ -78,13 +81,15 @@
 
 .home .card {
     
-    background: transparent;
+    background: transparent !important;
     border: none;
     box-shadow: none;
 }
 
 .home .card-text{
     color: #c7c7c7;
+    display: flex;
+    padding: 1rem;
 }
 
 /* FOOTER */
