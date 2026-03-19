@@ -4,6 +4,11 @@
     margin-top: 0;
 }
 
+.home .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 /* SNAP SYSTEM */
 .home.snap-container {
     min-height: 100dvh;
@@ -90,6 +95,12 @@
     color: #c7c7c7;
     display: flex;
     padding: 1rem;
+}
+
+/*FORM*/
+
+.hom .form-label{
+    padding: 2rem;
 }
 
 /* FOOTER */
