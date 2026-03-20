@@ -8,13 +8,11 @@
 .product-page {
     margin-top: 120px;
 }
-.product-page .carousel-inner {
-    max-height: 520px;
- }
 
 .product-page .carousel-item img {
-    object-fit: contain;
-    background: #000; 
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .product-page .thumbnail-strip {
