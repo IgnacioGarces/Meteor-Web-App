@@ -10,8 +10,21 @@
     background-size: cover;
 }
 
+.navbar .navbar-brand{
+    z-index: 1;
+}
 .navbar .bannerLogo {
     height: 5rem;
+    width: fit-content;
+}
+
+
+.navbar .navbar-toggler,
+.navbar .nav-link,
+.navbar .dropdown-toggle,
+.navbar .nav-item
+{
+    z-index: 2;
 }
 
 /* Links */
@@ -20,6 +33,7 @@
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
     color: white !important;
+    
 }
 
 .navbar .dropdown-menu{
@@ -31,5 +45,5 @@
     
 }
 .dropdown-item:hover {
-    background-color: #7100c257; /* blanco/gris claro */
+    background-color: #7100c257; 
 }
