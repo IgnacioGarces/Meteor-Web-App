@@ -79,22 +79,38 @@
 
 /* CARDS */
 
-.home .card-body {
-    padding: 0%;
-    padding-top: 2rem;
-}
-
 .home .card {
-    
     background: transparent !important;
     border: none;
     box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
-.home .card-text{
-    color: #c7c7c7;
+.home .card {
     display: flex;
-    padding: 1rem;
+    flex-direction: row;
+    width: 100%;
+}
+
+.home .card-img,
+.home .card-body-text {
+    width: 50%; 
+}
+
+.home .card-img img {
+    width: 100%;
+    height: auto;
+}
+
+.home .card-body-text,
+.home .card-text title,
+.home .card-text
+{
+    width: 100%;
+    color: #c7c7c7;
+    padding-left: 1rem;
 }
 
 /*FORM*/
