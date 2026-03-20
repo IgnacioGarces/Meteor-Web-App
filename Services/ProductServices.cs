@@ -18,7 +18,8 @@ public class ProductService
             {
                 "/imgs/productInfinite/preview_1.png",
                 "/imgs/productInfinite/preview_2.png",
-                "/imgs/productInfinite/preview_3.png"
+                "/imgs/productInfinite/preview_3.png",
+
             }
         },
         new ProductModel
