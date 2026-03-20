@@ -5,9 +5,15 @@
     <div class="container-fluid position-relative">
 
         <!-- LOGO centrado -->
-        <a href="/" class="navbar-brand position-absolute top-50 start-50 translate-middle">
+        @if(IsHome){
+            <div class="navbar-brand position-absolute top-50 start-50 translate-middle">
             <img src="/imgs/bannerLogo.png" class="bannerLogo" />
-        </a>
+            </div>
+        }else{
+            <a href="/" class="navbar-brand position-absolute top-50 start-50 translate-middle">
+                <img src="/imgs/bannerLogo.png" class="bannerLogo" />
+            </a>
+        }
 
         <!-- BOTÓN MOBILE -->
         <button class="navbar-dark navbar-toggler "
