@@ -1,0 +1,17 @@
+.article-container .html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.article-container {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-container .article-date,
+.article-container .article-title,
+.article-container .article-content{
+    color: #c7c7c7;
+    padding: 1rem;
+}

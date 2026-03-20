@@ -33,6 +33,15 @@
     height: 65vh;
 }
 
+.home .carousel-control-prev-icon,
+.home .carousel-control-next-icon
+{
+    background-color: #ffffff6a;
+    border-radius: 1rem;
+    width: 2.5rem;
+    height: 2rem;
+}
+
 .home .carousel-inner,
 .home .carousel-item {
     height: 100%;
@@ -111,6 +120,16 @@
     width: 100%;
     color: #c7c7c7;
     padding-left: 1rem;
+}
+
+.title{
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.card-text{
+    -webkit-text-stroke: 0.1px black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
