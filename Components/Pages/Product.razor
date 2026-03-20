@@ -16,7 +16,7 @@
 }
 else
 {
-    <section class="container snap-container">
+    <section class="product-page container snap-container">
         <div class="product-page snap-section">
             <div class="row g-4   ">
 
@@ -66,31 +66,25 @@ else
                 </div>
 
                 <!-- RIGHT: INFO -->
-                <div class="col-12 col-lg-4">
-                    <div class="product-info">
-
-                        <img src="@product.Poster"
-                             class="product-poster mb-3" />
-
-                        <h2>@product.Title</h2>
-
-                        <p class="product-description">
-                            @product.Description
-                        </p>
-
-                        <p class="release-date">
-                            <strong>Fecha de lanzamiento</strong><br />
-                            @product.ReleaseDate.ToString("dd MMM yyyy")
-                        </p>
-
-                        <a href="@product.StoreUrl"
-                           target="_blank"
-                           class="btn btn-success btn-lg mt-3">
-                            Ver en Play Store
-                        </a>
-
-                    </div>
+                
+                <div class="product-info">
+                    <img src="@product.Poster"
+                         class="product-poster mb-3" />
+                    <h2 class="product-description title">@product.Title</h2>
+                    <p class="product-description">
+                        @product.Description
+                    </p>
+                    <p class="product-description">
+                        <strong>Fecha de lanzamiento</strong><br />
+                        @product.ReleaseDate.ToString("dd MMM yyyy")
+                    </p>
+                    <a href="@product.StoreUrl"
+                       target="_blank"
+                       class="btn btn-success btn-lg mt-3">
+                        Ver en Play Store
+                    </a>
                 </div>
+                
 
             </div>
         </div>
