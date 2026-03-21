@@ -135,6 +135,18 @@
 
 /*FORM*/
 
+.home .card-contact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .contact-text{
+    align-self: baseline;
+    padding-top: 5rem;
+}
+
 .home .form-inputs{
     display: flex;
     flex-direction: column;
