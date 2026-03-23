@@ -97,11 +97,6 @@
     width: 100%;
 }
 
-.home .card {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
 
 .home .card-img,
 .home .card-body-text {
@@ -115,7 +110,8 @@
 
 .home .card-body-text,
 .home .card-text title,
-.home .card-text
+.home .card-text,
+.home .contact-card-text
 {
     width: 100%;
     color: #c7c7c7;
@@ -127,9 +123,15 @@
     font-weight: bolder;
 }
 
-.card-text{
+.card-text,
+.contact-card-text
+{
     -webkit-text-stroke: 0.1px black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.home .contact-card-text{
+    padding: 1rem;
 }
 
 
@@ -145,6 +147,11 @@
 .home .contact-text{
     align-self: baseline;
     padding-top: 5rem;
+}
+
+.home .contact-card-body{
+    width: 100%;
+    height: 100%;
 }
 
 .home .form-inputs{
@@ -178,6 +185,7 @@
     background: transparent;
     border: none;
     box-shadow: none;
+    padding-bottom: 1rem;
 }
 
 
@@ -191,6 +199,26 @@
 
     .home.snap-container {
     scroll-snap-type: y mandatory;
+    }
+
+    .home .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+
+    .title{
+        padding-top: 3rem;
+    }
+
+    .home .card-body-text{
+        padding-left: 0;
+        align-self: center;
+    }
+
+    .about{
+        padding-top: 2rem;
     }
 }
 
