@@ -92,10 +92,8 @@
     private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
     private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
 
-    // Este método se ejecuta cuando el Navbar carga por primera vez
     protected override void OnInitialized()
     {
-        // Traemos todos los datos de los servicios
         articulos = ArticleService.GetAll();
         productos = ProductService.GetAll(); 
     }

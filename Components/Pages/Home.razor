@@ -1,7 +1,8 @@
 ﻿@using MeteorWebApp.Models
 @using MeteorWebApp.Services
 @using System.ComponentModel.DataAnnotations
-
+@inject ArticleService ArticleService
+@inject ProductService ProductService
 @page "/"
 @rendermode InteractiveServer
 
@@ -9,118 +10,95 @@
 
 <div class="home snap-container">
 
-    <!-- LANZAMIENTOS -->
-    <section id="lanzamientos" class="snap-section ">
+    <section id="lanzamientos" class="snap-section">
         
-        <div id="carouselExampleAutoplaying"
-             class="carousel carousel-dark slide container-fluid p-0 m-0"
-             data-bs-ride="carousel">
+    <div id="carouselExampleAutoplaying"
+         class="carousel carousel-dark slide container-fluid p-0 m-0"
+         data-bs-ride="carousel">
 
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"></button>
-            </div>
+        @{
+            // 1. Calculamos el total de slides y preparamos nuestra bandera global
+            int totalSlides = (productos?.Count() ?? 0) + (articulos?.Count() ?? 0);
+            bool isFirst = true;
+        }
 
-            <div class="carousel-inner">
-
-                <!-- SLIDE -->
-                <div class="carousel-item active">
-                        <div class=" carousel-img-wrapper">
-                            <a href="/product/1">
-                                <img src="/imgs/imgInfinite.png"
-                                     class="carousel-img-wrapper img "
-                                     alt="">
-                            </a>
-                        </div>
-
-                    <div class="carousel-caption custom-caption">
-                        <div class="caption-content text-start">
-                            <h5 class="card-text title">
-                                Artistas capaces
-                            </h5>
-
-                            <p class="card-text">
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE -->
-                <div class="carousel-item">
-                    <div class=" carousel-img-wrapper ">
-                        <a href="/product/2">
-                            <img src="/imgs/imgLiteratubers.png"
-                                 class="carousel-img-wrapper img"
-                                 alt="">
-
-                        </a>
-                    </div>
-
-                    <div class="carousel-caption custom-caption">
-                        <div class="caption-content text-start">
-                            <h5 class="card-text title">
-                                Artistas capaces
-                            </h5>
-
-                            <p class="card-text">
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SLIDE -->
-                <div class="carousel-item">
-                    <a href="/article/1">
-                        <div class="carousel-img-wrapper">
-                            <img src="/imgs/imgCarrusel3.png"
-                                 class="carousel-img-wrapper img"
-                                 alt="">
-                        </div>
-
-                    </a>
-
-                    <div class="carousel-caption custom-caption">
-                        <div class="caption-content text-start">
-                            <h5 class="card-text title">
-                                Artistas capaces
-                            </h5>
-
-                            <p class="card-text">
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                                This is a long paragraph written to show how the line-height
-                                of an element is affected.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <button class="carousel-control-prev" type="button"
-                    data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </button>
-
-            <button class="carousel-control-next" type="button"
-                    data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </button>
-
+        <div class="carousel-indicators">
+            @for (int i = 0; i < totalSlides; i++)
+            {
+                <button type="button" 
+                        data-bs-target="#carouselExampleAutoplaying" 
+                        data-bs-slide-to="@i" 
+                        class="@(i == 0 ? "active" : "")"
+                        aria-current="@(i == 0 ? "true" : "false")">
+                </button>
+            }
         </div>
 
-    </section>
+        <div class="carousel-inner">
+            
+            @* Bucle de Productos *@
+            @if (productos != null && productos.Any())
+            {
+                @foreach (var prod in productos)
+                {
+                    <div class="carousel-item @(isFirst ? "active" : "")">
+                        <div class="carousel-img-wrapper">
+                            <a href="/product/@prod.Id">
+                                <img src="@prod.Poster" class="carousel-img-wrapper img" alt="@prod.Title">
+                            </a>
+                        </div>
+                        <div class="carousel-caption custom-caption">
+                            <div class="caption-content text-start">
+                                <h5 class="card-text title">@prod.Title</h5>
+                                <p class="card-text">@prod.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    @* OJO AQUÍ: Usamos @{ } para decirle a Blazor que esto es código C# y no texto HTML *@
+                    @{ isFirst = false; } 
+                }
+            }
+
+            @* Bucle de Artículos *@
+            @if (articulos != null && articulos.Any())
+            {
+                @foreach (var article in articulos)
+                {
+                    <div class="carousel-item @(isFirst ? "active" : "")">
+                        <div class="carousel-img-wrapper">
+                            <a href="/article/@article.Id">
+                                <img src="@article.FirstImageUrl" class="carousel-img-wrapper img" alt="@article.Title">
+                            </a>
+                        </div>
+                        <div class="carousel-caption custom-caption">
+                            <div class="caption-content text-start">
+                                <h5 class="card-text title">@article.Title</h5>
+                                <p class="card-text">@article.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    @{ isFirst = false; }
+                }
+            }
+            
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
 
     <!-- ABOUT -->
     <section id="about" class="snap-section ">
@@ -365,12 +343,12 @@
                 <div class="contact-text col-12 col-md-5 ">
                     <div class="contact-card-body">
                         <h4 class="card-text title">
-                            Contactanos
+                            Contact
                         </h4>
 
                         <p class=" contact-card-text ">
-                            ¿Tenés un proyecto en mente?<br>
-                            Nos especializamos en transformar ideas en experiencias visuales únicas.
+                            ¿Ready to start your next project?<br>
+                            We specialize in turning ideas into unique visual experiences.
                         </p>
                     </div>
                 </div>
@@ -449,10 +427,15 @@
         }
     }
 
+    private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
+    private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
+
     protected override void OnInitialized()
     {
-        //Nav.LocationChanged += OnLocationChanged;
+        articulos = ArticleService.GetAll();
+        productos = ProductService.GetAll(); 
     }
+    
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
