@@ -5,33 +5,71 @@
 
 <PageTitle>Artículo</PageTitle>
 
-
 @if (article != null)
 {
-    <div class="article-container">
+    <article class="article-container">
+        @* 1. ENCABEZADO E INTRODUCCIÓN *@
+        <header class="article-header">
+            <div class="article-date">@article.Date.ToString("dd MMM yyyy")</div>
+            <h1 class="article-title">@article.Title</h1>
+            
+            @if (!string.IsNullOrEmpty(article.FirstImageUrl))
+            {
+                <img src="@article.FirstImageUrl" class="img-fluid article-image-main" alt="@article.Title" />
+            }
+            @if (!string.IsNullOrEmpty(article.FirstSubtitle))
+            {
+                <div class="article-intro-text">
+                    @((MarkupString)article.FirstSubtitle)
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(article.Description))
+            {
+                <div class="article-intro-text">
+                    @((MarkupString)article.Description)
+                </div>
+            }
+        </header>
 
-        <div class="article-date">
-            @article.Date.ToString("dd MMM yyyy")
-        </div>
+        @* 2. CUERPO DINÁMICO *@
+        @{
+            // Usamos el número de imágenes como guía para las secciones
+            int totalSections = article.ImageUrl.Length;
+        }
 
-        <img src="@article.ImageUrl"
-             class="article-image"
-             alt="@article.Title" />
+        @for (int i = 0; i < totalSections; i++)
+        {
+            <section class="article-section">
+                
+                @* Imagen de la sección *@
+                <img src="@article.ImageUrl[i]" 
+                     class="img-fluid article-image" 
+                     alt="Imagen de sección @(i + 1)" />
 
-        <h1 class="article-title">
-            @article.Title
-        </h1>
+                @* Título de la sección (Opcional) *@
+                @if (article.SectionTitles != null && i < article.SectionTitles.Length)
+                {
+                    <h2 class="section-subtitle">@article.SectionTitles[i]</h2>
+                }
 
-        <div class="article-content">
-            @((MarkupString)article.Content)
-        </div>
+                @* Contenido de la sección (Opcional) *@
+                @if (i < article.Content.Length)
+                {
+                    <div class="article-content-block">
+                        @((MarkupString)article.Content[i])
+                    </div>
+                }
+            </section>
+        }
 
-    </div>
+        <footer class="article-footer">
+            <a href="@article.StoreUrl" class="btn-store" target="_blank">Ver en tienda</a>
+        </footer>
+    </article>
 }
 
 @code {
     [Parameter] public int Id { get; set; }
-
     private ArticleModel? article;
 
     protected override void OnInitialized()

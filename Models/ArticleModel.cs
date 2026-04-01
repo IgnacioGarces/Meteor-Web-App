@@ -2,11 +2,20 @@
 {
     public class ArticleModel
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
-        public required string ImageUrl { get; set; }
         public required string Title { get; set; }
-        public required string Content { get; set; }
+        
+        // Bloque de Introducción (Opcional)
+        public string? FirstImageUrl { get; set; }
+        public string? FirstSubtitle { get; set; }
+        public string? Description { get; set; }
+        
+        // Secciones Dinámicas (Intercaladas)
+        public string[] ImageUrl { get; set; } = Array.Empty<string>();
+        public string[]? SectionTitles { get; set; }
+        public string[] Content { get; set; } = Array.Empty<string>();
+        
         public required string StoreUrl { get; set; }
-        public int Id { get; internal set; }
     }
 }
