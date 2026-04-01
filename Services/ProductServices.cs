@@ -40,6 +40,6 @@ public class ProductService
         
     };
 
-    public ProductModel? GetById(int id)
-        => _products.FirstOrDefault(p => p.Id == id);
+    public ProductModel? GetById(int id) => _products.FirstOrDefault(p => p.Id == id);
+    public IEnumerable<ProductModel> GetAll() => _products;
 }

@@ -3,10 +3,11 @@
 @using MeteorWebApp.Services
 @inject ArticleService ArticleService
 
-<PageTitle>Artículo</PageTitle>
+
 
 @if (article != null)
 {
+    <PageTitle>@article.Title</PageTitle>
     <article class="article-container">
         @* 1. ENCABEZADO E INTRODUCCIÓN *@
         <header class="article-header">
@@ -17,16 +18,22 @@
             {
                 <img src="@article.FirstImageUrl" class="img-fluid article-image-main" alt="@article.Title" />
             }
-            @if (!string.IsNullOrEmpty(article.FirstSubtitle))
-            {
-                <div class="article-intro-text">
-                    @((MarkupString)article.FirstSubtitle)
-                </div>
-            }
             @if (!string.IsNullOrEmpty(article.Description))
             {
                 <div class="article-intro-text">
                     @((MarkupString)article.Description)
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(article.FirstSubtitle))
+            {
+                <div class="section-subtitle">
+                    @((MarkupString)article.FirstSubtitle)
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(article.SecondDescription))
+            {
+                <div class="article-intro-text">
+                    @((MarkupString)article.SecondDescription)
                 </div>
             }
         </header>

@@ -1,4 +1,8 @@
-﻿@inject NavigationManager Nav
+﻿@using MeteorWebApp.Models
+@using MeteorWebApp.Services
+@inject NavigationManager Nav
+@inject ArticleService ArticleService
+@inject ProductService ProductService
 
 <nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
 
@@ -35,10 +39,29 @@
                     </a>
 
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
-                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
+                        @* BUCLE DE LANZAMIENTOS (Productos) *@
+                        @if (productos != null && productos.Any())
+                        {
+                            @foreach (var prod in productos)
+                            {
+                                <li><a class="dropdown-item" href="/product/@prod.Id">@prod.Title</a></li>
+                            }
+                        }
+
+                        @* DIVISOR (solo se muestra si hay tanto productos como artículos) *@
+                        @if (productos != null && productos.Any() && articulos != null && articulos.Any())
+                        {
+                            <li><hr class="dropdown-divider"></li>
+                        }
+
+                        @* BUCLE DE ARTÍCULOS *@
+                        @if (articulos != null && articulos.Any())
+                        {
+                            @foreach (var article in articulos)
+                            {
+                                <li><a class="dropdown-item" href="/article/@article.Id">@article.Title</a></li>
+                            }
+                        }
                     </ul>
                 </li>
 
@@ -65,4 +88,15 @@
 
 @code {
     private bool IsHome => Nav.Uri.EndsWith("/");
+
+    private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
+    private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
+
+    // Este método se ejecuta cuando el Navbar carga por primera vez
+    protected override void OnInitialized()
+    {
+        // Traemos todos los datos de los servicios
+        articulos = ArticleService.GetAll();
+        productos = ProductService.GetAll(); 
+    }
 }

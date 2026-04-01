@@ -10,6 +10,8 @@
         public string? FirstImageUrl { get; set; }
         public string? FirstSubtitle { get; set; }
         public string? Description { get; set; }
+        public string? SecondDescription { get; set; }
+
         
         // Secciones Dinámicas (Intercaladas)
         public string[] ImageUrl { get; set; } = Array.Empty<string>();
