@@ -49,6 +49,7 @@ public class ProductService
                 "/imgs/Products/CityOfFury/preview_1.png",
                 "/imgs/Products/CityOfFury/preview_2.png",
                 "/imgs/Products/CityOfFury/preview_3.png"
+
             }
         },
         new ProductModel
@@ -64,6 +65,7 @@ public class ProductService
                 "/imgs/Products/Neighbors/preview_1.png",
                 "/imgs/Products/Neighbors/preview_2.png",
                 "/imgs/Products/Neighbors/preview_3.png"
+
             }
         },
         
