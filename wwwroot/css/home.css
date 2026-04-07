@@ -36,10 +36,17 @@
 .home .carousel-control-prev-icon,
 .home .carousel-control-next-icon
 {
-    background-color: #ffffff6a;
-    border-radius: 1rem;
-    width: 2.5rem;
-    height: 2rem;
+    background-color: #fc000096;
+    border-radius: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.home .carousel-control-prev-icon:hover,
+.home .carousel-control-next-icon:hover
+{
+    transform: scale(2.05);
+    transition: 0.2s;
 }
 
 .home .carousel-inner,
