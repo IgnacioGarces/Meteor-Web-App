@@ -29,12 +29,12 @@ public class ProductService
             Description = "TROT es un infinite runner ambientado...",
             ReleaseDate = new DateTime(2026, 6, 12),
             Poster = "/imgs/imgCarrusel2.png",
-            StoreUrl = "https://play.google.com/store",
+            StoreUrl = "/game",
             Images =
             {
-                "/imgs/imgCarrusel2.png",
-                "/imgs/imgCarrusel2.png",
-                "/imgs/imgCarrusel2.png"
+                "/imgs/productMateAventuras/preview_1.png",
+                "/imgs/productMateAventuras/preview_2.png",
+                "/imgs/productMateAventuras/preview_3.png"
             }
         },
         
