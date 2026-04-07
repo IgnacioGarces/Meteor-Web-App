@@ -72,6 +72,16 @@
     right: 0;
     bottom: 0;
     padding: 0;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none; /* evita interferencias */
+}
+
+.home .carousel-item:hover .carousel-caption {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* CAPTION */
@@ -79,8 +89,8 @@
     width: 100%;
     background: linear-gradient(
         to top,
-        rgba(0,0,0,0.85),
-        rgba(0,0,0,0.6),
+        rgba(0, 0, 0, 0.982),
+        rgba(0, 0, 0, 0.798),
         rgba(0,0,0,0)
     );
     display: flex;
@@ -121,7 +131,8 @@
 .home .contact-card-text
 {
     width: 100%;
-    color: #c7c7c7;
+    color: #fbfbfb;
+    font-size: large;
     padding-left: 1rem;
 }
 
@@ -133,7 +144,7 @@
 .card-text,
 .contact-card-text
 {
-    -webkit-text-stroke: 0.1px black;
+    -webkit-text-stroke: 0.2px black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
