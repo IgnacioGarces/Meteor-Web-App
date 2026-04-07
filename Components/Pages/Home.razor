@@ -44,7 +44,7 @@
                     <div class="carousel-item @(isFirst ? "active" : "")">
                         <div class="carousel-img-wrapper">
                             <a href="/product/@prod.Id">
-                                <img src="@prod.Poster" class="carousel-img-wrapper img" alt="@prod.Title">
+                                <img src="@prod.Poster" class="carousel-img-wrapper img object-fit-contain" alt="@prod.Title">
                             </a>
                         </div>
                         <div class="carousel-caption custom-caption">
@@ -67,13 +67,13 @@
                     <div class="carousel-item @(isFirst ? "active" : "")">
                         <div class="carousel-img-wrapper">
                             <a href="/article/@article.Id">
-                                <img src="@article.FirstImageUrl" class="carousel-img-wrapper img" alt="@article.Title">
+                                <img src="@article.FirstImageUrl" class="carousel-img-wrapper img object-fit-contain" alt="@article.Title">
                             </a>
                         </div>
                         <div class="carousel-caption custom-caption">
                             <div class="caption-content text-start">
                                 <h5 class="card-text title">@article.Title</h5>
-                                <p class="card-text">@article.Description</p>
+                                <p class="card-text ">@article.Description</p>
                             </div>
                         </div>
                     </div>
