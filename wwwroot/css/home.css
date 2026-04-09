@@ -30,7 +30,7 @@
 
 /* CAROUSEL */
 .home .carousel{
-    height: 65vh;
+    height: 75vh;
 }
 
 .home .carousel-control-prev-icon,
@@ -53,6 +53,7 @@
 .home .carousel-item {
     height: 100%;
     width: 100%;
+    min-height: 400px;
 }
 
 .home .carousel-img-wrapper {
@@ -79,6 +80,22 @@
 
 
 /* CAPTION */
+
+.home .carousel-caption.custom-caption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    padding-top: 5vh; 
+    padding-bottom: 1.5rem;
+    pointer-events: none;
+}
+.home .caption-content p{
+    margin-top: 2rem; 
+    pointer-events: none;
+}
+
 .home .custom-caption {
     width: 100%;
     background: linear-gradient(
@@ -102,9 +119,19 @@
 
 .home .caption-content p.card-text
 {
-    font-weight: 300;
-    -webkit-text-stroke: 0.1px rgb(254, 34, 0);
+    font-weight: 900;
+    -webkit-text-stroke: 0.2px rgb(254, 34, 0);
     color: #ffffff;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Plus Jakarta Sans se ve bien con esta configuración */
+    line-height: 1.4em; 
+    max-height: 9.2em;
 }
 
 .home .caption-content {
@@ -238,6 +265,11 @@
 
     .about{
         padding-top: 2rem;
+    }
+
+    .home .caption-content p.card-text {
+        -webkit-line-clamp: 4; 
+        max-height: 5.6em;
     }
 }
 
