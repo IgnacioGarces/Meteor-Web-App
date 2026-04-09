@@ -10,13 +10,12 @@ html, body {
 }
 
 .product-page .product-gallery{
-    height: 100vh;
+    height: 50vh;
 }
 
 .product-page .carousel{
     height: 70%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -31,9 +30,9 @@ html, body {
 
 .product-page .carousel-img {
     width: 100%;
-    height: fit-content;
+    height: auto;
     display: block;
-    object-fit: contain;
+    object-fit:contain;
 }
 
 
@@ -70,15 +69,17 @@ html, body {
 .product-page .product-poster{
     width: 100%;
     min-height: 5rem;
+    padding-bottom: 2rem;
 }
 
+
+.product-page .title{
+    color: #c7c7c7;
+    padding-bottom: 1rem;
+}
 .product-page .product-description{
     color: #c7c7c7;
-}
-
-.product-page .product-description .title{
-    color: #c7c7c7;
-    
+    padding-bottom: 1rem;
 }
 
 @media(min-width:768px){
