@@ -73,26 +73,38 @@
     bottom: 0;
     padding: 0;
 
-    
+    pointer-events: none;
 }
 
-.home .carousel-item:hover .carousel-caption {
-    opacity: 1;
-    
-}
+
 
 /* CAPTION */
 .home .custom-caption {
     width: 100%;
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.982),
-        rgba(0, 0, 0, 0.798),
-        rgba(0,0,0,0)
+        rgba(135, 0, 254, 0.341),
+        rgba(135, 0, 254, 0.126),
+        rgba(56, 0, 85, 0)
     );
     display: flex;
     justify-content: center;
-    color: #c7c7c7;
+}
+
+/* 
+
+    .home .caption-content h5.card-text.title
+    {
+        -webkit-text-stroke: 0.2px rgb(255, 9, 9);
+        color: #fdf6ff;
+    }
+*/
+
+.home .caption-content p.card-text
+{
+    font-weight: 300;
+    -webkit-text-stroke: 0.1px rgb(254, 34, 0);
+    color: #ffffff;
 }
 
 .home .caption-content {
@@ -128,22 +140,13 @@
 .home .contact-card-text
 {
     width: 100%;
-    color: #fbfbfb;
-    font-size: large;
     padding-left: 1rem;
+
 }
 
-.title{
-    font-size: larger;
-    font-weight: bolder;
-}
 
-.card-text,
-.contact-card-text
-{
-    -webkit-text-stroke: 0.2px black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+
+
 
 .home .contact-card-text{
     padding: 1rem;
