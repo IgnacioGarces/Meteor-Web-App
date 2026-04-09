@@ -24,7 +24,7 @@ else
                 <div class="product-gallery col-12 col-md-8 col-lg-8 ">
 
                     <div id="productCarousel"
-                         class="carousel slide mb-3"
+                         class="carousel slide mt-0 mb-3"
                          data-bs-ride="carousel">
 
                         <div class="carousel-indicators">
@@ -33,10 +33,7 @@ else
                             <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
                         </div>
 
-                        <div class="carousel-inner
-                        rounded
-                        
-                        overflow-hidden">
+                        <div class="carousel-inner rounded overflow-hidden">
 
                             @for (int i = 0; i < product.Images.Count; i++)
                             {
@@ -68,7 +65,7 @@ else
                 <div class="product-info col-12 col-md-4 col-lg-4 ">
                 
                     <img src="@product.Poster"
-                         class="product-poster mb-3" />
+                         class="product-poster mt-0 mb-3" />
                     <h2 class="product-description title">@product.Title</h2>
                     <p class="product-description">
                         @product.Description

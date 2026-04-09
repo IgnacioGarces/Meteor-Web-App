@@ -151,6 +151,8 @@
 }
 
 
+
+
 .home .card-img,
 .home .card-body-text {
     width: 50%; 
@@ -267,9 +269,22 @@
         padding-top: 2rem;
     }
 
-    .home .caption-content p.card-text {
-        -webkit-line-clamp: 4; 
-        max-height: 5.6em;
+    
+    .home .caption-content p.card-text
+    {
+    font-weight: 900;
+    -webkit-text-stroke: 0.2px rgb(0, 1, 2);
+    color: #ffffff;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Plus Jakarta Sans se ve bien con esta configuración */
+    line-height: 1.2em; 
+    max-height: 9.2em;
     }
 }
 

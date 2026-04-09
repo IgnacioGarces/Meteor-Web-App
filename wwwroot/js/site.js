@@ -72,3 +72,20 @@ window.scrollToHash = () => {
         }
     }
 };
+
+
+//GAME
+
+window.openFullscreen = () => {
+    // Intentamos poner en fullscreen el CONTENEDOR, no solo el iframe
+    // para que tu botón y el aviso de rotación sigan funcionando dentro.
+    const elem = document.querySelector('.game-container');
+    
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen(); // Safari / iOS
+    } else if (elem.mozRequestFullScreen) {
+        elem.mozRequestFullScreen(); // Firefox
+    }
+};

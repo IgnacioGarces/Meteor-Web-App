@@ -84,12 +84,39 @@ html, body {
 
 @media(min-width:768px){
 
-    .product-page .product-info{
+    .product-page .product-page .row{
+        height: 90vh;
+    }
+    
+    .product-page .carousel{
+        height: 40vh;
+    }
+    
+    .product-page .product-info,
+    .product-page .product-gallery .carousel
+    {
+        display: flex;
         align-items: flex-start;
         justify-content: flex-start;
+    }
+
+    .product-page .carousel-inner{
+        height: 100%;
     }
     
     .btn{
         align-self: center;
     }
+
+    .product-page .product-poster{
+        padding: 0;
+        height: fit-content;
+    }
+
+    .product-page .product-description.title{
+        font-size: larger;
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+
 }

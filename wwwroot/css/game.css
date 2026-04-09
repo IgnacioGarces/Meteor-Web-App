@@ -1,0 +1,115 @@
+.game-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9; /* Mantiene la forma de juego */
+    background: #000;
+    vertical-align: middle;
+}
+.game-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block; /* Evita espacios extra debajo del iframe */
+    margin: 0;
+    padding: 0;
+}
+
+/* Cuando el contenedor entra en Fullscreen */
+.game-container:fullscreen, 
+.game-container:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #000;
+    overflow: hidden; /* Evita scrolls accidentales que "comen" bordes */
+    display: block !important;
+    aspect-ratio: unset !important;
+}
+
+/* El iframe debe morir intentando ser tan grande como su padre */
+.game-container:fullscreen .game-iframe,
+.game-container:-webkit-full-screen .game-iframe {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    
+}
+
+
+/* Estilo del botón (para que sea visible en Dark Mode) */
+.btn-fullscreen {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    font-family: var(--font-body);
+}
+
+
+/* Ocultar el botón de Fullscreen cuando ya estemos en Fullscreen */
+.game-container:fullscreen .btn-fullscreen {
+    display: none;
+}
+
+
+
+/* Chrome, Safari, Opera */
+.game-container:-webkit-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+}
+
+/* Firefox */
+.game-container:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+}
+
+/* Asegurar que el iframe se estire siempre en estos modos */
+.game-container:fullscreen .game-iframe,
+.game-container:-webkit-full-screen .game-iframe,
+.game-container:-moz-full-screen .game-iframe {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .game-container {
+        aspect-ratio: 4 / 3; 
+    }
+}
+
+@media (max-width: 992px) and (orientation: portrait) {
+    .rotate-warning {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 9999;
+        color: white;
+    }
+}
+
+/*
+@media (orientation: landscape) {
+    .rotate-warning {
+        display: none;
+    }
+}
+    */

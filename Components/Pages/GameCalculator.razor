@@ -1,12 +1,28 @@
 @page "/game"
-<h3>GameCalculator</h3>
+@inject IJSRuntime JS
 
-<iframe src="/unity/index.html"
-        width="960"
-        height="600"
-        style="border:none;">
-</iframe>
+<div class="game-container">
+    <iframe src="/unity/index.html" 
+            class="game-iframe"
+            allow="fullscreen; autoplay; gamepad" 
+            allowfullscreen="true"
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
+            scrolling="no">
+    </iframe>
+    
+
+    
+    
+    @* Usamos @onclick de Blazor para llamar a la función de JS *@
+    <button class="btn-fullscreen" onclick="window.openFullscreen()">
+        🎮 Full Screen
+    </button>
+</div>
 
 @code {
-    
+    private async Task HandleFullscreen()
+    {
+        await JS.InvokeVoidAsync("openFullscreen");
+    }
 }
