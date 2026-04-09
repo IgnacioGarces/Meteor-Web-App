@@ -73,15 +73,12 @@
     bottom: 0;
     padding: 0;
 
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none; /* evita interferencias */
+    
 }
 
 .home .carousel-item:hover .carousel-caption {
     opacity: 1;
-    transform: translateY(0);
+    
 }
 
 /* CAPTION */
@@ -211,6 +208,7 @@
 
 @media (min-width: 768px) {
     
+    
     .caption-content {
         padding: 4rem;
     }
@@ -242,6 +240,22 @@
 
 
 /* DESKTOP */
-@media (min-width: 1024px){
-    
+@media (min-width: 992px){
+    .home .carousel-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0;
+
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }   
+
+    .home .carousel-item:hover .carousel-caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

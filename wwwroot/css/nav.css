@@ -18,6 +18,15 @@
     width: fit-content;
 }
 
+#mainNavbar:has(.dropdown-menu.show) .navbar-brand {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar-brand {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
 
 .navbar .navbar-toggler,
 .navbar .nav-link,
@@ -46,4 +55,12 @@
 }
 .dropdown-item:hover {
     background-color: #7100c257; 
+}
+
+
+@media (min-width: 768px) {
+    #mainNavbar:has(.dropdown-menu.show) .navbar-brand {
+        opacity: 1;           
+        visibility: visible;  
+    }
 }
