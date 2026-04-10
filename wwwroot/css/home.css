@@ -292,8 +292,27 @@
 
 /* DESKTOP */
 @media (min-width: 992px){
-    .home .carousel{
+    .home .carousel, 
+    .home .carousel-inner, 
+    .home .carousel-item {
+        height: 100vh !important;
+        overflow: hidden;
+    }
+
+    .home .carousel-item img {
+        width: 100% !important;
+        height: 100vh !important;
+        object-fit: contain !important; 
+        object-position: center;
+        background-color: #000; 
+    }
+
+    .carousel-img-wrapper {
         height: 100vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .home .carousel-caption {
@@ -313,6 +332,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+    
     
 
     .home .row {
@@ -334,9 +354,7 @@
     }
 
     .home .card-img img {
-        width: 100%;
-        height:fit-content;
-        object-fit: cover;
+        object-fit:contain;
     }
 
     .home .card-body-text {
