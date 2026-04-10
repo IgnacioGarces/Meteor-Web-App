@@ -292,6 +292,10 @@
 
 /* DESKTOP */
 @media (min-width: 992px){
+    .home .carousel{
+        height: 100vh;
+    }
+
     .home .carousel-caption {
         position: absolute;
         left: 0;
@@ -309,6 +313,7 @@
         opacity: 1;
         transform: translateY(0);
     }
+    
 
     .home .row {
         margin-left: 0;
@@ -351,7 +356,7 @@
         width: 80%; 
         display: flex;
         align-items: flex-start; 
-        min-height: 100vh; 
+        height: 100%; 
     }
 
     .home .contact-card-body {

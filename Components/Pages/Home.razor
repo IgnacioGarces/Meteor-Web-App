@@ -12,7 +12,7 @@
 
     <section id="lanzamientos" class="snap-section">
         
-    <div id="carouselExampleAutoplaying"
+        <div id="carouselExampleAutoplaying"
          class="carousel carousel-dark slide container-fluid p-0 m-0"
          data-bs-ride="carousel">
 
@@ -94,8 +94,8 @@
             <span class="carousel-control-next-icon"></span>
         </button>
 
-    </div>
-</section>
+        </div>
+    </section>
 
     <!-- ABOUT -->
     <section id="about" class="snap-section ">
@@ -130,7 +130,7 @@
         </div>
 
        <!-- DEVS -->
-<div class="card custom-caption">
+        <div class="card custom-caption">
     <div class="card-body">
         <div class="row g-4">
 
@@ -328,7 +328,7 @@
 
         </div>
     </div>
-</div>
+        </div>
 
     </section>
 
@@ -420,9 +420,9 @@
     {
         if (firstRender)
         {
-        //await JS.InvokeVoidAsync("initActiveSections");
-        //await JS.InvokeVoidAsync("enableNavScroll");
-        //await JS.InvokeVoidAsync("scrollToHash");
+        await JS.InvokeVoidAsync("initActiveSections");
+        await JS.InvokeVoidAsync("enableNavScroll");
+        await JS.InvokeVoidAsync("scrollToHash");
         }
     }
 
@@ -445,7 +445,7 @@
     {
         try
         {
-            //await JS.InvokeVoidAsync("scrollToHash");
+            await JS.InvokeVoidAsync("scrollToHash");
         }
         catch (Exception ex)
         {
