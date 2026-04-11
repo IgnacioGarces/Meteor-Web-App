@@ -70,15 +70,21 @@ else
                     <p class="product-description">
                         @product.Description
                     </p>
-                    <p class="product-description">
-                        <strong>Fecha de lanzamiento</strong><br />
-                        @product.ReleaseDate.ToString("dd MMM yyyy")
-                    </p>
-                    <a href="@product.StoreUrl"
-                       target="_blank"
-                       class="btn btn-success btn-lg mt-3">
-                        Ver en Play Store
-                    </a>
+                    @if(product.ReleaseDate.HasValue){
+
+                        <p class="product-description">
+                            <strong>Release Date</strong><br />
+                            @product.ReleaseDate.Value.ToString("dd MMM yyyy")
+                        </p>
+                    }
+                    @if(product.StoreUrl != null){
+
+                        <a href="@product.StoreUrl"
+                        target="_blank"
+                        class="btn btn-success btn-lg mt-3">
+                            Product Page
+                        </a>
+                    }
                 </div>
                 
 

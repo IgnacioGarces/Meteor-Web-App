@@ -11,9 +11,9 @@ public class ProductService
             Id = 1,
             Title = "Infinite Football",
             Description = "Face the Trials! The biggest clubs in the world have reunited to test first division players to acquire, YOU included! Show them what you've got.",
-            ReleaseDate = new DateTime(2025, 6, 12),
+            ReleaseDate = new DateTime(2026, 6, 12),
             Poster = "/imgs/Products/InfiniteFootball/poster.png",
-            StoreUrl = "https://play.google.com/store",
+            StoreUrl = null,
             Images =
             {
                 "/imgs/Products/InfiniteFootball/preview_1.png",
@@ -26,7 +26,7 @@ public class ProductService
             Id = 2,
             Title = "MateAventuras",
             Description = "Mateaventuras need your help! Dive into their colorfull world, create your own character and help the Mateaventuras team to solve puzzles mixed with math! ",
-            ReleaseDate = new DateTime(2026, 6, 12),
+            ReleaseDate = null,
             Poster = "/imgs/imgCarrusel2.png",
             StoreUrl = "/game",
             Images =
@@ -41,7 +41,7 @@ public class ProductService
             Id = 3,
             Title = "The City of Fury",
             Description = "The City is corrupt with a disease, and you as a SWAT Team Leader, dive into it's streets cleaning them the only way you know.",
-            ReleaseDate = new DateTime(2026, 6, 12),
+            ReleaseDate = null,
             Poster = "/imgs/Products/CityOfFury/poster.png",
             StoreUrl = "https://store.steampowered.com/app/2385660/The_City_of_Fury/",
             Images =
@@ -57,7 +57,7 @@ public class ProductService
             Id = 4,
             Title = "Neighbours",
             Description = "Watch out! You moved recently to a new appartment building with a lot of charismatic neighbours, but be careful, not everything is as it seems!.",
-            ReleaseDate = new DateTime(2026, 6, 12),
+            ReleaseDate = null,
             Poster = "/imgs/Products/Neighbors/poster.png",
             StoreUrl = "https://store.steampowered.com/app/3030680/Neighbors/",
             Images =
