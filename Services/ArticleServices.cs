@@ -10,8 +10,8 @@ public class ArticleService
         {
             Id = 1,
             Date = new DateTime(2025, 6, 12),
-            Title = "Tribulations of the Realm",
-            Description = "Tribulations of the Realm is a PVEVP wave defense tabletop survival RPG with open barter mechanics. Designed for up to four players, it blends elemental combat, and evolving equipment into a high-fantasy setting where the god of chaos wants to destroy the world.",
+            Title = "Tribulations of the Realms",
+            Description = "Tribulations of the Realms is a PVEVP wave defense tabletop survival RPG with open barter mechanics. Designed for up to four players, it blends elemental combat, and evolving equipment into a high-fantasy setting where the god of chaos wants to destroy the world.",
             FirstImageUrl = "/imgs/Articles/TOTR/1.png",
             FirstSubtitle = null,
             SecondDescription = null,

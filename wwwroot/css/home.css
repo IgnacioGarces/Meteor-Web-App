@@ -61,11 +61,20 @@
     overflow: hidden;
 }
 
-.home .carousel-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .home .carousel, 
+    .home .carousel-inner, 
+    .home .carousel-item {
+        height: 100vh !important;
+        overflow: hidden;
+    }
+
+    .home .carousel-item img {
+        width: 100% !important;
+        height: 100vh !important;
+        object-fit: contain !important; 
+        object-position: center;
+        background-color: #000; 
+    }
 
 .home .carousel-caption {
     position: absolute;
@@ -81,32 +90,34 @@
 
 /* CAPTION */
 
-.home .carousel-caption.custom-caption{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    .home .carousel-caption.custom-caption{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
 
-    padding-top: 5vh; 
-    padding-bottom: 1.5rem;
-    pointer-events: none;
-}
-.home .caption-content p{
-    margin-top: 2rem; 
-    pointer-events: none;
-}
+        padding-top: 15vh; 
+        padding-bottom: 3.5rem;
+        pointer-events: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .home .caption-content p{
+        margin-top: 2rem; 
+        pointer-events: none;
+    }
 
 .home .custom-caption {
-    width: 100%;
-    background: linear-gradient(
-        to top,
-        rgba(135, 0, 254, 0.341),
-        rgba(135, 0, 254, 0.126),
-        rgba(56, 0, 85, 0)
+        width: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(135, 0, 254, 0.341),
+            rgba(135, 0, 254, 0.139),
+            rgba(56, 0, 85, 0)
     );
     display: flex;
     justify-content: center;
-}
+    }
 
 /* 
 
@@ -120,7 +131,7 @@
 .home .caption-content p.card-text
 {
     font-weight: 900;
-    -webkit-text-stroke: 0.2px rgb(254, 34, 0);
+    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
     color: #ffffff;
 
     display: -webkit-box;
@@ -134,10 +145,11 @@
     max-height: 9.2em;
 }
 
-.home .caption-content {
-    max-width: 900px;
-    padding: 1.5rem;
-}
+.home .caption-content p{
+        font-size: larger;
+        font-weight: bolder;
+        font-style: oblique;
+    }
 
 /* CARDS */
 
@@ -284,8 +296,19 @@
     text-overflow: ellipsis;
     
     /* Plus Jakarta Sans se ve bien con esta configuración */
-    line-height: 1.2em; 
-    max-height: 9.2em;
+    line-height: 1.5em; 
+    max-height: 6.2em;
+    }
+
+    .home .carousel-caption.custom-caption{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        padding-top: 5vh; 
+        padding-bottom: 0.1rem;
+        pointer-events: none;
     }
 }
 
@@ -323,7 +346,7 @@
         padding: 0;
 
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(90px);
         transition: opacity 0.4s ease, transform 0.4s ease;
         pointer-events: none;
     }   
@@ -332,8 +355,19 @@
         opacity: 1;
         transform: translateY(0);
     }
-    
-    
+
+    .home .custom-caption {
+        width: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(135, 0, 254, 0.341),
+            rgba(135, 0, 254, 0.383),
+            rgba(56, 0, 85, 0)
+    );
+    display: flex;
+    justify-content: center;
+    }
+
 
     .home .row {
         margin-left: 0;
