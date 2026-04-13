@@ -324,8 +324,8 @@
 
     .home .carousel-item img {
         width: 100% !important;
-        height: 100vh !important;
-        object-fit: contain !important; 
+        
+        object-fit:contain !important; 
         object-position: center;
         background-color: #000; 
     }
@@ -333,6 +333,7 @@
     .carousel-img-wrapper {
         height: 100vh;
         width: 100%;
+        
         display: flex;
         justify-content: center;
         align-items: center;
