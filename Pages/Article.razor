@@ -1,6 +1,6 @@
 ﻿@page "/article/{Id:int}"
-@using MeteorWebApp.Models
-@using MeteorWebApp.Services
+@using Meteor_Web_App.Models
+@using Meteor_Web_App.Services
 @inject ArticleService ArticleService
 
 
@@ -79,11 +79,13 @@
 }
 
 @code {
-    [Parameter] public int Id { get; set; }
+    [Parameter] public int Id { get; set; } = default!;
     private ArticleModel? article;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         article = ArticleService.GetById(Id);
+        
+        StateHasChanged();
     }
 }

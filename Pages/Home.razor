@@ -1,12 +1,13 @@
-﻿@using MeteorWebApp.Models
-@using MeteorWebApp.Services
+﻿@page "/"
+@using Meteor_Web_App.Models
+@using Meteor_Web_App.Services
 @using System.ComponentModel.DataAnnotations
+@implements IDisposable
 @inject ArticleService ArticleService
 @inject ProductService ProductService
-@page "/"
-@rendermode InteractiveServer
-
-
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <div class="home snap-container">
 
@@ -412,18 +413,17 @@
 
 </div>
 
-
-@inject IJSRuntime JS
-@inject NavigationManager Nav
-
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-        await JS.InvokeVoidAsync("initActiveSections");
-        await JS.InvokeVoidAsync("enableNavScroll");
-        await JS.InvokeVoidAsync("scrollToHash");
+            await JS.InvokeVoidAsync("initActiveSections");
+            await JS.InvokeVoidAsync("enableNavScroll");
+            await JS.InvokeVoidAsync("scrollToHash");
+            
+            // Suscribirse al evento de navegación
+            Nav.LocationChanged += OnLocationChanged;
         }
     }
 
@@ -435,7 +435,6 @@
         articulos = ArticleService.GetAll();
         productos = ProductService.GetAll(); 
     }
-    
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
@@ -450,23 +449,21 @@
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine($"Error en scroll: {ex.Message}");
         }
     }
 
     public void Dispose()
     {
-        //Nav.LocationChanged -= OnLocationChanged;
+        // Desuscribirse para evitar fugas de memoria
+        Nav.LocationChanged -= OnLocationChanged;
     }
 
-
+    // --- LÓGICA DEL FORMULARIO DE CONTACTO ---
 
     private ContactFormModel form = new();
     private bool enviando = false;
     private bool enviado = false;
-
-    [Inject]
-    private IEmailService EmailService { get; set; } = default!;
 
     private async Task EnviarFormulario()
     {
@@ -475,13 +472,24 @@
 
         try
         {
-            await EmailService.SendAsync(form);
-            enviado = true;
-            form = new ContactFormModel();
+            // REEMPLAZA ESTE ID con el que te dé Formspree.io
+            string formspreeUrl = "https://formspree.io/f/xeeveznn";
+
+            var response = await Http.PostAsJsonAsync(formspreeUrl, form);
+
+            if (response.IsSuccessStatusCode)
+            {
+                enviado = true;
+                form = new ContactFormModel(); // Limpia el formulario
+            }
+            else
+            {
+                Console.WriteLine("Error al enviar el formulario a Formspree");
+            }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine($"Error de red: {ex.Message}");
         }
         finally
         {
@@ -490,4 +498,3 @@
         }
     }
 }
-

@@ -1,0 +1,109 @@
+﻿@using Meteor_Web_App.Models
+@using Meteor_Web_App.Services
+@implements IDisposable
+@inject NavigationManager Nav
+@inject ArticleService ArticleService
+@inject ProductService ProductService
+
+<nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
+    <div class="container-fluid position-relative">
+
+        <div class="navbar-brand position-absolute top-50 start-50 translate-middle">
+            @if (IsHome)
+            {
+                <img src="imgs/bannerLogo.png" class="bannerLogo" alt="Logo" />
+            }
+            else
+            {
+                <NavLink href="/" Match="NavLinkMatch.All">
+                    <img src="imgs/bannerLogo.png" class="bannerLogo" alt="Logo" />
+                </NavLink>
+            }
+        </div>
+
+        <button class="navbar-dark navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Launchs
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @if (productos != null)
+                        {
+                            @foreach (var prod in productos)
+                            {
+                                var prodLink = "/product/" + prod.Id;
+                                <li>
+                                    <NavLink class="dropdown-item" href="@prodLink">@prod.Title</NavLink>
+                                </li>
+                            }
+                        }
+
+                        @if (productos?.Any() == true && articulos?.Any() == true)
+                        {
+                            <li><hr class="dropdown-divider" /></li>
+                        }
+
+                        @if (articulos != null)
+                        {
+                            @foreach (var art in articulos)
+                            {
+                                var artLink = "/article/" + art.Id;
+                                <li>
+                                    <NavLink class="dropdown-item" href="@artLink">@art.Title</NavLink>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </li>
+
+                @if (!IsHome && !IsAbout && !IsContact)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">Devs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#contacto">Contact</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@code {
+    private bool IsHome => Nav.Uri.TrimEnd('/') == Nav.BaseUri.TrimEnd('/');
+    private bool IsAbout => Nav.Uri.Contains("#about");
+    private bool IsContact => Nav.Uri.Contains("#contacto");
+
+
+    private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
+    private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
+
+    protected override void OnInitialized()
+    {
+        articulos = ArticleService.GetAll();
+        productos = ProductService.GetAll();
+        Nav.LocationChanged += HandleLocationChanged;
+    }
+
+    private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        Nav.LocationChanged -= HandleLocationChanged;
+    }
+}

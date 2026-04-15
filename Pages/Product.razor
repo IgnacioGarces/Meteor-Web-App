@@ -1,8 +1,7 @@
 ﻿@page "/product/{Id:int}"
-@rendermode InteractiveServer
 
-@using MeteorWebApp.Models
-@using MeteorWebApp.Services
+@using Meteor_Web_App.Models
+@using Meteor_Web_App.Services
 @inject ProductService ProductService
 
 <PageTitle>@product?.Title</PageTitle>
@@ -94,12 +93,13 @@ else
 }
 
 @code {
-    [Parameter] public int Id { get; set; }
-
+    [Parameter] public int Id { get; set; } = default!;
     private ProductModel? product;
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         product = ProductService.GetById(Id);
+        
+        StateHasChanged();
     }
 }
