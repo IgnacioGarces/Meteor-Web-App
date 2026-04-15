@@ -1,5 +1,6 @@
 using MeteorWebApp.Components;
 using MeteorWebApp.Services;
+using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +19,26 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     app.UseHsts();
 }
+var provider = new FileExtensionContentTypeProvider();
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+provider.Mappings[".wasm"] = "application/wasm";
+provider.Mappings[".data"] = "application/octet-stream";
+provider.Mappings[".framework.js"] = "application/javascript";
+provider.Mappings[".js"] = "application/javascript";
+
+
+//app.UseHttpsRedirection();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    ServeUnknownFileTypes = true,
+    DefaultContentType = "application/octet-stream"
+});
+
+app.UseRouting();
+
 app.UseAntiforgery();
+
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();

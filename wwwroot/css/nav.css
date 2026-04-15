@@ -1,0 +1,75 @@
+.navbar {
+    min-height: 6rem;
+}
+
+.navbar.nav-background {
+    background-color: #000;
+    background-image: url("/imgs/bannerBackground2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar .navbar-brand{
+    z-index: 1;
+}
+.navbar .bannerLogo {
+    height: 5rem;
+    width: fit-content;
+}
+
+#mainNavbar:has(.dropdown-menu.show) .navbar-brand {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar-brand {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.navbar .navbar-toggler,
+.navbar .nav-link,
+.navbar .dropdown-toggle,
+.navbar .nav-item
+{
+    z-index: 2;
+}
+
+/* Links */
+.navbar .nav-link,
+.navbar .nav-link:focus,
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: white !important;
+    
+}
+
+.navbar .dropdown-menu{
+    background-color: transparent;
+}
+
+.navbar .dropdown-item{
+    color: #c7c7c7;
+    
+}
+.dropdown-item:hover {
+    background-color: #7100c257; 
+}
+
+
+@media (min-width: 768px) {
+    #mainNavbar:has(.dropdown-menu.show) .navbar-brand {
+        opacity: 1;           
+        visibility: visible;  
+    }
+}
+
+@media (min-width: 992px){
+
+    
+    .navbar .dropdown-menu{
+        background-color: #000;
+        width:fit-content;
+    }
+}

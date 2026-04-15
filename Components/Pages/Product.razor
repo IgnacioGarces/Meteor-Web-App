@@ -7,52 +7,6 @@
 
 <PageTitle>@product?.Title</PageTitle>
 
-<!-- NAVBAR -->
-<nav id="mainNavbar" class="navbar navbar-expand-md fixed-top nav-background ">
-    <div class="container-fluid align-items-center">
-
-        <a href="#">
-            <img src="/imgs/bannerLogo.png" class="bannerLogo navbar-brand position-absolute top-50 start-50 translate-middle" alt="Alternate Text" />
-        </a>
-
-        <button class="navbar-toggler active"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="/#lanzamientos"
-                       id="navbarDropdown"
-                       role="button"
-                       data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Lanzamientos
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="/product/1">Infinite Football</a></li>
-                        <li><a class="dropdown-item" href="/product/2">Artistas capaces</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/article/1">Articulo 1</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">Devs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#contacto">Contacto</a>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
 
 @if (product is null)
 {
@@ -62,15 +16,15 @@
 }
 else
 {
-    <section class="container snap-container">
+    <section class="product-page container snap-container">
         <div class="product-page snap-section">
             <div class="row g-4   ">
 
                 <!-- LEFT: MEDIA -->
-                <div class="product-gallery col-12 col-lg-8">
+                <div class="product-gallery col-12 col-md-8 col-lg-8 ">
 
                     <div id="productCarousel"
-                         class="carousel slide mb-3"
+                         class="carousel slide mt-0 mb-3"
                          data-bs-ride="carousel">
 
                         <div class="carousel-indicators">
@@ -79,19 +33,14 @@ else
                             <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
                         </div>
 
-                        <div class="carousel-inner
-                        rounded
-                        ratio ratio-4x3
-                        ratio-md-16x9
-                        ratio-lg-21x9
-                        overflow-hidden">
+                        <div class="carousel-inner rounded overflow-hidden">
 
                             @for (int i = 0; i < product.Images.Count; i++)
                             {
                                 <div class="carousel-item @(i == 0 ? "active" : "")">
-                                    <div class=" carousel-img-wrapper ">
+                                    <div class="carousel-img-wrapper ">
                                         <img src="@product.Images[i]"
-                                             class="d-block w-100 h-100 object-fit-cover" />
+                                             class="carousel-img" />
                                     </div>
                                 </div>
                             }
@@ -103,7 +52,7 @@ else
                         @for (int i = 0; i < product.Images.Count; i++)
                         {
                             <img src="@product.Images[i]"
-                                 class="thumbnail"
+                                 class="thumbnail "
                                  data-bs-target="#productCarousel"
                                  data-bs-slide-to="@i" />
                         }
@@ -112,31 +61,32 @@ else
                 </div>
 
                 <!-- RIGHT: INFO -->
-                <div class="col-12 col-lg-4">
-                    <div class="product-info">
-
-                        <img src="@product.Poster"
-                             class="product-poster mb-3" />
-
-                        <h2>@product.Title</h2>
+                
+                <div class="product-info col-12 col-md-4 col-lg-4 ">
+                
+                    <img src="@product.Poster"
+                         class="product-poster mt-0 mb-3" />
+                    <h2 class="product-description title">@product.Title</h2>
+                    <p class="product-description">
+                        @product.Description
+                    </p>
+                    @if(product.ReleaseDate.HasValue){
 
                         <p class="product-description">
-                            @product.Description
+                            <strong>Release Date</strong><br />
+                            @product.ReleaseDate.Value.ToString("dd MMM yyyy")
                         </p>
-
-                        <p class="release-date">
-                            <strong>Fecha de lanzamiento</strong><br />
-                            @product.ReleaseDate.ToString("dd MMM yyyy")
-                        </p>
+                    }
+                    @if(product.StoreUrl != null){
 
                         <a href="@product.StoreUrl"
-                           target="_blank"
-                           class="btn btn-success btn-lg mt-3">
-                            Ver en Play Store
+                        target="_blank"
+                        class="btn btn-success btn-lg mt-3">
+                            Product Page
                         </a>
-
-                    </div>
+                    }
                 </div>
+                
 
             </div>
         </div>
