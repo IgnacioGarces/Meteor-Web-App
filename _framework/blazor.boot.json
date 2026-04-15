@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Meteor-Web-App",
   "resources": {
-    "hash": "sha256-Xx17/HEj6ttkYD46tkndIsTP6Rfp/DUZ66mldk+IMn4=",
+    "hash": "sha256-x9pS9r8Gxm5fN/MX1QEBQSWtX4eKB5tPW1GRLZOOjL4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-A16ka545FHaB+QXjyJ4exXh7XpBAAIFnX8YkC4xAng8="
     },
@@ -59,7 +59,7 @@
       "System.Text.RegularExpressions.wasm": "sha256-NCEE+HvGu9wvbwRWVbw39Kv/N87ljqfev5xcRmcQ6NQ=",
       "System.wasm": "sha256-25KTxVbx+rD8S9iyUye7jmbj1e4TZ5Ca+elup4oegJA=",
       "System.Private.CoreLib.wasm": "sha256-gSBHdqo+YqDLbA/LMbYMfPhd9Ee0hKAa8pWhcusYMho=",
-      "Meteor-Web-App.wasm": "sha256-Gho0lRT98VNbmSKG2qLJaM6t24KJch7Ywn+UY51Aqn0="
+      "Meteor-Web-App.wasm": "sha256-gOkWpgx5Kmk6TdOoDPQlqDJw0vAfa1I2U53mOi+TBVA="
     }
   },
   "cacheBootResources": true,
