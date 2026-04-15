@@ -1,0 +1,500 @@
+﻿@page "/"
+@using Meteor_Web_App.Models
+@using Meteor_Web_App.Services
+@using System.ComponentModel.DataAnnotations
+@implements IDisposable
+@inject ArticleService ArticleService
+@inject ProductService ProductService
+@inject HttpClient Http
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+
+<div class="home snap-container">
+
+    <section id="lanzamientos" class="snap-section">
+        
+        <div id="carouselExampleAutoplaying"
+         class="carousel carousel-dark slide container-fluid p-0 m-0"
+         data-bs-ride="carousel">
+
+        @{
+            // 1. Calculamos el total de slides y preparamos nuestra bandera global
+            int totalSlides = (productos?.Count() ?? 0) + (articulos?.Count() ?? 0);
+            bool isFirst = true;
+        }
+
+        <div class="carousel-indicators">
+            @for (int i = 0; i < totalSlides; i++)
+            {
+                <button type="button" 
+                        data-bs-target="#carouselExampleAutoplaying" 
+                        data-bs-slide-to="@i" 
+                        class="@(i == 0 ? "active" : "")"
+                        aria-current="@(i == 0 ? "true" : "false")">
+                </button>
+            }
+        </div>
+
+        <div class="carousel-inner">
+            
+            @* Bucle de Productos *@
+            @if (productos != null && productos.Any())
+            {
+                @foreach (var prod in productos)
+                {
+                    <div class="carousel-item @(isFirst ? "active" : "")">
+                        <div class="carousel-img-wrapper">
+                            <a href="/product/@prod.Id">
+                                <img src="@prod.Poster" class="d-block" alt="@prod.Title">
+                            </a>
+                        </div>
+                        <div class="carousel-caption custom-caption">
+                            <div class="caption-content text-start">
+                                <p class="card-text">@prod.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    { isFirst = false; } 
+                }
+            }
+
+            @* Bucle de Artículos *@
+            @if (articulos != null && articulos.Any())
+            {
+                @foreach (var article in articulos)
+                {
+                    <div class="carousel-item @(isFirst ? "active" : "")">
+                        <div class="carousel-img-wrapper">
+                            <a href="/article/@article.Id">
+                                <img src="@article.FirstImageUrl" class="d-block" alt="@article.Title">
+                            </a>
+                        </div>
+                        <div class="carousel-caption custom-caption">
+                            <div class="caption-content text-start">
+                                <p class="card-text ">@article.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    { isFirst = false; }
+                }
+            }
+            
+        </div>
+
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="snap-section ">
+
+        <!-- INFO -->
+        <div class="card about">
+            <div class="row g-0 align-items-center">
+
+                <!-- LOGO -->
+                <div class="col-12 col-md-4 d-flex justify-content-center py-4 py-md-0">
+                    <img src="/imgs/logo.png"
+                         class="img-fluid w-50 w-md-75"
+                         alt="Meteor Craftworks logo">
+                </div>
+
+                <!-- TEXTO -->
+                <div class="col-12 col-md-8">
+                    <div class="card-body">
+
+                        <h2 class="card-text">
+                            About us
+                        </h2>   
+
+                        <p class="card-text ">
+                            Meteor Craftworks team is composed of talented young man dedicated to the making of stunning and trasdcendental works of art that inspire generations just as we have been inspired by who came before us.
+                        </p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+       <!-- DEVS -->
+        <div class="card custom-caption">
+    <div class="card-body">
+        <div class="row g-4">
+
+            <!-- DEV ANGRI-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-angry.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Lucas Angriman
+                        </h5>
+                        <p class="card-text">
+                            Team Leader<br />
+                            3D Artist<br />
+                            VFX Expert
+                        </p>
+                        <small class="card-text ">
+                            Art Director & Producer
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEV LULO-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-lulo.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Julian Bridi
+                        </h5>
+                        <p class="card-text">
+                            Team Coordinator<br />
+                            Game Designer<br />
+                            Public Relationships
+                        </p>
+                        <small class="card-text ">
+                            CEO & General Producer
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEV YO-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-yo.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Ignacio Garcés 
+                        </h5>
+                        <p class="card-text">
+                            Product Coordinator<br />
+                            Sound Designer<br />
+                            Game Development
+                            
+                        </p>
+                        <small class="card-text ">
+                            COO & Programmer
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEV MATIAS-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-mati.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Matias Somma
+                        </h5>
+                        <p class="card-text">
+                            Game Developer<br />
+                            Asset Implementation<br />
+                            Mechanic Engineer
+                        </p>
+                        <small class="card-text ">
+                            Programmer
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEV VALEM-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-valen.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Valentin Quetto
+                        </h5>
+                        <p class="card-text">
+                            Character Design and Model<br />
+                            Character Animations<br />
+                            Inorganic Modeling
+                        </p>
+                        <small class="card-text ">
+                            3D Artist & Animator
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+             <!-- DEV GUIDO-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-guido.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Guido Colonna
+                        </h5>
+                        <p class="card-text">
+                            Documentation<br />
+                            Feature Design<br />
+                            Game Testing
+                        </p>
+                        <small class="card-text ">
+                            Game Designer
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DEV JULI-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-juli.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Julieta Mayorga Alvarez
+                        </h5>
+                        <p class="card-text">
+                            Ilustration<br />
+                            Texturing
+                        </p>
+                        <small class="card-text ">
+                            2D Artist
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEV AARON-->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="/imgs/pic-devs/pic-aron.png"
+                             class="img-fluid rounded">
+                    </div>
+
+                    <div class="card-body-text">
+                        <h5 class="card-text title">
+                            Arón Poiesis
+                        </h5>
+                        <p class="card-text">
+                            Musicalization<br />
+                            Content Creation
+                        </p>
+                        <small class="card-text ">
+                            Musician & CM
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+           
+
+        </div>
+    </div>
+        </div>
+
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="snap-section ">
+
+        <div class="card-contact mb-3" style="max-width: 1920px;">
+            <div class="row g-0">
+
+                <!-- TEXTO -->
+                <div class="contact-text col-12 col-md-5 ">
+                    <div class="contact-card-body">
+                        <h4 class="card-text title">
+                            Contact
+                        </h4>
+
+                        <p class=" contact-card-text ">
+                            ¿Ready to start your next project?<br>
+                            We specialize in turning ideas into unique visual experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FORM -->
+                <div class="col-12 col-md-7 p-4">
+
+                    <EditForm Model="form"
+                              OnValidSubmit="EnviarFormulario"
+                              FormName="contactForm"
+                              >
+
+                        <DataAnnotationsValidator />
+                        <ValidationSummary class="text-danger mb-3" />
+
+                        <div class="form-inputs">
+                            <label class="form-label">Nombre</label>
+                            <InputText @bind-Value="form.Nombre" name="Nombre"
+                                       class="form-control form-control-lg" />
+                        </div>
+
+                        <div class="form-inputs ">
+                            <label class="form-label">Email</label>
+                            <InputText @bind-Value="form.Email"
+                                       name="Email"
+                                       type="email"
+                                       class="form-control form-control-lg" />
+                        </div>
+
+                        <div class="form-inputs">
+                            <label class="form-label">Mensaje</label>
+                            <InputTextArea @bind-Value="form.Mensaje"
+                                            name ="Mensaje"
+                                           class="form-control form-control-lg"
+                                           rows="4" />
+                        </div>
+
+                        <div class="d-flex justify-content-end">
+                            <button type="submit"
+                                    class="btn btn-outline-light btn-lg px-5"
+                                    disabled="@enviando">
+                                @(enviando ? "Enviando..." : "Enviar")
+                            </button>
+                        </div>
+
+                    </EditForm>
+
+                    @if (enviado)
+                    {
+                        <div class="alert alert-success mt-3">
+                            ¡Gracias! Tu mensaje fue enviado correctamente.
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+        
+    </section>
+
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initActiveSections");
+            await JS.InvokeVoidAsync("enableNavScroll");
+            await JS.InvokeVoidAsync("scrollToHash");
+            
+            // Suscribirse al evento de navegación
+            Nav.LocationChanged += OnLocationChanged;
+        }
+    }
+
+    private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
+    private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
+
+    protected override void OnInitialized()
+    {
+        articulos = ArticleService.GetAll();
+        productos = ProductService.GetAll(); 
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        _ = HandleLocationChangedAsync(e);
+    }
+
+    private async Task HandleLocationChangedAsync(LocationChangedEventArgs e)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("scrollToHash");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error en scroll: {ex.Message}");
+        }
+    }
+
+    public void Dispose()
+    {
+        // Desuscribirse para evitar fugas de memoria
+        Nav.LocationChanged -= OnLocationChanged;
+    }
+
+    // --- LÓGICA DEL FORMULARIO DE CONTACTO ---
+
+    private ContactFormModel form = new();
+    private bool enviando = false;
+    private bool enviado = false;
+
+    private async Task EnviarFormulario()
+    {
+        enviando = true;
+        enviado = false;
+
+        try
+        {
+            // REEMPLAZA ESTE ID con el que te dé Formspree.io
+            string formspreeUrl = "https://formspree.io/f/xeeveznn";
+
+            var response = await Http.PostAsJsonAsync(formspreeUrl, form);
+
+            if (response.IsSuccessStatusCode)
+            {
+                enviado = true;
+                form = new ContactFormModel(); // Limpia el formulario
+            }
+            else
+            {
+                Console.WriteLine("Error al enviar el formulario a Formspree");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error de red: {ex.Message}");
+        }
+        finally
+        {
+            enviando = false;
+            StateHasChanged();
+        }
+    }
+}

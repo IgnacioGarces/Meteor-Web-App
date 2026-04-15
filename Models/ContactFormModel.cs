@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MeteorWebApp.Models;
+namespace Meteor_Web_App.Models;
 
 public class ContactFormModel
 {

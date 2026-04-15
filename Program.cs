@@ -1,46 +1,25 @@
-using MeteorWebApp.Components;
-using MeteorWebApp.Services;
-using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Meteor_Web_App;
+using Meteor_Web_App.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+// 1. Configuración de los componentes raíz
+// Busca el <div id="app"></div> en tu index.html para renderizar la app
+builder.RootComponents.Add<App>("#app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped<IEmailService, SmtpEmailService>();
-builder.Services.AddSingleton<ProductService>();
-builder.Services.AddSingleton<ArticleService>();
+// 2. Registro de servicios obligatorios
+// HttpClient permite que tus componentes hagan peticiones web si lo necesitan
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+// 3. Registro de tus servicios personalizados
+// En Blazor WASM, AddScoped y AddSingleton funcionan igual (viven mientras la pestaña esté abierta)
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ArticleService>();
 
-var app = builder.Build();
+// Nota: No registramos IEmailService ni MailKit porque no funcionan en el navegador (lado cliente).
+// Para el formulario de contacto, usaremos la llamada directa a Formspree desde el componente .razor.
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    app.UseHsts();
-}
-var provider = new FileExtensionContentTypeProvider();
-
-provider.Mappings[".wasm"] = "application/wasm";
-provider.Mappings[".data"] = "application/octet-stream";
-provider.Mappings[".framework.js"] = "application/javascript";
-provider.Mappings[".js"] = "application/javascript";
-
-
-//app.UseHttpsRedirection();
-
-app.UseStaticFiles(new StaticFileOptions
-{
-    ServeUnknownFileTypes = true,
-    DefaultContentType = "application/octet-stream"
-});
-
-app.UseRouting();
-
-app.UseAntiforgery();
-
-
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
-
-app.Run();
+await builder.Build().RunAsync();

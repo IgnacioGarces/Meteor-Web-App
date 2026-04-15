@@ -1,6 +1,6 @@
-﻿using MeteorWebApp.Models;
+﻿using Meteor_Web_App.Models;
 
-namespace MeteorWebApp.Services;
+namespace Meteor_Web_App.Services;
 
 public class ProductService
 {
