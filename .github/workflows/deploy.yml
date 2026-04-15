@@ -2,7 +2,12 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ] # Verifica si tu rama se llama main o master
+    branches: [ main ]
+
+# --- ESTA ES LA PARTE QUE FALTA ---
+permissions:
+  contents: write
+# ----------------------------------
 
 jobs:
   deploy:
@@ -11,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          lfs: true # Crucial para que descargue tu juego de Unity pesado
+          lfs: true
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
