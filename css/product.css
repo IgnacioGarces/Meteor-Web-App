@@ -1,0 +1,197 @@
+/*product.css*/
+
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.product-page {
+    margin-top: 120px;
+}
+
+.product-page .product-gallery{
+    height: 50vh;
+}
+
+.product-page .carousel{
+    height: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+.product-page .carousel-img-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 3; 
+}
+
+.product-page .carousel-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit:contain;
+}
+
+
+.product-page .thumbnail-strip {
+    min-height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page .thumbnail {
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    width: 80px; 
+    flex-shrink: 0;
+}
+
+.product-page .thumbnail:hover {
+    transform: scale(1.50);
+    transition: 0.2s;
+}
+
+.product-page .product-info{
+    min-height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page .product-poster{
+    width: 100%;
+    min-height: 5rem;
+    padding-bottom: 2rem;
+}
+
+
+.product-page .title{
+    color: #c7c7c7;
+    padding-bottom: 1rem;
+}
+.product-page .product-description{
+    color: #c7c7c7;
+    padding-bottom: 1rem;
+}
+
+@media(min-width:768px){
+
+    .product-page .product-page .row{
+        height: 90vh;
+    }
+    
+    .product-page .carousel{
+        height: 40vh;
+    }
+    
+    .product-page .product-info,
+    .product-page .product-gallery .carousel
+    {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .product-page .carousel-inner{
+        height: 100%;
+    }
+    
+    .btn{
+        align-self: center;
+    }
+
+    .product-page .product-poster{
+        padding: 0;
+        height: fit-content;
+        
+    }
+
+    .product-page .product-description.title{
+        font-size: larger;
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+
+}
+
+@media (min-width: 992px){
+    .product-page .product-page .row{
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .product-page .carousel-img-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .product-page .carousel-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        object-position: top; 
+    }
+
+    .product-page .product-gallery{
+        height: 100%;
+    }
+
+    .product-page .product-info{
+        height: 100%;
+    }
+    
+    .product-page .carousel{
+        height: 70vh;
+    }
+    
+    .product-page .product-info,
+    .product-page .product-gallery .carousel
+    {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .product-page .carousel-inner{
+        height: 100%;
+    }
+
+    
+    .product-page .carousel-img-wrapper .carousel-img img{
+        object-fit:contain;
+        height: auto;
+        width: 100%;
+    }
+
+    .btn{
+        align-self: center;
+    }
+
+    .product-page .product-poster{
+        padding: 0;
+        width: 100%;
+        height:35%;
+        object-fit: contain;
+    }
+
+    .product-page .product-description.title{
+        font-size: larger;
+        padding: 0;
+        padding-bottom: 2rem;
+    }
+
+    
+}

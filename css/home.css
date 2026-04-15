@@ -1,0 +1,423 @@
+/* home.css */
+
+.home {
+    margin-top: 0;
+}
+
+.home .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* SNAP SYSTEM */
+.home.snap-container {
+    min-height: 100dvh;
+    width: 100%;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: none;
+}
+
+.home .snap-section {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    scroll-snap-align: start;
+    scroll-margin-top: 5rem;
+}
+
+/* CAROUSEL */
+.home .carousel{
+    height: 75vh;
+}
+
+.home .carousel-control-prev-icon,
+.home .carousel-control-next-icon
+{
+    background-color: #fc000096;
+    border-radius: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.home .carousel-control-prev-icon:hover,
+.home .carousel-control-next-icon:hover
+{
+    transform: scale(2.05);
+    transition: 0.2s;
+}
+
+.home .carousel-inner,
+.home .carousel-item {
+    height: 100%;
+    width: 100%;
+    min-height: 400px;
+}
+
+.home .carousel-img-wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+
+    .home .carousel, 
+    .home .carousel-inner, 
+    .home .carousel-item {
+        height: 100vh !important;
+        overflow: hidden;
+    }
+
+    .home .carousel-item img {
+        width: 100% !important;
+        height: 100vh !important;
+        object-fit: contain !important; 
+        object-position: center;
+        background-color: #000; 
+    }
+
+.home .carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+
+    pointer-events: none;
+}
+
+
+
+/* CAPTION */
+
+    .home .carousel-caption.custom-caption{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        padding-top: 15vh; 
+        padding-bottom: 3.5rem;
+        pointer-events: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .home .caption-content p{
+        margin-top: 2rem; 
+        pointer-events: none;
+    }
+
+.home .custom-caption {
+        width: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(135, 0, 254, 0.341),
+            rgba(135, 0, 254, 0.139),
+            rgba(56, 0, 85, 0)
+    );
+    display: flex;
+    justify-content: center;
+    }
+
+/* 
+
+    .home .caption-content h5.card-text.title
+    {
+        -webkit-text-stroke: 0.2px rgb(255, 9, 9);
+        color: #fdf6ff;
+    }
+*/
+
+.home .caption-content p.card-text
+{
+    font-weight: 900;
+    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
+    color: #ffffff;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Plus Jakarta Sans se ve bien con esta configuración */
+    line-height: 1.4em; 
+    max-height: 9.2em;
+}
+
+.home .caption-content p{
+        font-size: larger;
+        font-weight: bolder;
+        font-style: oblique;
+    }
+
+/* CARDS */
+
+.home .card {
+    background: transparent !important;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.home .card-img {
+    overflow: hidden;
+}
+
+.home .card-img img {
+    width: 100%;
+}
+
+
+.home .card-img,
+.home .card-body-text {
+    width: 50%; 
+}
+
+
+
+
+.home .card-body-text,
+.home .card-text title,
+.home .card-text,
+.home .contact-card-text
+{
+    width: 100%;
+    padding-left: 1rem;
+
+}
+
+
+.home .contact-card-text{
+    padding: 1rem;
+}
+
+
+/*FORM*/
+
+.home .card-contact{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .contact-text{
+    align-self: baseline;
+    padding-top: 5rem;
+}
+
+.home .contact-card-body{
+    width: 100%;
+    height: 100%;
+}
+
+.home .form-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+}
+
+.home .form-label{
+    color: #c7c7c7;
+    font-size: larger;
+}
+
+.home .form-control{
+    background: transparent;
+    color: #c7c7c7;
+}
+
+.home .btn{
+    margin-top: 2rem;
+}
+
+
+
+.home .card,
+.home .card-body,
+.home .card > .row,
+.home .card > .row > [class*="col-"] {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding-bottom: 1rem;
+}
+
+
+/* TABLET */
+
+@media (min-width: 768px) {
+    
+    
+    .caption-content {
+        padding: 4rem;
+    }
+
+    .home.snap-container {
+    scroll-snap-type: y mandatory;
+    }
+
+    .home .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+
+    .title{
+        padding-top: 3rem;
+    }
+
+    .home .card-body-text{
+        padding-left: 0;
+        align-self: center;
+    }
+
+    .about{
+        padding-top: 2rem;
+    }
+
+    
+    .home .caption-content p.card-text
+    {
+    font-weight: 900;
+    -webkit-text-stroke: 0.3px rgb(0, 1, 2);
+    color: #ffffff;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Plus Jakarta Sans se ve bien con esta configuración */
+    line-height: 1.5em; 
+    max-height: 6.2em;
+    }
+
+    .home .carousel-caption.custom-caption{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        padding-top: 5vh; 
+        padding-bottom: 0.1rem;
+        pointer-events: none;
+    }
+}
+
+
+/* DESKTOP */
+@media (min-width: 992px){
+    .home .carousel, 
+    .home .carousel-inner, 
+    .home .carousel-item {
+        height: 100vh !important;
+        overflow: hidden;
+    }
+
+    .home .carousel-item img {
+        width: 100% !important;
+        
+        object-fit:contain !important; 
+        object-position: center;
+        background-color: #000; 
+    }
+
+    .carousel-img-wrapper {
+        height: 100vh;
+        width: 100%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home .carousel-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0;
+
+        opacity: 0;
+        transform: translateY(90px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        pointer-events: none;
+    }   
+
+    .home .carousel-item:hover .carousel-caption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .home .custom-caption {
+        width: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(135, 0, 254, 0.341),
+            rgba(135, 0, 254, 0.383),
+            rgba(56, 0, 85, 0)
+    );
+    display: flex;
+    justify-content: center;
+    }
+
+
+    .home .row {
+        margin-left: 0;
+        margin-right: 0;
+        
+        display: flex;
+        flex-wrap: wrap;
+        justify-items: center;
+    }
+
+    .home .card {
+        flex-direction: column;
+    }
+
+    .home .card-img {
+        height: 15rem; 
+        overflow: hidden;
+    }
+
+    .home .card-img img {
+        object-fit:contain;
+    }
+
+    .home .card-body-text {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; 
+        justify-content: flex-start;
+    }
+
+    .home .card-contact {
+        width: 100%;
+        display: flex;
+    }
+
+    .home .card-contact .row {
+        width: 80%; 
+        display: flex;
+        align-items: flex-start; 
+        height: 100%; 
+    }
+
+    .home .contact-card-body {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    
+}
