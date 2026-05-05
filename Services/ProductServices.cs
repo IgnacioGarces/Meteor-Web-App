@@ -27,7 +27,7 @@ public class ProductService
             Title = "MateAventuras",
             Description = "Mateaventuras need your help! Dive into their colorfull world, create your own character and help the Mateaventuras team to solve puzzles mixed with math! ",
             ReleaseDate = null,
-            Poster = "/imgs/imgCarrusel2.png",
+            Poster = "/imgs/Products/MateAventuras/preview_1.png",
             StoreUrl = "/game",
             Images =
             {
