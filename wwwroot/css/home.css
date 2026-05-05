@@ -70,9 +70,9 @@
 
     .home .carousel-item img {
         width: 100% !important;
-        height: 100vh !important;
-        object-fit: contain !important; 
-        object-position: center;
+        height: 100% !important;
+        object-fit: cover !important; 
+        object-position: center 10%;
         background-color: #000; 
     }
 
