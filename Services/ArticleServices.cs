@@ -12,14 +12,14 @@ public class ArticleService
             Date = new DateTime(2025, 6, 12),
             Title = "Tribulations of the Realms",
             Description = "Tribulations of the Realms is a PVEVP wave defense tabletop survival RPG with open barter mechanics. Designed for up to four players, it blends elemental combat, and evolving equipment into a high-fantasy setting where the god of chaos wants to destroy the world.",
-            FirstImageUrl = "/imgs/Articles/TOTR/1.png",
+            FirstImageUrl = "/imgs/Articles/TOTR/poster.png",
             FirstSubtitle = null,
             SecondDescription = null,
             ImageUrl = new []{
+            "/imgs/Articles/TOTR/1.png",
             "/imgs/Articles/TOTR/2.png",
             "/imgs/Articles/TOTR/3.png",
-            "/imgs/Articles/TOTR/4.png",
-            "/imgs/Articles/TOTR/5.png"
+            "/imgs/Articles/TOTR/4.png"
             },
             SectionTitles = new[] { "A world on the edge", "Interlocking systems","Built through iteration", },
             Content = new []{
@@ -36,10 +36,11 @@ public class ArticleService
             Date = new DateTime(2025, 6, 12),
             Title = "Mateaventuras",
             Description = "Mateaventuras is a math exercise book where learning happens through adventure. Published by Letra Impresa and adopted by private schools in Buenos Aires as part of their mathematics curriculum, it transforms foundational math practice into a journey guided by charismatic characters and a richly illustrated world.",
-            FirstImageUrl = "/imgs/Articles/MateAventuras/1.png",
+            FirstImageUrl = "/imgs/Articles/MateAventuras/poster.png",
             FirstSubtitle = "Press start",
             SecondDescription = "The series invites students to press “start” and begin the adventure of learning math through play. Readers explore worlds, unlock levels, and solve mathematical challenges as if playing their favorite game. Each book also includes a Digital Education Project designed to introduce computational thinking and basic programming concepts.",
             ImageUrl = new []{
+            "/imgs/Articles/MateAventuras/1.png",
             "/imgs/Articles/MateAventuras/2.png",
             "/imgs/Articles/MateAventuras/3.png",
             },
