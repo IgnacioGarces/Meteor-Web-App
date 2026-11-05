@@ -11,14 +11,19 @@ public class ProductService
             Id = 1,
             Title = "Infinite Football",
             Description = "Face the Trials! The biggest clubs in the world have reunited to test first division players to acquire, YOU included! Show them what you've got.",
-            ReleaseDate = new DateTime(2026, 6, 12),
+            ReleaseDate = null,
             Poster = "/imgs/Products/InfiniteFootball/poster.png",
-            StoreUrl = null,
+            StoreUrl = "https://play.google.com/store/apps/details?id=com.MeteorCraftwork.InfiniteFootball&pcampaignid=web_share",
             Images =
             {
                 "/imgs/Products/InfiniteFootball/preview_1.png",
                 "/imgs/Products/InfiniteFootball/preview_2.png",
                 "/imgs/Products/InfiniteFootball/preview_3.png",
+                "/imgs/Products/InfiniteFootball/preview_4.png",
+                "/imgs/Products/InfiniteFootball/preview_5.png",
+                "/imgs/Products/InfiniteFootball/preview_6.png",
+
+
             }
         },
         new ProductModel
