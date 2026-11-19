@@ -197,3 +197,112 @@
         top: 7.5rem;
     }
 }
+
+/* =========================================
+   INDICADOR DE EXPANSIÓN (Galería Normal)
+========================================= */
+.mc-product-carousel {
+    position: relative; /* Asegura que el ícono se posicione sobre el carrusel */
+    transition: transform 0.2s ease;
+}
+
+.mc-product-carousel:active {
+    transform: scale(0.99); /* Pequeño feedback táctil al tocar en móviles */
+}
+
+.mc-expand-indicator {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10; /* Sobre las imágenes pero debajo del modal */
+    background: rgba(11, 9, 26, 0.7);
+    color: var(--mc-text-lavender);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    backdrop-filter: blur(4px);
+    pointer-events: none; /* Que el clic traspase hacia el carrusel */
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+/* En Desktop, mostramos el ícono solo al pasar el ratón */
+@media (min-width: 992px) {
+    .mc-expand-indicator {
+        opacity: 0;
+    }
+    .mc-product-carousel:hover .mc-expand-indicator {
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   MODAL FULLSCREEN
+========================================= */
+.mc-fullscreen-modal .modal-fullscreen {
+    /* Forzar fondo totalmente oscuro */
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
+.mc-modal-content {
+    background-color: transparent !important;
+    border: none;
+}
+
+.mc-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1055; /* Muy alto para estar sobre la imagen */
+    background: rgba(31, 29, 61, 0.8);
+    color: var(--mc-text-white);
+    border: 1px solid var(--mc-border-muted);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mc-modal-close:hover {
+    background: var(--mc-accent);
+    border-color: var(--mc-accent);
+    transform: scale(1.1);
+}
+
+.mc-fullscreen-img-wrap {
+    width: 100vw;
+    height: 100vh; /* Ocupa toda la pantalla del dispositivo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mc-fullscreen-img {
+    max-width: 100%;
+    max-height: 100vh; /* No desbordar la pantalla verticalmente */
+    object-fit: contain; /* Para que la imagen se vea completa siempre */
+}
+
+/* Ajuste de los controles del Modal para que sean más grandes y visibles */
+.mc-fs-ctrl {
+    width: 15vw !important; /* Áreas táctiles grandes en los bordes */
+    opacity: 0.8;
+}
+
+.mc-fs-ctrl .carousel-control-prev-icon,
+.mc-fs-ctrl .carousel-control-next-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    background-color: var(--mc-accent);
+    border-radius: 50%;
+    background-size: 50%;
+}

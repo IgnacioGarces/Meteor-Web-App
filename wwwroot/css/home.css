@@ -129,12 +129,23 @@
 }
 
 
-/* =========================================
-   NOSOTROS (TEAM CARDS)
-========================================= */
 .mc-about-logo {
     max-width: 200px;
-    filter: drop-shadow(0 0 20px var(--mc-accent-glow));
+    animation: mc-glow-pulse 3s infinite ease-in-out;
+}
+
+/* Animación exclusiva para la intensidad de la luz trasera (sin mover la imagen) */
+@keyframes mc-glow-pulse {
+    0% {
+        filter: drop-shadow(0 0 15px rgba(124, 82, 186, 0.2));
+    }
+    50% {
+        /* Solo el resplandor se expande e intensifica */
+        filter: drop-shadow(0 0 40px rgba(124, 82, 186, 0.7));
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgba(124, 82, 186, 0.2));
+    }
 }
 
 .mc-dev-card {
