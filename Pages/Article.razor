@@ -3,80 +3,113 @@
 @using Meteor_Web_App.Services
 @inject ArticleService ArticleService
 
+<div class="mc-article-page">
+    <div class="container mc-article-container">
 
+        <!-- Navegación rápida de regreso -->
+        <div class="mb-4">
+            <a href="/" class="mc-back-link">
+                <i class="bi bi-arrow-left"></i> Volver al inicio
+            </a>
+        </div>
 
-@if (article != null)
-{
-    <PageTitle>@article.Title</PageTitle>
-    <article class="article-container">
-        @* 1. ENCABEZADO E INTRODUCCIÓN *@
-        <header class="article-header">
-            @*<div class="article-date">@article.Date.ToString("dd MMM yyyy")</div>*@
-            <h1 class="article-title">@article.Title</h1>
-            
-            @if (!string.IsNullOrEmpty(article.FirstImageUrl))
-            {
-                <img src="@article.FirstImageUrl" class="img-fluid article-image-main" alt="@article.Title" />
-            }
-            @if (!string.IsNullOrEmpty(article.Description))
-            {
-                <div class="article-intro-text">
-                    @((MarkupString)article.Description)
-                </div>
-            }
-            @if (!string.IsNullOrEmpty(article.FirstSubtitle))
-            {
-                <div class="section-subtitle">
-                    @((MarkupString)article.FirstSubtitle)
-                </div>
-            }
-            @if (!string.IsNullOrEmpty(article.SecondDescription))
-            {
-                <div class="article-intro-text">
-                    @((MarkupString)article.SecondDescription)
-                </div>
-            }
-        </header>
-
-        @* 2. CUERPO DINÁMICO *@
-        @{
-            // Usamos el número de imágenes como guía para las secciones
-            int totalSections = article.ImageUrl.Length;
-        }
-
-        @for (int i = 0; i < totalSections; i++)
+        @if (article != null)
         {
-            <section class="article-section">
-                
-                @* Imagen de la sección *@
-                <img src="@article.ImageUrl[i]" 
-                     class="img-fluid article-image" 
-                     alt="Imagen de sección @(i + 1)" />
+            <PageTitle>@article.Title - Meteor Craftwork</PageTitle>
 
-                @* Título de la sección (Opcional) *@
-                @if (article.SectionTitles != null && i < article.SectionTitles.Length)
-                {
-                    <h2 class="section-subtitle">@article.SectionTitles[i]</h2>
+            <article class="mc-article-card">
+                @* 1. ENCABEZADO E INTRODUCCIÓN *@
+                <header class="mc-article-header">
+                    @* <span class="mc-article-date">@article.Date.ToString("dd MMM yyyy")</span> *@
+                    
+                    <h1 class="mc-article-title">@article.Title</h1>
+                    <div class="mc-title-accent mb-4"></div>
+
+                    @if (!string.IsNullOrEmpty(article.FirstImageUrl))
+                    {
+                        <div class="mc-article-hero-img-wrap">
+                            <img src="@article.FirstImageUrl" class="img-fluid mc-article-img-main" alt="@article.Title" />
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(article.Description))
+                    {
+                        <div class="mc-article-lead">
+                            @((MarkupString)article.Description)
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(article.FirstSubtitle))
+                    {
+                        <h2 class="mc-section-subtitle mt-4">
+                            @((MarkupString)article.FirstSubtitle)
+                        </h2>
+                    }
+
+                    @if (!string.IsNullOrEmpty(article.SecondDescription))
+                    {
+                        <div class="mc-article-body">
+                            @((MarkupString)article.SecondDescription)
+                        </div>
+                    }
+                </header>
+
+                @* 2. CUERPO DINÁMICO *@
+                @{
+                    int totalSections = article.ImageUrl?.Length ?? 0;
                 }
 
-                @* Contenido de la sección (Opcional) *@
-                @if (i < article.Content.Length)
+                @if (totalSections > 0)
                 {
-                    <div class="article-content-block">
-                        @((MarkupString)article.Content[i])
+                    <div class="mc-article-sections">
+                        @for (int i = 0; i < totalSections; i++)
+                        {
+                            <section class="mc-article-section">
+                                @* Imagen de la sección *@
+                                <div class="mc-article-section-img-wrap">
+                                    <img src="@article.ImageUrl![i]"
+                                         class="img-fluid mc-article-img"
+                                         alt="Imagen de sección @(i + 1)" />
+                                </div>
+
+                                @* Título de la sección (Opcional) *@
+                                @if (article.SectionTitles != null && i < article.SectionTitles.Length && !string.IsNullOrWhiteSpace(article.SectionTitles[i]))
+                                {
+                                    <h3 class="mc-section-subtitle">@article.SectionTitles[i]</h3>
+                                }
+
+                                @* Contenido de la sección (Opcional) *@
+                                @if (article.Content != null && i < article.Content.Length && !string.IsNullOrWhiteSpace(article.Content[i]))
+                                {
+                                    <div class="mc-article-body">
+                                        @((MarkupString)article.Content[i])
+                                    </div>
+                                }
+                            </section>
+                        }
                     </div>
                 }
-            </section>
+
+                @* FOOTER OPCIONAL DEL ARTÍCULO (Listo para cuando lo descomentés)
+                <footer class="mc-article-footer">
+                    <a href="@article.StoreUrl" class="mc-btn-store" target="_blank">
+                        Ver en tienda <i class="bi bi-box-arrow-up-right ms-2"></i>
+                    </a>
+                </footer>
+                *@
+            </article>
+        }
+        else
+        {
+            <div class="mc-article-not-found text-center py-5">
+                <h2 class="mc-section-title">Artículo no encontrado</h2>
+                <p class="mc-text-muted mt-2">El contenido que buscas no existe o fue movido.</p>
+                <a href="/" class="mc-btn-submit d-inline-block mt-3 text-decoration-none">Volver al inicio</a>
+            </div>
         }
 
-
-        @* 
-        <footer class="article-footer">
-            <a href="@article.StoreUrl" class="btn-store" target="_blank">Ver en tienda</a>
-        </footer>
-        *@
-    </article>
-}
+    </div>
+</div>
 
 @code {
     [Parameter] public int Id { get; set; } = default!;

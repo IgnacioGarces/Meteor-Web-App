@@ -1,423 +1,285 @@
-/* home.css */
-
-.home {
-    margin-top: 0;
+:root {
+    /* Paleta Meteor Craftwork */
+    --mc-bg-dark: #0b091a;
+    --mc-bg-card: #1f1d3d;
+    --mc-bg-card-hover: #28254d;
+    
+    --mc-border-muted: #55527a;
+    --mc-accent: #7c52ba;
+    --mc-accent-glow: rgba(124, 82, 186, 0.4);
+    
+    --mc-text-white: #ffffff;
+    --mc-text-lavender: #b4a7f5;
+    --mc-text-muted: #a39ec4;
 }
 
-.home .row {
-    margin-left: 0;
-    margin-right: 0;
+/* =========================================
+   BASE
+========================================= */
+.home-container {
+    background-color: var(--mc-bg-dark);
+    color: var(--mc-text-white);
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* SNAP SYSTEM */
-.home.snap-container {
-    min-height: 100dvh;
-    width: 100%;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: none;
+.mc-container-mw {
+    max-width: 1200px;
 }
 
-.home .snap-section {
-    display: flex;
+.mc-section {
+    padding: 60px 0;
+}
+
+.mc-section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    color: var(--mc-text-white);
+}
+
+.mc-title-accent {
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--mc-accent), var(--mc-text-lavender));
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+}
+
+.mc-text-muted { color: var(--mc-text-muted); line-height: 1.6; }
+.mc-text-lavender { color: var(--mc-text-lavender); line-height: 1.6; }
+
+
+/* =========================================
+   CAROUSEL (LANZAMIENTOS)
+========================================= */
+.mc-carousel-inner {
+    height: 60vh;
+    background-color: #000;
+}
+
+.mc-carousel-item {
+    height: 100%;
+}
+
+.mc-carousel-img-wrap {
+    display: block;
     height: 100%;
     width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    scroll-snap-align: start;
-    scroll-margin-top: 5rem;
 }
 
-/* CAROUSEL */
-.home .carousel{
-    height: 75vh;
+.mc-carousel-item img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    background-color: var(--mc-bg-dark);
 }
 
-.home .carousel-control-prev-icon,
-.home .carousel-control-next-icon
-{
-    background-color: #fc000096;
-    border-radius: 2rem;
+/* Controles */
+.mc-carousel-ctrl {
+    width: 10%;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.mc-carousel-ctrl:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--mc-accent);
+    border-radius: 50%;
     width: 3rem;
     height: 3rem;
+    background-size: 50%;
 }
 
-.home .carousel-control-prev-icon:hover,
-.home .carousel-control-next-icon:hover
-{
-    transform: scale(2.05);
-    transition: 0.2s;
+.mc-indicators button {
+    background-color: var(--mc-text-lavender) !important;
 }
 
-.home .carousel-inner,
-.home .carousel-item {
-    height: 100%;
-    width: 100%;
-    min-height: 400px;
-}
-
-.home .carousel-img-wrapper {
-    height: 100%;
-    overflow: hidden;
-}
-
-    .home .carousel, 
-    .home .carousel-inner, 
-    .home .carousel-item {
-        height: 100vh !important;
-        overflow: hidden;
-    }
-
-    .home .carousel-item img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important; 
-        object-position: center 10%;
-        background-color: #000; 
-    }
-
-.home .carousel-caption {
+/* Captions con gradiente oscuro y tipografía robusta */
+.mc-carousel-caption {
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    padding: 0;
-
+    background: linear-gradient(to top, rgba(11,9,26, 0.95) 0%, rgba(11,9,26, 0.5) 50%, transparent 100%);
+    padding: 100px 20px 40px 20px;
+    text-align: center;
     pointer-events: none;
 }
 
-
-
-/* CAPTION */
-
-    .home .carousel-caption.custom-caption{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-
-        padding-top: 15vh; 
-        padding-bottom: 3.5rem;
-        pointer-events: none;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .home .caption-content p{
-        margin-top: 2rem; 
-        pointer-events: none;
-    }
-
-.home .custom-caption {
-        width: 100%;
-        background: linear-gradient(
-            to top,
-            rgba(135, 0, 254, 0.341),
-            rgba(135, 0, 254, 0.139),
-            rgba(56, 0, 85, 0)
-    );
-    display: flex;
-    justify-content: center;
-    }
-
-/* 
-
-    .home .caption-content h5.card-text.title
-    {
-        -webkit-text-stroke: 0.2px rgb(255, 9, 9);
-        color: #fdf6ff;
-    }
-*/
-
-.home .caption-content p.card-text
-{
-    font-weight: 900;
-    -webkit-text-stroke: 0.2px rgb(0, 0, 0);
-    color: #ffffff;
-
+.mc-caption-text {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--mc-text-white);
+    margin: 0 auto;
+    max-width: 800px;
     display: -webkit-box;
-    -webkit-box-orient: vertical;  
-    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
     overflow: hidden;
-    text-overflow: ellipsis;
-    
-    /* Plus Jakarta Sans se ve bien con esta configuración */
-    line-height: 1.4em; 
-    max-height: 9.2em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
 }
 
-.home .caption-content p{
-        font-size: larger;
-        font-weight: bolder;
-        font-style: oblique;
-    }
 
-/* CARDS */
+/* =========================================
+   NOSOTROS (TEAM CARDS)
+========================================= */
+.mc-about-logo {
+    max-width: 200px;
+    filter: drop-shadow(0 0 20px var(--mc-accent-glow));
+}
 
-.home .card {
-    background: transparent !important;
-    border: none;
-    box-shadow: none;
+.mc-dev-card {
+    background: var(--mc-bg-card);
+    border: 1px solid var(--mc-border-muted);
+    border-radius: 12px;
+    padding: 20px;
     display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.home .card-img {
-    overflow: hidden;
-}
-
-.home .card-img img {
-    width: 100%;
-}
-
-
-.home .card-img,
-.home .card-body-text {
-    width: 50%; 
-}
-
-
-
-
-.home .card-body-text,
-.home .card-text title,
-.home .card-text,
-.home .contact-card-text
-{
-    width: 100%;
-    padding-left: 1rem;
-
-}
-
-
-.home .contact-card-text{
-    padding: 1rem;
-}
-
-
-/*FORM*/
-
-.home .card-contact{
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
-}
-
-.home .contact-text{
-    align-self: baseline;
-    padding-top: 5rem;
-}
-
-.home .contact-card-body{
-    width: 100%;
+    gap: 20px;
+    transition: all 0.3s ease;
     height: 100%;
 }
 
-.home .form-inputs{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
+.mc-dev-card:hover {
+    border-color: var(--mc-accent);
+    background: var(--mc-bg-card-hover);
+    box-shadow: 0 8px 24px var(--mc-accent-glow);
+    transform: translateY(-4px);
 }
 
-.home .form-label{
-    color: #c7c7c7;
-    font-size: larger;
+.mc-dev-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid var(--mc-border-muted);
 }
 
-.home .form-control{
+.mc-dev-info {
+    flex: 1;
+}
+
+.mc-dev-name {
+    margin: 0 0 4px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--mc-text-white);
+}
+
+.mc-dev-role {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--mc-text-lavender);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mc-dev-desc {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--mc-text-muted);
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   CONTACTO (FORMULARIO MOCKUP 2)
+========================================= */
+.mc-contact-wrap {
+    background: url('/imgs/meteor-watermark.png') no-repeat right bottom;
+    background-size: 50%;
+    padding-bottom: 40px;
+}
+
+.mc-form-label {
+    color: var(--mc-text-lavender);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-left: 10px;
+}
+
+/* Inputs estilo "línea inferior" del boceto */
+.mc-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--mc-accent) !important;
+    border-radius: 0 !important;
+    color: var(--mc-text-white) !important;
+    padding: 10px 10px;
+    font-size: 1rem;
+    box-shadow: none !important;
+    transition: border-color 0.3s ease;
+}
+
+.mc-input:focus {
+    border-bottom-color: var(--mc-text-lavender) !important;
+}
+
+.mc-btn-submit {
     background: transparent;
-    color: #c7c7c7;
+    color: var(--mc-text-white);
+    border: 2px solid var(--mc-accent);
+    padding: 12px 40px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
-.home .btn{
-    margin-top: 2rem;
+.mc-btn-submit:hover:not(:disabled) {
+    background: var(--mc-accent);
+    box-shadow: 0 0 20px var(--mc-accent-glow);
+    transform: translateY(-2px);
+}
+
+.mc-btn-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.mc-alert {
+    background: rgba(124, 82, 186, 0.2);
+    border: 1px solid var(--mc-accent);
+    color: var(--mc-text-lavender);
 }
 
 
-
-.home .card,
-.home .card-body,
-.home .card > .row,
-.home .card > .row > [class*="col-"] {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    padding-bottom: 1rem;
-}
-
-
-/* TABLET */
-
+/* =========================================
+   MEDIA QUERIES (DESKTOP)
+========================================= */
 @media (min-width: 768px) {
+    .mc-section {
+        padding: 100px 0;
+    }
     
+    .mc-section-title {
+        font-size: 3rem;
+    }
     
-    .caption-content {
-        padding: 4rem;
+    .mc-carousel-inner {
+        height: 75vh;
     }
-
-    .home.snap-container {
-    scroll-snap-type: y mandatory;
-    }
-
-    .home .card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding-bottom: 3rem;
-    }
-
-    .title{
-        padding-top: 3rem;
-    }
-
-    .home .card-body-text{
-        padding-left: 0;
-        align-self: center;
-    }
-
-    .about{
-        padding-top: 2rem;
-    }
-
     
-    .home .caption-content p.card-text
-    {
-    font-weight: 900;
-    -webkit-text-stroke: 0.3px rgb(0, 1, 2);
-    color: #ffffff;
-
-    display: -webkit-box;
-    -webkit-box-orient: vertical;  
-    -webkit-line-clamp: 5; /* Número de líneas que quieres mostrar en Mobile */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    
-    /* Plus Jakarta Sans se ve bien con esta configuración */
-    line-height: 1.5em; 
-    max-height: 6.2em;
+    .mc-carousel-item img {
+        object-fit: contain;
+        background-color: var(--mc-bg-dark);
     }
 
-    .home .carousel-caption.custom-caption{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-
-        padding-top: 5vh; 
-        padding-bottom: 0.1rem;
-        pointer-events: none;
+    .mc-caption-text {
+        font-size: 1.4rem;
+        -webkit-line-clamp: 2;
     }
-}
-
-
-/* DESKTOP */
-@media (min-width: 992px){
-    .home .carousel, 
-    .home .carousel-inner, 
-    .home .carousel-item {
-        height: 100vh !important;
-        overflow: hidden;
-    }
-
-    .home .carousel-item img {
-        width: 100% !important;
-        
-        object-fit:contain !important; 
-        object-position: center;
-        background-color: #000; 
-    }
-
-    .carousel-img-wrapper {
-        height: 100vh;
-        width: 100%;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .home .carousel-caption {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 0;
-
-        opacity: 0;
-        transform: translateY(90px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        pointer-events: none;
-    }   
-
-    .home .carousel-item:hover .carousel-caption {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .home .custom-caption {
-        width: 100%;
-        background: linear-gradient(
-            to top,
-            rgba(135, 0, 254, 0.341),
-            rgba(135, 0, 254, 0.383),
-            rgba(56, 0, 85, 0)
-    );
-    display: flex;
-    justify-content: center;
-    }
-
-
-    .home .row {
-        margin-left: 0;
-        margin-right: 0;
-        
-        display: flex;
-        flex-wrap: wrap;
-        justify-items: center;
-    }
-
-    .home .card {
-        flex-direction: column;
-    }
-
-    .home .card-img {
-        height: 15rem; 
-        overflow: hidden;
-    }
-
-    .home .card-img img {
-        object-fit:contain;
-    }
-
-    .home .card-body-text {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1; 
-        justify-content: flex-start;
-    }
-
-    .home .card-contact {
-        width: 100%;
-        display: flex;
-    }
-
-    .home .card-contact .row {
-        width: 80%; 
-        display: flex;
-        align-items: flex-start; 
-        height: 100%; 
-    }
-
-    .home .contact-card-body {
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    
 }

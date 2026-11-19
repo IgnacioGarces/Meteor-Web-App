@@ -1,69 +1,209 @@
-.article-container .html, body {
-    overflow-x: hidden;
-    overflow-y: auto;
+/* =========================================
+   CONTENEDOR PRINCIPAL (Mobile First)
+========================================= */
+.mc-article-page {
+    background-color: var(--mc-bg-dark);
+    color: var(--mc-text-white);
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    /* Espacio superior para compensar el navbar fijo */
+    padding-top: 7.5rem;
+    padding-bottom: 5rem;
 }
 
-.article-container {
-    margin-top: 120px;
+.mc-article-container {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* Link de regreso */
+.mc-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--mc-text-lavender);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.mc-back-link:hover {
+    color: var(--mc-text-white);
+    transform: translateX(-4px);
+}
+
+/* =========================================
+   ENCABEZADO DEL ARTÍCULO
+========================================= */
+.mc-article-date {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--mc-text-lavender);
+    margin-bottom: 0.75rem;
+}
+
+.mc-article-title {
+    font-size: clamp(1.85rem, 4vw, 2.85rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--mc-text-white);
+    margin-bottom: 0.85rem;
+}
+
+.mc-article-hero-img-wrap {
+    margin: 2rem 0;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--mc-border-muted);
+    background-color: var(--mc-bg-card);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(124, 82, 186, 0.15);
+}
+
+.mc-article-img-main {
+    width: 100%;
+    max-height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+/* =========================================
+   TIPOGRAFÍA Y CONTENIDO DINÁMICO
+========================================= */
+.mc-article-lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #e4e0fa;
+    margin-bottom: 1.5rem;
+}
+
+.mc-section-subtitle {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--mc-text-lavender);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--mc-accent);
+}
+
+.mc-article-body {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--mc-text-muted);
+}
+
+/* Estilos para etiquetas HTML inyectadas vía MarkupString */
+.mc-article-body p,
+.mc-article-lead p {
+    margin-bottom: 1.25rem;
+}
+
+.mc-article-body strong,
+.mc-article-lead strong {
+    color: var(--mc-text-white);
+    font-weight: 700;
+}
+
+.mc-article-body a {
+    color: var(--mc-text-lavender);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.mc-article-body a:hover {
+    color: var(--mc-text-white);
+}
+
+.mc-article-body ul,
+.mc-article-body ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.mc-article-body li {
+    margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   SECCIONES DINÁMICAS E IMÁGENES
+========================================= */
+.mc-article-sections {
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
+    gap: 3rem;
 }
 
-.article-container .article-date,
-.article-container .article-title,
-.article-container .article-content{
-    color: #c7c7c7;
-    padding: 1rem;
+.mc-article-section {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(85, 82, 122, 0.25);
 }
 
-.article-section {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+.mc-article-section-img-wrap {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--mc-border-muted);
+    background-color: var(--mc-bg-card);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
 }
 
-.section-subtitle {
-    margin-top: 1.5rem;
-    font-size: 1.5rem;
-    color: #333;
-}
-
-.article-image {
-    display: block;
-    max-width: 100%;
+.mc-article-img {
+    width: 100%;
     height: auto;
-    margin: 1rem 0;
+    display: block;
 }
 
-.article-intro-text,
-.article-content-block,
-.section-subtitle
-{
-    color: #c7c7c7;
-    padding: 1rem;
+/* =========================================
+   FOOTER DE ARTÍCULO (Botón de Tienda)
+========================================= */
+.mc-article-footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(85, 82, 122, 0.3);
+    display: flex;
+    justify-content: flex-end;
 }
 
+.mc-btn-store {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--mc-accent);
+    color: var(--mc-text-white);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px var(--mc-accent-glow);
+    transition: all 0.25s ease;
+}
+
+.mc-btn-store:hover {
+    background-color: #8e63cf;
+    color: var(--mc-text-white);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   DESKTOP
+========================================= */
 @media (min-width: 992px) {
-    
-    .article-container{
-        width: 100%;
-        flex-wrap: wrap;
-        justify-items: center;
-        align-items: center;
+    .mc-article-page {
+        padding-top: 8.5rem;
     }
 
-
-    .article-container .article-header{
-        width: 50%;
-        height: 100%;
-        align-self: center;
-        justify-self: center;
+    .mc-article-card {
+        background-color: rgba(31, 29, 61, 0.35);
+        border: 1px solid rgba(85, 82, 122, 0.3);
+        border-radius: 16px;
+        padding: 3rem 3.5rem;
     }
-
-    .article-container .article-section {
-        width: 50%;
-        height: 100%;
-        align-self: center;
-        justify-self: center;
-    }
-
 }
