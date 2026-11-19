@@ -9,386 +9,235 @@
 @inject IJSRuntime JS
 @inject NavigationManager Nav
 
-<div class="home snap-container">
+<div class="home-container">
 
-    <section id="lanzamientos" class="snap-section">
-        
-        <div id="carouselExampleAutoplaying"
-         class="carousel carousel-dark slide container-fluid p-0 m-0"
-         data-bs-ride="carousel">
-
-        @{
-            // 1. Calculamos el total de slides y preparamos nuestra bandera global
-            int totalSlides = (productos?.Count() ?? 0) + (articulos?.Count() ?? 0);
-            bool isFirst = true;
-        }
-
-        <div class="carousel-indicators">
-            @for (int i = 0; i < totalSlides; i++)
-            {
-                <button type="button" 
-                        data-bs-target="#carouselExampleAutoplaying" 
-                        data-bs-slide-to="@i" 
-                        class="@(i == 0 ? "active" : "")"
-                        aria-current="@(i == 0 ? "true" : "false")">
-                </button>
+    <!-- LANZAMIENTOS (CAROUSEL) -->
+    <section id="lanzamientos" class="mc-section p-0">
+        <div id="carouselMeteor" class="carousel slide" data-bs-ride="carousel">
+            @{
+                int totalSlides = (productos?.Count() ?? 0) + (articulos?.Count() ?? 0);
+                bool isFirst = true;
             }
-        </div>
 
-        <div class="carousel-inner">
-            
-            @* Bucle de Productos *@
-            @if (productos != null && productos.Any())
-            {
-                @foreach (var prod in productos)
+            <div class="carousel-indicators mc-indicators">
+                @for (int i = 0; i < totalSlides; i++)
                 {
-                    <div class="carousel-item @(isFirst ? "active" : "")">
-                        <div class="carousel-img-wrapper">
-                            <a href="/product/@prod.Id">
-                                <img src="@prod.Poster" class="d-block" alt="@prod.Title">
+                    <button type="button" 
+                            data-bs-target="#carouselMeteor" 
+                            data-bs-slide-to="@i" 
+                            class="@(i == 0 ? "active" : "")"
+                            aria-current="@(i == 0 ? "true" : "false")">
+                    </button>
+                }
+            </div>
+
+            <div class="carousel-inner mc-carousel-inner">
+                @* Bucle de Productos *@
+                @if (productos != null && productos.Any())
+                {
+                    @foreach (var prod in productos)
+                    {
+                        <div class="carousel-item mc-carousel-item @(isFirst ? "active" : "")">
+                            <a href="/product/@prod.Id" class="mc-carousel-img-wrap">
+                                <img src="@prod.Poster" class="d-block w-100" alt="@prod.Title">
                             </a>
-                        </div>
-                        <div class="carousel-caption custom-caption">
-                            <div class="caption-content text-start">
-                                <p class="card-text">@prod.Description</p>
+                            <div class="mc-carousel-caption">
+                                <div class="mc-caption-content">
+                                    <p class="mc-caption-text">@prod.Description</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    { isFirst = false; } 
+                        { isFirst = false; } 
+                    }
                 }
-            }
 
-            @* Bucle de Artículos *@
-            @if (articulos != null && articulos.Any())
-            {
-                @foreach (var article in articulos)
+                @* Bucle de Artículos *@
+                @if (articulos != null && articulos.Any())
                 {
-                    <div class="carousel-item @(isFirst ? "active" : "")">
-                        <div class="carousel-img-wrapper">
-                            <a href="/article/@article.Id">
-                                <img src="@article.FirstImageUrl" class="d-block" alt="@article.Title">
+                    @foreach (var article in articulos)
+                    {
+                        <div class="carousel-item mc-carousel-item @(isFirst ? "active" : "")">
+                            <a href="/article/@article.Id" class="mc-carousel-img-wrap">
+                                <img src="@article.FirstImageUrl" class="d-block w-100" alt="@article.Title">
                             </a>
-                        </div>
-                        <div class="carousel-caption custom-caption">
-                            <div class="caption-content text-start">
-                                <p class="card-text ">@article.Description</p>
+                            <div class="mc-carousel-caption">
+                                <div class="mc-caption-content">
+                                    <p class="mc-caption-text">@article.Description</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    { isFirst = false; }
+                        { isFirst = false; }
+                    }
                 }
-            }
-            
-        </div>
+            </div>
 
-        <button class="carousel-control-prev" type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-
-        <button class="carousel-control-next" type="button"
-                data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-
+            <button class="carousel-control-prev mc-carousel-ctrl" type="button" data-bs-target="#carouselMeteor" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next mc-carousel-ctrl" type="button" data-bs-target="#carouselMeteor" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="snap-section ">
-
-        <!-- INFO -->
-        <div class="card about">
-            <div class="row g-0 align-items-center">
-
-                <!-- LOGO -->
-                <div class="col-12 col-md-4 d-flex justify-content-center py-4 py-md-0">
-                    <img src="/imgs/logo.png"
-                         class="img-fluid w-50 w-md-75"
-                         alt="Meteor Craftworks logo">
+    <div class="container mc-container-mw">
+        <!-- ABOUT / NOSOTROS -->
+        <section id="about" class="mc-section">
+            
+            <!-- INTRO NOSOTROS -->
+            <div class="row align-items-center mb-5 mc-about-intro">
+                <div class="col-12 col-md-4 text-center text-md-start mb-4 mb-md-0">
+                    <img src="/imgs/logo.png" class="img-fluid mc-about-logo" alt="Meteor Craftworks logo">
                 </div>
-
-                <!-- TEXTO -->
                 <div class="col-12 col-md-8">
-                    <div class="card-body">
-
-                        <h2 class="card-text">
-                            About us
-                        </h2>   
-
-                        <p class="card-text ">
-                            Meteor Craftworks team is composed of talented young man dedicated to the making of stunning and trasdcendental works of art that inspire generations just as we have been inspired by who came before us.
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-       <!-- DEVS -->
-        <div class="card custom-caption">
-    <div class="card-body">
-        <div class="row g-4">
-
-            <!-- DEV ANGRI-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-angry.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Lucas Angriman
-                        </h5>
-                        <p class="card-text">
-                            Team Leader<br />
-                            3D Artist<br />
-                            VFX Expert
-                        </p>
-                        <small class="card-text ">
-                            Art Director & Producer
-                        </small>
-                    </div>
+                    <h2 class="mc-section-title">NUESTRO EQUIPO</h2>
+                    <div class="mc-title-accent mb-4"></div>
+                    <p class="mc-text-muted">
+                        Meteor Craftworks team is composed of talented young men dedicated to the making of stunning and transcendental works of art that inspire generations just as we have been inspired by who came before us.
+                    </p>
                 </div>
             </div>
 
-            <!-- DEV LULO-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-lulo.png"
-                             class="img-fluid rounded">
+            <!-- GRILLA DEVS -->
+            <div class="row g-4">
+                <!-- DEV ANGRI -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-angry.png" class="mc-dev-img" alt="Lucas Angriman">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Lucas Angriman</h5>
+                            <span class="mc-dev-role">Art Director & Producer</span>
+                            <p class="mc-dev-desc">Team Leader<br />3D Artist<br />VFX Expert</p>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Julian Bridi
-                        </h5>
-                        <p class="card-text">
-                            Team Coordinator<br />
-                            Game Designer<br />
-                            Public Relationships
-                        </p>
-                        <small class="card-text ">
-                            CEO & General Producer
-                        </small>
+                <!-- DEV LULO -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-lulo.png" class="mc-dev-img" alt="Julian Bridi">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Julian Bridi</h5>
+                            <span class="mc-dev-role">CEO & General Producer</span>
+                            <p class="mc-dev-desc">Team Coordinator<br />Game Designer<br />Public Relationships</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEV YO -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-yo.png" class="mc-dev-img" alt="Ignacio Garcés">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Ignacio Garcés</h5>
+                            <span class="mc-dev-role">COO & Programmer</span>
+                            <p class="mc-dev-desc">Product Coordinator<br />Sound Designer<br />Game Development</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEV MATIAS -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-mati.png" class="mc-dev-img" alt="Matias Somma">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Matias Somma</h5>
+                            <span class="mc-dev-role">Programmer</span>
+                            <p class="mc-dev-desc">Game Developer<br />Asset Implementation<br />Mechanic Engineer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEV VALEN -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-valen.png" class="mc-dev-img" alt="Valentin Quetto">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Valentin Quetto</h5>
+                            <span class="mc-dev-role">3D Artist & Animator</span>
+                            <p class="mc-dev-desc">Character Design and Model<br />Character Animations<br />Inorganic Modeling</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEV ARON -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-aron.png" class="mc-dev-img" alt="Arón Poiesis">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Arón Poiesis</h5>
+                            <span class="mc-dev-role">Musician & CM</span>
+                            <p class="mc-dev-desc">Musicalization<br />Content Creation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DEV JULI -->
+                <div class="col-12 col-lg-6">
+                    <div class="mc-dev-card">
+                        <img src="/imgs/pic-devs/pic-juli.png" class="mc-dev-img" alt="Julieta Mayorga Alvarez">
+                        <div class="mc-dev-info">
+                            <h5 class="mc-dev-name">Julieta Mayorga Alvarez</h5>
+                            <span class="mc-dev-role">2D Artist</span>
+                            <p class="mc-dev-desc">Illustration<br />Texturing</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- DEV YO-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-yo.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Ignacio Garcés 
-                        </h5>
-                        <p class="card-text">
-                            Product Coordinator<br />
-                            Sound Designer<br />
-                            Game Development
-                            
-                        </p>
-                        <small class="card-text ">
-                            COO & Programmer
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DEV MATIAS-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-mati.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Matias Somma
-                        </h5>
-                        <p class="card-text">
-                            Game Developer<br />
-                            Asset Implementation<br />
-                            Mechanic Engineer
-                        </p>
-                        <small class="card-text ">
-                            Programmer
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DEV VALEM-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-valen.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Valentin Quetto
-                        </h5>
-                        <p class="card-text">
-                            Character Design and Model<br />
-                            Character Animations<br />
-                            Inorganic Modeling
-                        </p>
-                        <small class="card-text ">
-                            3D Artist & Animator
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DEV AARON-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-aron.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Arón Poiesis
-                        </h5>
-                        <p class="card-text">
-                            Musicalization<br />
-                            Content Creation
-                        </p>
-                        <small class="card-text ">
-                            Musician & CM
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- DEV JULI-->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="/imgs/pic-devs/pic-juli.png"
-                             class="img-fluid rounded">
-                    </div>
-
-                    <div class="card-body-text">
-                        <h5 class="card-text title">
-                            Julieta Mayorga Alvarez
-                        </h5>
-                        <p class="card-text">
-                            Ilustration<br />
-                            Texturing
-                        </p>
-                        <small class="card-text ">
-                            2D Artist
-                        </small>
-                    </div>
-                </div>
-            </div>
-
-            
-           
-
-        </div>
-    </div>
-        </div>
-
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="snap-section ">
-
-        <div class="card-contact mb-3" style="max-width: 1920px;">
-            <div class="row g-0">
-
-                <!-- TEXTO -->
-                <div class="contact-text col-12 col-md-5 ">
-                    <div class="contact-card-body">
-                        <h4 class="card-text title">
-                            Contact
-                        </h4>
-
-                        <p class=" contact-card-text ">
-                            ¿Ready to start your next project?<br>
-                            We specialize in turning ideas into unique visual experiences.
-                        </p>
-                    </div>
+        <!-- CONTACTO -->
+        <section id="contacto" class="mc-section">
+            <div class="row mc-contact-wrap">
+                <!-- TEXTO CONTACTO -->
+                <div class="col-12 col-md-5 mb-5 mb-md-0 pe-md-5">
+                    <h2 class="mc-section-title">MANDANOS UN<br />MENSAJITO</h2>
+                    <p class="mc-text-lavender mt-3">
+                        ¿Ready to start your next project?<br>
+                        We specialize in turning ideas into unique visual experiences.
+                    </p>
                 </div>
 
-                <!-- FORM -->
-                <div class="col-12 col-md-7 p-4">
-
-                    <EditForm Model="form"
-                              OnValidSubmit="EnviarFormulario"
-                              FormName="contactForm"
-                              >
-
+                <!-- FORMULARIO -->
+                <div class="col-12 col-md-7">
+                    <EditForm Model="form" OnValidSubmit="EnviarFormulario" FormName="contactForm" class="mc-form">
                         <DataAnnotationsValidator />
                         <ValidationSummary class="text-danger mb-3" />
 
-                        <div class="form-inputs">
-                            <label class="form-label">Nombre</label>
-                            <InputText @bind-Value="form.Nombre" name="Nombre"
-                                       class="form-control form-control-lg" />
+                        <div class="mb-4">
+                            <label class="mc-form-label">nombre</label>
+                            <InputText @bind-Value="form.Nombre" name="Nombre" class="form-control mc-input" />
                         </div>
 
-                        <div class="form-inputs ">
-                            <label class="form-label">Email</label>
-                            <InputText @bind-Value="form.Email"
-                                       name="Email"
-                                       type="email"
-                                       class="form-control form-control-lg" />
+                        <div class="mb-4">
+                            <label class="mc-form-label">e-mail</label>
+                            <InputText @bind-Value="form.Email" name="Email" type="email" class="form-control mc-input" />
                         </div>
 
-                        <div class="form-inputs">
-                            <label class="form-label">Mensaje</label>
-                            <InputTextArea @bind-Value="form.Mensaje"
-                                            name ="Mensaje"
-                                           class="form-control form-control-lg"
-                                           rows="4" />
+                        <div class="mb-5">
+                            <label class="mc-form-label">mensajito</label>
+                            <InputTextArea @bind-Value="form.Mensaje" name="Mensaje" class="form-control mc-input" rows="1" />
                         </div>
 
-                        <div class="d-flex justify-content-end">
-                            <button type="submit"
-                                    class="btn btn-outline-light btn-lg px-5"
-                                    disabled="@enviando">
-                                @(enviando ? "Enviando..." : "Enviar")
+                        <div class="d-flex justify-content-start">
+                            <button type="submit" class="mc-btn-submit" disabled="@enviando">
+                                @(enviando ? "ENVIANDO..." : "ENVIAR")
                             </button>
                         </div>
-
                     </EditForm>
 
                     @if (enviado)
                     {
-                        <div class="alert alert-success mt-3">
+                        <div class="alert alert-success mt-4 mc-alert">
                             ¡Gracias! Tu mensaje fue enviado correctamente.
                         </div>
                     }
                 </div>
-
             </div>
-        </div>
-
-        
-    </section>
-
+        </section>
+    </div>
 </div>
 
 @code {

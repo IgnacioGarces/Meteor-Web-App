@@ -5,52 +5,60 @@
 @inject ArticleService ArticleService
 @inject ProductService ProductService
 
-<nav id="mainNavbar" class="navbar navbar-expand-lg nav-background fixed-top">
-    <div class="container-fluid position-relative">
+<!-- Aplicamos la clase mc-navbar y ms-auto para empujar los links a la derecha -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg mc-navbar fixed-top">
+    <div class="container-fluid mc-container-mw">
 
-        <div class="navbar-brand position-absolute top-50 start-50 translate-middle">
+        <!-- LOGO (Alineado a la izquierda) -->
+        <div class="navbar-brand">
             @if (IsHome)
             {
-                <img src="imgs/bannerLogo.png" class="bannerLogo" alt="Logo" />
+                <img src="imgs/bannerLogo.png" class="mc-banner-logo" alt="Meteor Craftwork Logo" />
             }
             else
             {
                 <NavLink href="/" Match="NavLinkMatch.All">
-                    <img src="imgs/bannerLogo.png" class="bannerLogo" alt="Logo" />
+                    <img src="imgs/bannerLogo.png" class="mc-banner-logo" alt="Meteor Craftwork Logo" />
                 </NavLink>
             }
         </div>
 
-        <button class="navbar-dark navbar-toggler"
+        <!-- BOTÓN MENÚ MÓVIL (Toggler) -->
+        <button class="navbar-toggler mc-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon mc-toggler-icon"></span>
         </button>
 
+        <!-- LINKS Y DROPDOWN -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+            <!-- ms-auto empuja los items a la derecha -->
+            <ul class="navbar-nav ms-auto mc-nav-links">
 
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown mc-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Launchs
                     </a>
 
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="dropdown-menu mc-dropdown-menu" aria-labelledby="navbarDropdown">
                         @if (productos != null)
                         {
                             @foreach (var prod in productos)
                             {
                                 var prodLink = "/product/" + prod.Id;
                                 <li>
-                                    <NavLink class="dropdown-item" href="@prodLink">@prod.Title</NavLink>
+                                    <NavLink class="dropdown-item mc-dropdown-item" href="@prodLink">@prod.Title</NavLink>
                                 </li>
                             }
                         }
 
                         @if (productos?.Any() == true && articulos?.Any() == true)
                         {
-                            <li><hr class="dropdown-divider" /></li>
+                            <li><hr class="dropdown-divider mc-dropdown-divider" /></li>
                         }
 
                         @if (articulos != null)
@@ -59,13 +67,14 @@
                             {
                                 var artLink = "/article/" + art.Id;
                                 <li>
-                                    <NavLink class="dropdown-item" href="@artLink">@art.Title</NavLink>
+                                    <NavLink class="dropdown-item mc-dropdown-item" href="@artLink">@art.Title</NavLink>
                                 </li>
                             }
                         }
                     </ul>
                 </li>
 
+                <!-- Tu lógica original de visibilidad -->
                 @if (!IsHome && !IsAbout && !IsContact)
                 {
                     <li class="nav-item">
