@@ -1,24 +1,63 @@
-/* FOOTER */
-.contact-footer {
-    width: 100%;
-    padding: 2rem;
-    text-align: center;
-    color: #fff;
+/* =========================================
+   FOOTER
+========================================= */
+.mc-footer {
+    background-color: var(--mc-bg-dark);
+    /* Una línea sutil para separarlo del contenido superior */
+    border-top: 1px solid rgba(85, 82, 122, 0.25); 
+    padding: 3.5rem 0 2rem;
+    margin-top: 2rem;
 }
 
-.social-icons {
+.mc-footer-title {
+    color: var(--mc-text-lavender);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+}
+
+.mc-social-icons {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
 }
 
-.social-icons a {
-    color: #fff;
-    font-size: 1.5rem;
-    opacity: 0.8;
+/* Diseño de botones circulares para las redes */
+.mc-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: var(--mc-bg-card);
+    color: var(--mc-text-muted);
+    font-size: 1.25rem;
+    text-decoration: none;
+    border: 1px solid var(--mc-border-muted);
+    transition: all 0.3s ease;
 }
 
-.social-icons a:hover {
-    transform: translateY(-3px);
-    opacity: 1;
+/* Efecto Hover: Se pinta de violeta, el ícono se hace blanco y brilla */
+.mc-social-icons a:hover {
+    color: var(--mc-text-white);
+    background-color: var(--mc-accent);
+    border-color: var(--mc-accent);
+    box-shadow: 0 0 18px var(--mc-accent-glow);
+    transform: translateY(-5px);
+}
+
+/* Asegurarnos que el SVG de ArtStation tenga el mismo tamaño que los iconos de Bootstrap */
+.mc-artstation-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.mc-footer-copyright {
+    color: rgba(163, 158, 196, 0.6); /* --mc-text-muted más sutil */
+    font-size: 0.85rem;
+    margin: 0;
 }
