@@ -88,15 +88,16 @@
             
             <!-- INTRO NOSOTROS -->
             <div class="row align-items-center mb-5 mc-about-intro">
-                <div class="col-12 col-md-4 text-center text-md-start mb-4 mb-md-0">
-                    <img src="/imgs/logo.png" class="img-fluid mc-about-logo" alt="Meteor Craftworks logo">
-                </div>
+                
                 <div class="col-12 col-md-8">
-                    <h2 class="mc-section-title">NUESTRO EQUIPO</h2>
+                    <h2 class="mc-section-title">OUR TEAM</h2>
                     <div class="mc-title-accent mb-4"></div>
                     <p class="mc-text-muted">
                         Meteor Craftworks team is composed of talented young men dedicated to the making of stunning and transcendental works of art that inspire generations just as we have been inspired by who came before us.
                     </p>
+                </div>
+                <div class="col-12 col-md-4 text-center text-md-start mb-4 mb-md-0">
+                    <img src="/imgs/logo.png" class="img-fluid mc-about-logo" alt="Meteor Craftworks logo">
                 </div>
             </div>
 
@@ -162,12 +163,12 @@
                     </div>
                 </div>
 
-                <!-- DEV ARON -->
+                <!-- DEV AaRON -->
                 <div class="col-12 col-lg-6">
                     <div class="mc-dev-card">
                         <img src="/imgs/pic-devs/pic-aron.png" class="mc-dev-img" alt="Arón Poiesis">
                         <div class="mc-dev-info">
-                            <h5 class="mc-dev-name">Arón Poiesis</h5>
+                            <h5 class="mc-dev-name">Aaron Poiesis</h5>
                             <span class="mc-dev-role">Musician & CM</span>
                             <p class="mc-dev-desc">Musicalization<br />Content Creation</p>
                         </div>
@@ -193,7 +194,7 @@
             <div class="row mc-contact-wrap">
                 <!-- TEXTO CONTACTO -->
                 <div class="col-12 col-md-5 mb-5 mb-md-0 pe-md-5">
-                    <h2 class="mc-section-title">MANDANOS UN<br />MENSAJITO</h2>
+                    <h2 class="mc-section-title">Reach out<br /></h2>
                     <p class="mc-text-lavender mt-3">
                         ¿Ready to start your next project?<br>
                         We specialize in turning ideas into unique visual experiences.
@@ -207,23 +208,23 @@
                         <ValidationSummary class="text-danger mb-3" />
 
                         <div class="mb-4">
-                            <label class="mc-form-label">nombre</label>
+                            <label class="mc-form-label">Name</label>
                             <InputText @bind-Value="form.Nombre" name="Nombre" class="form-control mc-input" />
                         </div>
 
                         <div class="mb-4">
-                            <label class="mc-form-label">e-mail</label>
+                            <label class="mc-form-label">E-mail</label>
                             <InputText @bind-Value="form.Email" name="Email" type="email" class="form-control mc-input" />
                         </div>
 
                         <div class="mb-5">
-                            <label class="mc-form-label">mensajito</label>
+                            <label class="mc-form-label">Message</label>
                             <InputTextArea @bind-Value="form.Mensaje" name="Mensaje" class="form-control mc-input" rows="1" />
                         </div>
 
                         <div class="d-flex justify-content-start">
                             <button type="submit" class="mc-btn-submit" disabled="@enviando">
-                                @(enviando ? "ENVIANDO..." : "ENVIAR")
+                                @(enviando ? "SENDING..." : "SEND")
                             </button>
                         </div>
                     </EditForm>
@@ -231,7 +232,7 @@
                     @if (enviado)
                     {
                         <div class="alert alert-success mt-4 mc-alert">
-                            ¡Gracias! Tu mensaje fue enviado correctamente.
+                            ¡Thanks! Your message was send succesfully.
                         </div>
                     }
                 </div>
