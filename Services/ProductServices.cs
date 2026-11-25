@@ -6,9 +6,11 @@ public class ProductService
 {
     private readonly List<ProductModel> _products = new()
     {
+        
         new ProductModel
         {
             Id = 1,
+            ArticleId = null,
             Title = "Infinite Football",
             Description = "Face the Trials! The biggest clubs in the world have reunited to test first division players to acquire, YOU included! Show them what you've got.",
             ReleaseDate = null,
@@ -29,6 +31,7 @@ public class ProductService
         new ProductModel
         {
             Id = 2,
+            ArticleId = 1,
             Title = "Tribulations Of The Realm",
             Description = "TOTR is a board game with unique mechanics",
             ReleaseDate = null,
@@ -44,7 +47,8 @@ public class ProductService
         },
         new ProductModel
         {
-            Id = 2,
+            Id = 3,
+            ArticleId = 2,
             Title = "MateAventuras",
             Description = "Mateaventuras need your help! Dive into their colorfull world, create your own character and help the Mateaventuras team to solve puzzles mixed with math! ",
             ReleaseDate = null,
@@ -59,7 +63,8 @@ public class ProductService
         },
         new ProductModel
         {
-            Id = 3,
+            Id = 4,
+            ArticleId = null,
             Title = "The City of Fury",
             Description = "The City is corrupt with a disease, and you as a SWAT Team Leader, dive into it's streets cleaning them the only way you know.",
             ReleaseDate = null,
@@ -75,7 +80,8 @@ public class ProductService
         },
         new ProductModel
         {
-            Id = 4,
+            Id = 5,
+            ArticleId = null,
             Title = "Neighbours",
             Description = "Watch out! You moved recently to a new appartment building with a lot of charismatic neighbours, but be careful, not everything is as it seems!.",
             ReleaseDate = null,

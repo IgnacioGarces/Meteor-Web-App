@@ -2,6 +2,7 @@
 @using Meteor_Web_App.Models
 @using Meteor_Web_App.Services
 @inject ProductService ProductService
+@inject ArticleService ArticleService
 
 <div class="mc-product-page">
     <div class="container mc-container-mw">
@@ -102,6 +103,7 @@
                                 }
                             </div>
                         }
+
                     </div>
 
                     <!-- DERECHA: FICHA TÉCNICA Y ACCIÓN (Sin cambios) -->
@@ -136,7 +138,17 @@
                         </aside>
                     </div>
                 </div>
+
             </section>
+
+            @if (linkedArticle != null)
+            {
+                <section class="mc-product-article-section mt-5 pt-5">
+                    <div class="mc-article-centered-wrap">
+                        <ArticleContent Article="@linkedArticle" />
+                    </div>
+                </section>
+            }
 
             <!-- ============================================== -->
             <!-- MODAL FULLSCREEN PARA IMÁGENES                 -->
@@ -189,11 +201,19 @@
 @code {
     [Parameter] public int Id { get; set; } = default!;
     private ProductModel? product;
+    private ArticleModel? linkedArticle;
 
     protected override void OnParametersSet()
     {
         product = ProductService.GetById(Id);
-        
+        if (product?.ArticleId != null)
+        {
+            linkedArticle = ArticleService.GetById(product.ArticleId.Value);
+        }
+        else
+        {
+            linkedArticle = null;
+        }
         StateHasChanged();
     }
 }
