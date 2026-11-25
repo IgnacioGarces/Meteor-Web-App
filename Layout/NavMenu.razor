@@ -65,12 +65,16 @@
 
                 <!-- 2. SERVICES -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/#servicios" @onclick="CloseMobileMenu">Services</a>
+                    <a class="nav-link" href="/#servicios" @onclick='() => NavigateToSection("servicios")' @onclick:preventDefault="IsHome">
+                        Services
+                    </a>
                 </li>
 
                 <!-- 3. CONTACT -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/#contacto" @onclick="CloseMobileMenu">Contact</a>
+                    <a class="nav-link" href="/#contacto" @onclick='() => NavigateToSection("contacto")' @onclick:preventDefault="IsHome">
+                        Contact
+                    </a>
                 </li>
 
             </ul>
@@ -79,7 +83,16 @@
 </nav>
 
 @code {
-    private bool IsHome => Nav.Uri.TrimEnd('/') == Nav.BaseUri.TrimEnd('/');
+    // Verifica si la URL actual es la raíz (ignorando cualquier #hash previo como /#servicios)
+    private bool IsHome
+    {
+        get
+        {
+            var path = new Uri(Nav.Uri).AbsolutePath.TrimEnd('/');
+            var basePath = new Uri(Nav.BaseUri).AbsolutePath.TrimEnd('/');
+            return string.Equals(path, basePath, StringComparison.OrdinalIgnoreCase);
+        }
+    }
 
     private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
 
@@ -94,7 +107,22 @@
         StateHasChanged();
     }
 
-    // Cierra el menú hamburguesa automáticamente en mobile al hacer clic en un link
+    private async Task NavigateToSection(string sectionId)
+    {
+        await CloseMobileMenu();
+
+        if (IsHome)
+        {
+            // Si ya estamos en la Home, hacemos scroll directo por JS al ID de la sección
+            await JS.InvokeVoidAsync("eval", $@"
+                var el = document.getElementById('{sectionId}');
+                if (el) {{
+                    el.scrollIntoView({{ behavior: 'smooth' }});
+                }}
+            ");
+        }
+    }
+
     private async Task CloseMobileMenu()
     {
         try
