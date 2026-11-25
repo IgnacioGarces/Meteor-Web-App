@@ -29,6 +29,22 @@ public class ProductService
         new ProductModel
         {
             Id = 2,
+            Title = "Tribulations Of The Realm",
+            Description = "TOTR is a board game with unique mechanics",
+            ReleaseDate = null,
+            Poster = "/imgs/Products/TOTR/poster.png",
+            StoreUrl = "https://www.instagram.com/tribulationoftherealms/",
+            Images =
+            {
+                "/imgs/Products/TOTR/preview_1.png",
+                "/imgs/Products/TOTR/preview_2.png",
+                "/imgs/Products/TOTR/preview_3.png",
+                "/imgs/Products/TOTR/preview_4.png",
+            }
+        },
+        new ProductModel
+        {
+            Id = 2,
             Title = "MateAventuras",
             Description = "Mateaventuras need your help! Dive into their colorfull world, create your own character and help the Mateaventuras team to solve puzzles mixed with math! ",
             ReleaseDate = null,
