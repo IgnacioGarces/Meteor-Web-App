@@ -1,0 +1,77 @@
+@using Meteor_Web_App.Models
+
+@if (Article != null)
+{
+    <article class="mc-embedded-article">
+        <header class="mc-article-header">
+            <span class="mc-article-badge">ABOUT THIS PROJECT</span>
+            <h2 class="mc-article-title">@Article.Title</h2>
+            <div class="mc-title-accent mb-4"></div>
+
+            @if (!string.IsNullOrEmpty(Article.FirstImageUrl))
+            {
+                <div class="mc-article-hero-img-wrap">
+                    <img src="@Article.FirstImageUrl" class="img-fluid mc-article-img-main" alt="@Article.Title" />
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Article.Description))
+            {
+                <div class="mc-article-lead">
+                    @((MarkupString)Article.Description)
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Article.FirstSubtitle))
+            {
+                <h3 class="mc-section-subtitle mt-4">
+                    @((MarkupString)Article.FirstSubtitle)
+                </h3>
+            }
+
+            @if (!string.IsNullOrEmpty(Article.SecondDescription))
+            {
+                <div class="mc-article-body">
+                    @((MarkupString)Article.SecondDescription)
+                </div>
+            }
+        </header>
+
+        @{
+            int totalSections = Article.ImageUrl?.Length ?? 0;
+        }
+
+        @if (totalSections > 0)
+        {
+            <div class="mc-article-sections">
+                @for (int i = 0; i < totalSections; i++)
+                {
+                    <section class="mc-article-section">
+                        <div class="mc-article-section-img-wrap">
+                            <img src="@Article.ImageUrl![i]"
+                                 class="img-fluid mc-article-img"
+                                 alt="Imagen de sección @(i + 1)" />
+                        </div>
+
+                        @if (Article.SectionTitles != null && i < Article.SectionTitles.Length && !string.IsNullOrWhiteSpace(Article.SectionTitles[i]))
+                        {
+                            <h4 class="mc-section-subtitle">@Article.SectionTitles[i]</h4>
+                        }
+
+                        @if (Article.Content != null && i < Article.Content.Length && !string.IsNullOrWhiteSpace(Article.Content[i]))
+                        {
+                            <div class="mc-article-body">
+                                @((MarkupString)Article.Content[i])
+                            </div>
+                        }
+                    </section>
+                }
+            </div>
+        }
+    </article>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public ArticleModel? Article { get; set; }
+}

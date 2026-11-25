@@ -2,8 +2,8 @@
 @using Meteor_Web_App.Services
 @implements IDisposable
 @inject NavigationManager Nav
-@inject ArticleService ArticleService
 @inject ProductService ProductService
+@inject IJSRuntime JS
 
 <!-- Aplicamos la clase mc-navbar y ms-auto para empujar los links a la derecha -->
 <nav id="mainNavbar" class="navbar navbar-expand-lg mc-navbar fixed-top">
@@ -13,11 +13,13 @@
         <div class="navbar-brand">
             @if (IsHome)
             {
-                <img src="imgs/bannerLogo.png" class="mc-banner-logo" alt="Meteor Craftwork Logo" />
+                <a href="/#inicio" @onclick="CloseMobileMenu">
+                    <img src="imgs/bannerLogo.png" class="mc-banner-logo" alt="Meteor Craftwork Logo" />
+                </a>
             }
             else
             {
-                <NavLink href="/" Match="NavLinkMatch.All">
+                <NavLink href="/" Match="NavLinkMatch.All" @onclick="CloseMobileMenu">
                     <img src="imgs/bannerLogo.png" class="mc-banner-logo" alt="Meteor Craftwork Logo" />
                 </NavLink>
             }
@@ -39,6 +41,7 @@
             <!-- ms-auto empuja los items a la derecha -->
             <ul class="navbar-nav ms-auto mc-nav-links">
 
+                <!-- 1. LAUNCHS -->
                 <li class="nav-item dropdown mc-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Launchs
@@ -51,57 +54,50 @@
                             {
                                 var prodLink = "/product/" + prod.Id;
                                 <li>
-                                    <NavLink class="dropdown-item mc-dropdown-item" href="@prodLink">@prod.Title</NavLink>
-                                </li>
-                            }
-                        }
-
-                        @if (productos?.Any() == true && articulos?.Any() == true)
-                        {
-                            <li><hr class="dropdown-divider mc-dropdown-divider" /></li>
-                        }
-
-                        @if (articulos != null)
-                        {
-                            @foreach (var art in articulos)
-                            {
-                                var artLink = "/article/" + art.Id;
-                                <li>
-                                    <NavLink class="dropdown-item mc-dropdown-item" href="@artLink">@art.Title</NavLink>
+                                    <NavLink class="dropdown-item mc-dropdown-item" href="@prodLink" @onclick="CloseMobileMenu">
+                                        @prod.Title
+                                    </NavLink>
                                 </li>
                             }
                         }
                     </ul>
                 </li>
 
-                <!-- Tu lógica original de visibilidad -->
-                @if (!IsHome && !IsAbout && !IsContact)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#about">Devs</a>
-                    </li>
+                <!-- 2. SERVICES -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/#servicios" @onclick='() => NavigateToSection("servicios")' @onclick:preventDefault="IsHome">
+                        Services
+                    </a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#contacto">Contact</a>
-                    </li>
-                }
+                <!-- 3. CONTACT -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/#contacto" @onclick='() => NavigateToSection("contacto")' @onclick:preventDefault="IsHome">
+                        Contact
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
 @code {
-    private bool IsHome => Nav.Uri.TrimEnd('/') == Nav.BaseUri.TrimEnd('/');
-    private bool IsAbout => Nav.Uri.Contains("#about");
-    private bool IsContact => Nav.Uri.Contains("#contacto");
+    // Verifica si la URL actual es la raíz (ignorando cualquier #hash previo como /#servicios)
+    private bool IsHome
+    {
+        get
+        {
+            var path = new Uri(Nav.Uri).AbsolutePath.TrimEnd('/');
+            var basePath = new Uri(Nav.BaseUri).AbsolutePath.TrimEnd('/');
+            return string.Equals(path, basePath, StringComparison.OrdinalIgnoreCase);
+        }
+    }
 
-
-    private IEnumerable<ArticleModel> articulos = Array.Empty<ArticleModel>();
     private IEnumerable<ProductModel> productos = Array.Empty<ProductModel>();
 
     protected override void OnInitialized()
     {
-        articulos = ArticleService.GetAll();
         productos = ProductService.GetAll();
         Nav.LocationChanged += HandleLocationChanged;
     }
@@ -109,6 +105,39 @@
     private void HandleLocationChanged(object? sender, LocationChangedEventArgs e)
     {
         StateHasChanged();
+    }
+
+    private async Task NavigateToSection(string sectionId)
+    {
+        await CloseMobileMenu();
+
+        if (IsHome)
+        {
+            // Si ya estamos en la Home, hacemos scroll directo por JS al ID de la sección
+            await JS.InvokeVoidAsync("eval", $@"
+                var el = document.getElementById('{sectionId}');
+                if (el) {{
+                    el.scrollIntoView({{ behavior: 'smooth' }});
+                }}
+            ");
+        }
+    }
+
+    private async Task CloseMobileMenu()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("eval", @"
+                var navCollapse = document.getElementById('navbarNav');
+                if (navCollapse && navCollapse.classList.contains('show')) {
+                    bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+                }
+            ");
+        }
+        catch
+        {
+            // Ignorar si se ejecuta durante prerender
+        }
     }
 
     public void Dispose()

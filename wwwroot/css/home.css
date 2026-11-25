@@ -22,6 +22,7 @@
     font-family: 'Montserrat', 'Segoe UI', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
+    padding-top: 5.5rem; 
 }
 
 .mc-container-mw {
@@ -53,84 +54,233 @@
 
 
 /* =========================================
-   CAROUSEL (LANZAMIENTOS)
+   1. HERO BANNER (MOBILE + DESKTOP)
 ========================================= */
-.mc-carousel-inner {
-    height: 60vh;
-    background-color: #000;
-}
-
-.mc-carousel-item {
-    height: 100%;
-}
-
-.mc-carousel-img-wrap {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-.mc-carousel-item img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    object-position: center;
+.mc-hero-banner {
+    position: relative;
     background-color: var(--mc-bg-dark);
-}
-
-/* Controles */
-.mc-carousel-ctrl {
-    width: 10%;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.mc-carousel-ctrl:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: var(--mc-accent);
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    background-size: 50%;
-}
-
-.mc-indicators button {
-    background-color: var(--mc-text-lavender) !important;
-}
-
-/* Captions con gradiente oscuro y tipografía robusta */
-.mc-carousel-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(11,9,26, 0.95) 0%, rgba(11,9,26, 0.5) 50%, transparent 100%);
-    padding: 100px 20px 40px 20px;
-    text-align: center;
-    pointer-events: none;
-}
-
-.mc-caption-text {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--mc-text-white);
-    margin: 0 auto;
-    max-width: 800px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    border-top: 1px solid rgba(180, 167, 245, 0.4);
+    border-bottom: 1px solid rgba(180, 167, 245, 0.4);
     overflow: hidden;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+}
+
+/* --- ESTILO MOBILE (< 992px): Corte diagonal horizontal --- */
+.mc-hero-diagonal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 62%; /* Cubre la mitad superior donde va el texto */
+    background: linear-gradient(135deg, #8b7bc2 0%, #6d5ca8 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 82%, 0% 100%); /* Corte diagonal abajo */
+    z-index: 1;
+}
+
+.mc-hero-text-col {
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem; /* Espacio extra para que el texto no toque la diagonal */
+}
+
+.mc-hero-brand-col {
+    padding-top: 1rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mc-hero-title {
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: var(--mc-text-white);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.mc-hero-subtitle {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #211b3d;
+    margin-bottom: 0.8rem;
+}
+
+.mc-hero-desc {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #16122b;
+    line-height: 1.45;
+    max-width: 100%;
+}
+
+/* Logo escalado para celulares (evita desborde horizontal) */
+.mc-hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.mc-hero-isotipo {
+    width: 68px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(124, 82, 186, 0.5));
+}
+
+.mc-hero-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.mc-brand-main {
+    font-size: 1.85rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--mc-text-white);
+}
+
+.mc-brand-sub {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.31em;
+    color: var(--mc-text-white);
+    margin-top: 5px;
+}
+
+/* --- ESTILO DESKTOP (>= 992px): Corte diagonal vertical --- */
+@media (min-width: 992px) {
+    .mc-hero-banner {
+        min-height: 460px;
+    }
+
+    .mc-hero-diagonal-bg {
+        width: 52%;
+        height: 100%;
+        clip-path: polygon(0 0, 100% 0, 72% 100%, 0% 100%);
+    }
+
+    .mc-hero-text-col {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .mc-hero-brand-col {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        justify-content: flex-end;
+    }
+
+    .mc-hero-title {
+        font-size: 3.5rem;
+    }
+
+    .mc-hero-subtitle {
+        font-size: 1.35rem;
+    }
+
+    .mc-hero-desc {
+        font-size: 1rem;
+        max-width: 380px;
+    }
+
+    .mc-hero-brand {
+        gap: 20px;
+    }
+
+    .mc-hero-isotipo {
+        width: 140px;
+    }
+
+    .mc-brand-main {
+        font-size: 3.4rem;
+        letter-spacing: 0.18em;
+    }
+
+    .mc-brand-sub {
+        font-size: 1.4rem;
+        letter-spacing: 0.34em;
+    }
+}
+
+/* =========================================
+   2. FILA DE LOGOS DE PROYECTOS
+========================================= */
+.mc-projects-strip {
+    padding: 60px 0 30px 0;
+}
+
+.mc-project-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.mc-project-logo-img {
+    max-height: 115px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.mc-project-logo-link:hover .mc-project-logo-img {
+    transform: translateY(-6px) scale(1.06);
+    filter: drop-shadow(0 10px 22px var(--mc-accent-glow));
+}
+
+/* =========================================
+   3. BOTONES DE SERVICIOS (GRID 2x2)
+========================================= */
+.mc-service-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--mc-bg-card);
+    border: 1.5px solid var(--mc-border-muted);
+    border-radius: 12px;
+    padding: 28px 36px;
+    text-decoration: none;
+    color: var(--mc-text-white);
+    transition: all 0.3s ease;
+    height: 115px;
+}
+
+.mc-service-btn:hover {
+    background-color: var(--mc-bg-card-hover);
+    border-color: var(--mc-text-lavender);
+    box-shadow: 0 8px 25px var(--mc-accent-glow);
+    transform: translateY(-4px);
+    color: var(--mc-text-white);
+}
+
+.mc-service-label {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.mc-service-icon {
+    width: 56px;
+    height: 56px;
+    color: var(--mc-text-lavender);
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.mc-service-btn:hover .mc-service-icon {
+    transform: scale(1.1) rotate(-4deg);
+    color: var(--mc-text-white);
 }
 
 
 .mc-about-logo {
-    max-width: 200px;
+    max-width: 250px;
     animation: mc-glow-pulse 3s infinite ease-in-out;
 }
 
